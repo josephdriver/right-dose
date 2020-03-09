@@ -1,0 +1,2 @@
+module CaseDrugsHelper
+end
