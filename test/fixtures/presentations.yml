@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dose: 1
+  dose_unit: MyString
+  volume: 1
+  volume_unit: MyString
+  drug: one
+
+two:
+  dose: 1
+  dose_unit: MyString
+  volume: 1
+  volume_unit: MyString
+  drug: two

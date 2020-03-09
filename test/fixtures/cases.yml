@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1
+  weight: 1
+  paramedic: one
+
+two:
+  age: 1
+  weight: 1
+  paramedic: two
