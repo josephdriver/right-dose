@@ -133,7 +133,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_035247) do
   create_table "rules", force: :cascade do |t|
     t.integer "min_age"
     t.integer "max_age"
-    t.integer "initial_dose"
     t.integer "repeat_dose"
     t.integer "min_interval"
     t.integer "max_interval"
@@ -145,6 +144,11 @@ ActiveRecord::Schema.define(version: 2020_03_10_035247) do
     t.integer "indication_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "interval_unit"
+    t.integer "min_initial_dose"
+    t.integer "max_initial_dose"
+    t.integer "max_single_dose"
+    t.integer "max_total_dose"
     t.index ["indication_id"], name: "index_rules_on_indication_id"
     t.index ["paramedic_type_id"], name: "index_rules_on_paramedic_type_id"
     t.index ["route_id"], name: "index_rules_on_route_id"
