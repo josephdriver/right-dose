@@ -11,43 +11,7 @@
   </head>
 
   <body>
-
-    <!-- NAVBAR -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light d-flex justify-content-between border-bottom border-primary">
-      <!-- NAVBAR LEFT -->
-      <div class="d-flex align-items-center w-25">
-        <div class="pr-3">
-          <p class="m-0"><i class="far fa-bell"></i></p>
-          <p class="m-0"><i class="fas fa-cog"></i></p>
-        </div>
-        <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
-        <div class="pl-3">
-          <p class="m-0 small">FIRST_NAME LAST_NAME</p>
-          <p class="m-0 small">BADGE_ID</p>
-          <p class="m-0 small">SCOPE</p>
-        </div>
-      </div>
-      <!-- NAVBAR CENTER -->
-      <div class="align-items-center w-50">
-        <h5 class="m-0 text-center text-primary font-weight-bold">RIGHT DOSE</h5>
-        <p class="m-0 text-center small">PRE-HOSPiTAL SERVICE PROVIDER/COMPANY</p>
-      </div>
-      <!-- NAVBAR RIGHT -->
-      <div class="w-25 text-right">
-        <p class="m-0 small font-weight-bold">HH:MM:SS</p>
-        <p class="m-0 small">## MON YEAR</p>
-      </div>
-    </nav>
-    <!-- END OF NAVBAR -->
-
     <%= yield %>
-
-    <!-- FOOTER -->
-    <div class="fixed-bottom w-100 d-flex justify-content-around border-top border-primary bg-light">
-      <button type="button" class="btn btn-primary m-3 font-weight-bold btn-lg">CLOSE CASE</button>
-      <button type="button" class="btn btn-primary m-3 font-weight-bold btn-lg">VIEW SUMMARY</button>
-    </div>
-    <!-- END OF FOOTER -->
 
     <%= javascript_pack_tag 'application' %>
     <%= stylesheet_pack_tag 'application' %>

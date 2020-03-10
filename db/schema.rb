@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_025307) do
+ActiveRecord::Schema.define(version: 2020_03_10_035247) do
 
   create_table "administrations", force: :cascade do |t|
     t.time "time"
