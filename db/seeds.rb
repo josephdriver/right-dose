@@ -36,14 +36,13 @@ end
 
 ADMINS = []
 1.times do
+  first = 'Bob'
+  last = 'Dylan'
+
   admin = {
-    first_name: 'Bob',
-    last_name: 'Dylan',
-    email: Faker::Internet.email(
-      name: 'Bob Dylan',
-      separators: '.',
-      domain: 'LWAS'
-    ),
+    first_name: first,
+    last_name: last,
+    email: "#{first}.#{last}@LWAS.com",
     password: 'password',
     employee_num: 0,
     organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
@@ -2750,6 +2749,32 @@ end
 puts "\trules have been established"
 
 PARAMEDICS = []
+# CONSTANT PARAMEDICS FOR TESTING
+medic_acp = {
+  first_name: 'ACP',
+  last_name: 'Medic',
+  email: 'ACP.Medic@LWAS.com',
+  password: 'password',
+  paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id
+}
+PARAMEDICS << medic_acp
+medic_ccp = {
+  first_name: 'CCP',
+  last_name: 'Medic',
+  email: 'CCP.Medic@LWAS.com',
+  password: 'password',
+  paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id
+}
+PARAMEDICS << medic_ccp
+medic_pts= {
+  first_name: 'PTS',
+  last_name: 'Medic',
+  email: 'PTS.Medic@LWAS.com',
+  password: 'password',
+  paramedic_type_id: ParamedicType.find_by(acronym: 'PTS').id
+}
+PARAMEDICS << medic_pts
+
 10.times do
   first = Faker::Name.first_name
   last = Faker::Name.last_name
@@ -2757,11 +2782,7 @@ PARAMEDICS = []
   paramedic = {
     first_name: first,
     last_name: last,
-    email: Faker::Internet.email(
-      name: "#{first} #{last}",
-      separators: '.',
-      domain: 'LWAS'
-    ),
+    email: "#{first}.#{last}@LWAS.com",
     password: 'password',
     # employee_num: 6.times.map { (0..9).to_a.sample }.join.to_i,
     paramedic_type_id: ParamedicType.all.sample.id
