@@ -19,3 +19,4 @@ import "regenerator-runtime/runtime";
 // const imagePath = (name) => images(name, true)
 
 console.log('Hello World from Webpacker')
+
