@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # include home route?
   get 'administrations/index'
   get 'administrations/show'
   get 'administrations/new'
