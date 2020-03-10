@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  # include home route?
+  get 'administrations/index'
+  get 'administrations/show'
+  get 'administrations/new'
+  get 'administrations/create'
   get 'case_drugs/create'
   get 'indications/index'
   get 'indications/new'
