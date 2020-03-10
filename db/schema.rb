@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_105933) do
+ActiveRecord::Schema.define(version: 2020_03_10_025307) do
+
+  create_table "administrations", force: :cascade do |t|
+    t.time "time"
+    t.integer "dose"
+    t.integer "cummulative_dose"
+    t.integer "case_drug_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_drug_id"], name: "index_administrations_on_case_drug_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false

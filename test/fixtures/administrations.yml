@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time: 2020-03-10 10:53:07
+  dose: 1
+  cummulative_dose: 1
+  case_drug: one
+
+two:
+  time: 2020-03-10 10:53:07
+  dose: 1
+  cummulative_dose: 1
+  case_drug: two
