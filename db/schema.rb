@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_030238) do
+ActiveRecord::Schema.define(version: 2020_03_10_025307) do
 
   create_table "administrations", force: :cascade do |t|
     t.time "time"
@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_03_10_030238) do
 
   create_table "case_drugs", force: :cascade do |t|
     t.integer "case_id"
-    t.integer "drug_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rule_id"
     t.index ["case_id"], name: "index_case_drugs_on_case_id"
-    t.index ["drug_id"], name: "index_case_drugs_on_drug_id"
+    t.index ["rule_id"], name: "index_case_drugs_on_rule_id"
   end
 
   create_table "cases", force: :cascade do |t|
@@ -148,18 +148,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_030238) do
     t.index ["indication_id"], name: "index_rules_on_indication_id"
     t.index ["paramedic_type_id"], name: "index_rules_on_paramedic_type_id"
     t.index ["route_id"], name: "index_rules_on_route_id"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
