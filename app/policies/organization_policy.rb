@@ -1,8 +1,5 @@
 class OrganizationPolicy < ApplicationPolicy
-
-  def show
-  end
-
-  def update
+  def update?
+    user.class == Admin
   end
 end

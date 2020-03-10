@@ -1,6 +1,12 @@
 import "core-js/stable";
 import "regenerator-runtime/runtime";
+
 import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
+
+import { updateTime } from "../paramedic/updateTime.js";
+
+updateTime();
+
 
 initAlgoliaSearch();
 /* eslint no-console:0 */
