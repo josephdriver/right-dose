@@ -1,8 +1,1638 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-Organization.create()
+require 'faker'
+
+puts 'Cleaning your database...'
+CaseDrug.destroy_all
+Case.destroy_all
+Paramedic.destroy_all
+Rule.destroy_all
+Indication.destroy_all
+Presentation.destroy_all
+Drug.destroy_all
+Route.destroy_all
+ParamedicType.destroy_all
+Admin.destroy_all
+Organization.destroy_all
+
+puts 'Building your database...'
+ORGANIZATIONS = []
+1.times do
+  organization = {
+    name: 'Le Wagon Ambulance Service',
+    location: 'Canggu, Bali',
+    pediatric_cutoff: 12,
+    multiplier: 3,
+    addition_num: 7,
+    weight_3mth: 3.5,
+    weight_6mth: 7,
+    weight_unit: 'kg'
+  }
+
+  ORGANIZATIONS << organization
+end
+ORGANIZATIONS.each do |org|
+  Organization.create!(org)
+  puts "  #{org[:name]} has created an account"
+end
+
+ADMINS = []
+1.times do
+  admin = {
+    first_name: 'Bob',
+    last_name: 'Dylan',
+    email: Faker::Internet.email(
+      name: 'Bob Dylan',
+      separators: '.',
+      domain: 'LWAS'
+    ),
+    password: 'password',
+    employee_num: 0,
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  }
+
+  ADMINS << admin
+end
+ADMINS.each do |admin|
+  Admin.create!(admin)
+  puts "  #{admin[:first_name]} #{admin[:last_name]} has been named administrator"
+end
+
+PARAMEDIC_TYPES = [
+  { title: 'Advanced Care Paramedic',
+    acronym: 'ACP',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id },
+  { title: 'Critical Care Paramedic',
+    acronym: 'CCP',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id },
+  { title: 'Patient Transport Service',
+    acronym: 'PTS',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id }
+]
+PARAMEDIC_TYPES.each do |paramedic_type|
+  ParamedicType.create!(paramedic_type)
+end
+puts "\tparamedic types have been established"
+
+ROUTES = [
+  { name: 'Nebulizer', acronym: 'NEB' },
+  { name: 'Intramuscular injection', acronym: 'IM' },
+  { name: 'Intravenous injection', acronym: 'IV' },
+  { name: 'Intraosseous injection', acronym: 'IO' },
+  { name: 'Intranasal', acronym: 'IN' }
+]
+
+ROUTES.each do |route|
+  Route.create!(route)
+end
+puts "\troutes have been established"
+
+DRUGS = [
+  {
+    name: 'Adrenaline',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  },
+  {
+    name: 'Morphine',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  },
+  {
+    name: 'Fentanyl',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  },
+  {
+    name: 'Ondansatron',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  },
+  {
+    name: 'Glucose 10%',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  },
+  {
+    name: 'Midazolam',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  },
+  {
+    name: 'Naloxone',
+    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+  }
+]
+
+DRUGS.each do |drug|
+  Drug.create!(drug)
+end
+puts "\tdrugs have been established"
+
+PRESENTATIONS = [
+  {
+    dose: 1,
+    dose_unit: 'mg',
+    volume: 1,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Adrenaline').id
+  },
+  {
+    dose: 1,
+    dose_unit: 'mg',
+    volume: 10,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Adrenaline').id
+  },
+  {
+    dose: nil,
+    dose_unit: '',
+    volume: 150,
+    volume_unit: 'mcg',
+    drug_id: Drug.find_by(name: 'Adrenaline').id
+  },
+  {
+    dose: nil,
+    dose_unit: '',
+    volume: 300,
+    volume_unit: 'mmcg',
+    drug_id: Drug.find_by(name: 'Adrenaline').id
+  },
+  {
+    dose: 10,
+    dose_unit: 'mg',
+    volume: 1,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Morphine').id
+  },
+  {
+    dose: 100,
+    dose_unit: 'mcg',
+    volume: 2,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Fentanyl').id
+  },
+  {
+    dose: 4,
+    dose_unit: 'mg',
+    volume: 1,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Ondansatron').id
+  },
+  {
+    dose: nil,
+    dose_unit: '',
+    volume: 250,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Glucose 10%').id
+  },
+  {
+    dose: 5,
+    dose_unit: 'mg',
+    volume: 1,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Midazolam').id
+  },
+  {
+    dose: 400,
+    dose_unit: 'mcg',
+    volume: 1,
+    volume_unit: 'ml',
+    drug_id: Drug.find_by(name: 'Naloxone').id
+  }
+]
+
+PRESENTATIONS.each do |presentation|
+  Presentation.create!(presentation)
+end
+puts "\tpresentations have been established"
+
+def find_presentation(drug)
+  # puts "#{drug} CANNOT BE FOUND!" if Drug.find_by(name: drug).nil?
+  tmp = Drug.find_by(name: drug).id
+  Presentation.find_by(drug_id: tmp).id
+end
+
+INDICATIONS = [
+  {
+    name: 'Cardiac Arrest',
+    # drug_id: Drug.find_by(name: 'Adrenaline'),
+    presentation_id: find_presentation('Adrenaline')
+  },
+  {
+    name: 'Anaphylaxis OR severe allergic reaction',
+    # drug_id: Drug.find_by(name: 'Adrenaline'),
+    presentation_id: find_presentation('Adrenaline')
+  },
+  {
+    name: 'Severe life-threatening bronchospasm OR silent chest',
+    # drug_id: Drug.find_by(name: 'Adrenaline'),
+    presentation_id: find_presentation('Adrenaline')
+  },
+  {
+    name: 'Shock unresponsive to adequate fluid resuscitation',
+    # drug_id: Drug.find_by(name: 'Adrenaline'),
+    presentation_id: find_presentation('Adrenaline')
+  },
+  {
+    name: 'Bradycadria',
+    # drug_id: Drug.find_by(name: 'Adrenaline'),
+    presentation_id: find_presentation('Adrenaline')
+  },
+
+  {
+    name: 'Significant pain',
+    # drug_id: Drug.find_by(name: 'Morphine'),
+    presentation_id: find_presentation('Morphine')
+  },
+  {
+    name: 'Autonomic dysreflexia',
+    # drug_id: Drug.find_by(name: 'Morphine'),
+    presentation_id: find_presentation('Morphine')
+  },
+  {
+    name: 'Sedation',
+    # drug_id: Drug.find_by(name: 'Morphine'),
+    presentation_id: find_presentation('Morphine')
+  },
+
+  {
+    name: 'Significant pain',
+    # drug_id: Drug.find_by(name: 'Fentanyl'),
+    presentation_id: find_presentation('Fentanyl')
+  },
+  {
+    name: 'Autonomic dysreflexia',
+    # drug_id: Drug.find_by(name: 'Fentanyl'),
+    presentation_id: find_presentation('Fentanyl')
+  },
+  {
+    name: 'Sedation',
+    # drug_id: Drug.find_by(name: 'Fentanyl'),
+    presentation_id: find_presentation('Fentanyl')
+  },
+  {
+    name: 'Rapid Sequence Intubation (RSI)',
+    # drug_id: Drug.find_by(name: 'Fentanyl'),
+    presentation_id: find_presentation('Fentanyl')
+  },
+
+  {
+    name: 'Significant nausea AND/OR vomiting',
+    # drug_id: Drug.find_by(name: 'Ondansatron'),
+    presentation_id: find_presentation('Ondansatron')
+  },
+
+  {
+    name: 'Symptomatic hypoglycemia',
+    # drug_id: Drug.find_by(name: 'Glucose 10%'),
+    presentation_id: find_presentation('Glucose 10%')
+  },
+
+  {
+    name: 'Generalized seizures/focal seizure',
+    # drug_id: Drug.find_by(name: 'Midazolam'),
+    presentation_id: find_presentation('Midazolam')
+  },
+  {
+    name: 'Sedation',
+    # drug_id: Drug.find_by(name: 'Midazolam'),
+    presentation_id: find_presentation('Midazolam')
+  },
+  {
+    name: 'Acute behavioral disturbance',
+    # drug_id: Drug.find_by(name: 'Midazolam'),
+    presentation_id: find_presentation('Midazolam')
+  },
+
+  {
+    name: 'Respiratory despression',
+    # drug_id: Drug.find_by(name: 'Naloxone'),
+    presentation_id: find_presentation('Naloxone')
+  }
+]
+
+INDICATIONS.each do |indication|
+  Indication.create!(indication)
+end
+puts "\tindications have been established"
+
+# def find_indication(indication, drug)
+#   puts "#{drug} could not be found" if Drug.find_by(name: drug).nil?
+#   puts "#{indication} could not be found" if Indication.find_by(name: indication).nil?
+
+#   tmp = Drug.find_by(name: drug).id
+#   Indication.find_by(name: indication).find_by(drug_id: tmp).id
+# end
+
+# RULES = [
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 1,
+#     max_single_dose: 1,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 1,
+#     max_single_dose: 1,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 1,
+#     max_single_dose: 1,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'PTO'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 300,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 300,
+#     max_total_dose: 300
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 500,
+#     repeat_dose: 500,
+#     max_single_dose: 500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 500,
+#     repeat_dose: 500,
+#     max_single_dose: 500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'NEB'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 5,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 5,
+#     max_total_dose: 5
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'NEB'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 5,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 5,
+#     max_total_dose: 5
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 500,
+#     repeat_dose: 500,
+#     max_single_dose: 500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 500,
+#     repeat_dose: 500,
+#     max_single_dose: 500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Bradycardia', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 1,
+#     max_interval: 1,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (20..50),
+#     repeat_dose: (20..50),
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 10,
+#     max_weight: nil,
+#     initial_dose: 10,
+#     repeat_dose: 10,
+#     max_single_dose: 10,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 0,
+#     max_age: 1,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: 10,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 0,
+#     max_age: 0,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 0,
+#     max_weight: 10,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 0,
+#     max_weight: 10,
+#     initial_dose: 10,
+#     repeat_dose: 10,
+#     max_single_dose: 10,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 0,
+#     max_age: 1,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 0,
+#     max_weight: 10,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 0,
+#     max_age: 0,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 0,
+#     max_weight: 10,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 10,
+#     max_weight: nil,
+#     initial_dose: 10,
+#     repeat_dose: 10,
+#     max_single_dose: 10,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 0,
+#     max_age: 1,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 0,
+#     max_weight: 10,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 0,
+#     max_age: 0,
+#     min_interval: 3,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: 10,
+#     max_weight: nil,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'PTO'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 6,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 300,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 300,
+#     max_total_dose: 300
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'PTO'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0,
+#     max_age: 1,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 150,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 150,
+#     max_total_dose: 150
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 6,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 300,
+#     repeat_dose: 300,
+#     max_single_dose: 300,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 6,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 150,
+#     repeat_dose: 150,
+#     max_single_dose: 150,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0.5,
+#     max_age: 1,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0,
+#     max_age: 0.5,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 6,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 300,
+#     repeat_dose: 300,
+#     max_single_dose: 300,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 6,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 150,
+#     repeat_dose: 150,
+#     max_single_dose: 150,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0.5,
+#     max_age: 1,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0,
+#     max_age: 0.5,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'NEB'),
+#     min_age: 0,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 5,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 5,
+#     max_total_dose: 5
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'NEB'),
+#     min_age: 0,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 5,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 5,
+#     max_total_dose: 5
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 6,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 300,
+#     repeat_dose: 300,
+#     max_single_dose: 300,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 6,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 150,
+#     repeat_dose: 150,
+#     max_single_dose: 150,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0.5,
+#     max_age: 1,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0,
+#     max_age: 0.5,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 6,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 300,
+#     repeat_dose: 300,
+#     max_single_dose: 300,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 6,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 150,
+#     repeat_dose: 150,
+#     max_single_dose: 150,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0.5,
+#     max_age: 1,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 0,
+#     max_age: 0.5,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 50,
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   # MORPHINE
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Severe pain', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (2.5..5),
+#     repeat_dose: 5,
+#     max_single_dose: 5,
+#     max_total_dose: 10
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autnomic dysrelexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (2.5..5),
+#     repeat_dose: 5,
+#     max_single_dose: 5,
+#     max_total_dose: 10
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autnomic dysrelexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (2.5..10),
+#     repeat_dose: 5,
+#     max_single_dose: 5,
+#     max_total_dose: 20
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autnomic dysrelexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (2.5..10),
+#     repeat_dose: 5,
+#     max_single_dose: 5,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autnomic dysrelexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 2.5,
+#     repeat_dose: 2.5,
+#     max_single_dose: 2.5,
+#     max_total_dose: 10
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autnomic dysrelexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (2.5..5),
+#     repeat_dose: 5,
+#     max_single_dose: 5,
+#     max_total_dose: 20
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autnomic dysrelexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (2.5..5),
+#     repeat_dose: 5,
+#     max_single_dose: 5,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Sedation', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 2.5,
+#     repeat_dose: 2.5,
+#     max_single_dose: 2.5,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Sedation', 'Morphine'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 2.5,
+#     repeat_dose: 2.5,
+#     max_single_dose: 2.5,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   # PAEDIATRIC DOSAGES
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: 10,
+#     max_weight: 15,
+#     initial_dose: 2,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 2,
+#     max_total_dose: 2
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: 15,
+#     max_weight: 25,
+#     initial_dose: 3,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 3,
+#     max_total_dose: 3
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: 25,
+#     max_weight: 30,
+#     initial_dose: 5,
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 5,
+#     max_total_dose: 5
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (100..200),
+#     repeat_dose: 'Single dose only',
+#     max_single_dose: 5000,
+#     max_total_dose: 200
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 200,
+#     repeat_dose: 100,
+#     max_single_dose: 5000,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 50,
+#     max_single_dose: 2500,
+#     max_total_dose: 200
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 50,
+#     max_single_dose: 2500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 2500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 100,
+#     repeat_dose: 100,
+#     max_single_dose: 2500,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   # FENTANYL
+#   # ADULT DOSAGES
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..50),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 100
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..100),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 200
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'NAS'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..50),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 100
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'NAS'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (50..100),
+#     repeat_dose: 100,
+#     max_single_dose: 100,
+#     max_total_dose: 200
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'NAS'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..100),
+#     repeat_dose: (25..100),
+#     max_single_dose: 100,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..50),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 100
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..100),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 200
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..100),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 70,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 25,
+#     repeat_dose: 25,
+#     max_single_dose: 25,
+#     max_total_dose: 100
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: 70,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..50),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 200
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (25..50),
+#     repeat_dose: 50,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 25,
+#     repeat_dose: 25,
+#     max_single_dose: 25,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 12,
+#     max_age: nil,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 25,
+#     repeat_dose: 25,
+#     max_single_dose: 25,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   # PAEDIATRIC
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'NAS'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1.5,
+#     repeat_dose: 1,
+#     max_single_dose: 50,
+#     max_total_dose: 100
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'NAS'),
+#     min_age: 0.5,
+#     max_age: 12,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1.5,
+#     repeat_dose: 1,
+#     max_single_dose: 50,
+#     max_total_dose: 100
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (1..2),
+#     repeat_dose: 1,
+#     max_single_dose: 50,
+#     max_total_dose: 2
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IM'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 10,
+#     max_interval: 10,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: (1..2),
+#     repeat_dose: 1,
+#     max_single_dose: 50,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'ACP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 0.5,
+#     max_single_dose: 25,
+#     max_total_dose: 2
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Significant pain', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: 5,
+#     max_interval: 5,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 0.5,
+#     max_single_dose: 25,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Sedation', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IV'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 1,
+#     max_single_dose: 25,
+#     max_total_dose: 'No maximum dose'
+#   },
+#   {
+#     paramedic_type_id: ParamedicType.where(acronym: 'CCP'),
+#     indication_id: find_indication('Sedation', 'Fentanyl'),
+#     route_id: Route.where(acronym: 'IO'),
+#     min_age: 1,
+#     max_age: 12,
+#     min_interval: nil,
+#     max_interval: nil,
+#     interval_unit: 'min',
+#     min_weight: nil,
+#     max_weight: nil,
+#     initial_dose: 1,
+#     repeat_dose: 1,
+#     max_single_dose: 25,
+#     max_total_dose: 'No maximum dose'
+#   }
+# ]
+
+# RULES.each do |rule|
+#   Rule.create!(rule)
+# end
+# puts "\trules have been established"
+
+PARAMEDICS = []
+10.times do
+  first = Faker::Name.first_name
+  last = Faker::Name.last_name
+
+  paramedic = {
+    first_name: first,
+    last_name: last,
+    email: Faker::Internet.email(
+      name: "#{first} #{last}",
+      separators: '.',
+      domain: 'LWAS'
+    ),
+    password: 'password',
+    # employee_num: 6.times.map { (0..9).to_a.sample }.join.to_i,
+    paramedic_type_id: ParamedicType.all.sample.id
+  }
+
+  PARAMEDICS << paramedic
+end
+
+PARAMEDICS.each do |paramedic|
+  medic = Paramedic.create(paramedic)
+  medic.employee_num = medic.id
+  medic.save!
+  puts "  #{medic.first_name} #{medic.last_name} has been added as a paramedic"
+end
+puts "\tparamedics have been established"
+
+# CASES = []
+# CASES.each do |tmp|
+#   Case.create!(tmp)
+# end
+# puts "\tcases have been established"
+
+# CASE_DRUGS = []
+# CASE_DRUGS.each do |case_drug|
+#   CaseDrug.create!(case_drug)
+# end
+# puts "\tcase drugs have been established"
+# puts "\nDATABASE SEED COMPLETE!!"
+
