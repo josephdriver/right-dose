@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "4.2.2",
+    "algoliasearch": "^4.1.0",
     "bootstrap": "^4.4.1",
     "date-fns": "^2.10.0",
     "jquery": "^3.4.1",
