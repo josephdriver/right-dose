@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_admin!
-  before_action :authenticate_paramedic!
   include Pundit
-
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
@@ -25,6 +22,6 @@ class ApplicationController < ActionController::Base
   private
 
   def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+    devise_controller? || params[:controller] == 'dashboards' || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
   end
 end
