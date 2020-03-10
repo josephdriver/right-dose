@@ -1,5 +1,4 @@
-class ParamedicTypePolicy < ApplicationPolicy
-
+class ParamedicPolicy < ApplicationPolicy
   def create?
     user.class == Admin
   end
