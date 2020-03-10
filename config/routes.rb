@@ -20,6 +20,6 @@ Rails.application.routes.draw do
 
   get 'paramedic_dashboard', to: 'dashboards#paramedic_dashboard', as: 'paramedic_dashboard'
   resources :case, only: [:new, :create] do
-    resources :case_drugs, only: [:create, :destroy]
+    resources :case_drugs, only: [:index, :create, :destroy]
   end
 end

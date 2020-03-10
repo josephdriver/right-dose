@@ -1,7 +1,7 @@
 class RoutePolicy < ApplicationPolicy
-  def create
+  def create?
   end
 
-  def destroy
+  def destroy?
   end
 end

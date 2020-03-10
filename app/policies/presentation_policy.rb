@@ -1,8 +1,10 @@
 class PresentationPolicy < ApplicationPolicy
 
-  def create
+  def create?
+    user.class == Admin
   end
 
-  def destroy
+  def destroy?
+    user.class == Admin
   end
 end

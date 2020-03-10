@@ -1,16 +1,9 @@
 class IndicationPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+  def create?
+    user.class == Admin
   end
 
-  def create
-  end
-
-  def update
-  end
-
-  def destroy
+  def destroy?
+    user.class == Admin
   end
 end
