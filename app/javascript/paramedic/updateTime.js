@@ -4,7 +4,7 @@ const setTime = () => {
   let date_cntr = document.querySelector('#current-date');
   let time_cntr = document.querySelector('#current-time');
 
-  let date = format(new Date, 'dd MMM yyyy');
+  let date = format(new Date, 'dd MMM yyyy').toUpperCase();
   let time = format(new Date, 'HH:mm:ss');
 
   date_cntr.innerHTML = date;
