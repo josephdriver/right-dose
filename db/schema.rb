@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_063626) do
+ActiveRecord::Schema.define(version: 2020_03_10_025307) do
+
+  create_table "administrations", force: :cascade do |t|
+    t.time "time"
+    t.integer "dose"
+    t.integer "cummulative_dose"
+    t.integer "case_drug_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["case_drug_id"], name: "index_administrations_on_case_drug_id"
+  end
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -31,11 +41,11 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
   create_table "case_drugs", force: :cascade do |t|
     t.integer "case_id"
-    t.integer "drug_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "rule_id"
     t.index ["case_id"], name: "index_case_drugs_on_case_id"
-    t.index ["drug_id"], name: "index_case_drugs_on_drug_id"
+    t.index ["rule_id"], name: "index_case_drugs_on_rule_id"
   end
 
   create_table "cases", force: :cascade do |t|
