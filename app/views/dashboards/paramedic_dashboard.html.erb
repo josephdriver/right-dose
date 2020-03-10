@@ -1,4 +1,23 @@
 <%= render 'shared/paramedic/navbar', medic: @paramedic %>
 
+    <!-- MAIN CONTENT -->
+    <div class="container-fluid p-0 m-0">
+
+    <!-- DRUG LIST (SCROLL) -->
+      <div class="row">
+        <div class="col-sm-8 left p-0 scroll text-left">
+        </div>
+
+        <div class="col-sm-4 p-0 mt-2 scroll text-left">
+          <% @drugs.order(:name).each do |drug| %>
+            <div class="m-0 border border-primary border-top-0 p-3 ">
+                <h4 class="m-0 font-weight-bold"><%= drug.name %></h4>
+            </div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
 
 <%= render 'shared/paramedic/footer' %>
+
