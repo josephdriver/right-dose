@@ -4,6 +4,7 @@ class DashboardsController < ApplicationController
 
   def paramedic_dashboard
     @paramedic = current_paramedic
+    @drugs = Drug.all
   end
 
   def admin_dashboard
