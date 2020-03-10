@@ -6,6 +6,7 @@ class DrugsController < ApplicationController
   end
 
   def index
+    @drugs = Drug.all
   end
 
   def edit
