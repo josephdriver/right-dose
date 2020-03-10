@@ -1,0 +1,2 @@
+module ParamedicsHelper
+end

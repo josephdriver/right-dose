@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
+  get 'paramedics/new'
+  get 'paramedics/create'
+  get 'paramedics/index'
+  get 'paramedics/destroy'
   root 'pages#home'
   devise_for :paramedics
   devise_for :admins
 
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
-  resources :paramedic_types, only: [:new, :create, :destroy]
-  resources :paramedics, only: [:new, :create, :destroy]
+  resources :paramedic_types, only: [:index, :new, :create, :destroy]
+  resources :paramedics, only: [:index, :show, :new, :create, :destroy]
   resources :organizations, only: [:edit, :update]
 
-  resources :drugs, only: [:new, :create, :destroy] do
+  resources :drugs, only: [:index, :new, :create, :destroy] do
     resources :presentations, only: [:new, :create, :destroy]
   end
 

@@ -1,0 +1,82 @@
+<div id="sidebar">
+  <div id="rd-brand">
+    <div>
+      <h2 id="rd-logo">RD</h2>
+    </div>
+    <div>
+      <h2 id="rd-name">Right Dose</h2>
+    </div>
+  </div>
+  <%= link_to admin_dashboard_path, class: "no-deco" do %>
+  <div class="sb-btn active">
+    <div class="sb-opt-content">
+      <div>
+        <i class="fas fa-chart-pie"></i>
+      </div>
+      <div>
+        <p class="px-3">Overview</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to paramedic_types_path, class: "no-deco" do %>
+  <div class="sb-btn">
+    <div class="sb-opt-content">
+      <div>
+        <i class="fas fa-ambulance"></i>
+      </div>
+      <div>
+        <p class="px-3">Scopes</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to paramedics_path, class: "no-deco" do %>
+  <div class="sb-btn">
+    <div class="sb-opt-content">
+      <div>
+        <i class="fas fa-user-md"></i>
+      </div>
+      <div>
+        <p class="px-3">Users</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to drugs_path, class: "no-deco" do %>
+  <div class="sb-btn">
+    <div class="sb-opt-content">
+      <div>
+        <i class="fas fa-heartbeat"></i>
+      </div>
+      <div>
+        <p class="px-3">Drugs</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to admin_dashboard_path, class: "no-deco" do %>
+  <div class="sb-btn grey-btm-border">
+    <div class="sb-opt-content">
+      <div>
+        <i class="fas fa-images"></i>
+      </div>
+      <div>
+        <p class="px-3">Logos and Images</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+  <%= link_to destroy_admin_session_path,class: "no-deco", method: :delete do %>
+  <div class="sb-btn">
+    <div class="sb-opt-content">
+      <div>
+        <i class="fas fa-sign-out-alt"></i>
+      </div>
+      <div>
+        <p class="px-3">Logout</p>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>

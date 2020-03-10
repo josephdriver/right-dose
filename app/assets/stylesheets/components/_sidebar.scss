@@ -1,0 +1,63 @@
+#rd-brand {
+  display:flex;
+  height:150px;
+  align-items: center;
+  justify-content:center;
+}
+
+#rd-name {
+  color:white;
+  margin-left:8px;
+}
+
+#rd-logo {
+  color:#0079BF;
+  font-weight: bolder;
+}
+
+#sidebar {
+  width:350px;
+  min-height: 100vh;
+  background-color: #363740;
+}
+
+.sb-btn {
+  transition:0.07s;
+  &:hover {
+    background-color:#3F4049;
+  }
+  &:hover p {
+    color:#c1c2c9;
+
+  }
+  &:hover i {
+    color:#c1c2c9;
+  }
+}
+
+.sb-opt-content {
+  display:flex;
+  align-items:center;
+  height: 60px;
+  margin: 8px 40px;
+  & p {
+    color: #7b7c88;
+    margin:0;
+  }
+  & i {
+    color: #7b7c88;
+  }
+}
+
+.active {
+  background-color:#3F4049;
+  & p {
+    color:#c1c2c9;
+    font-weight:500;
+
+  }
+  & i {
+    color:#c1c2c9;
+  }
+}
+

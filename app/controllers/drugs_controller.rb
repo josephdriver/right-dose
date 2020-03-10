@@ -6,7 +6,7 @@ class DrugsController < ApplicationController
   end
 
   def index
-    @drugs = Drug.all
+    @drugs = policy_scope(Drug)
   end
 
   def edit

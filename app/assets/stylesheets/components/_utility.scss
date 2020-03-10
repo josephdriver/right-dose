@@ -11,3 +11,14 @@
 .md-margin-btm {
   margin-bottom:16px;
 }
+
+.grey-btm-border {
+  border-bottom:1px solid #7b7c88;
+}
+
+.no-deco {
+  text-decoration:none;
+  &:hover {
+    text-decoration:none;
+  }
+}
