@@ -20,8 +20,8 @@
       <!-- NAVBAR RIGHT -->
       <div class="col-sm d-flex flex-row align-items-center justify-content-end">
         <div class="pr-3 text-right">
-          <p class="m-0 font-weight-bold"><%= DateTime.now.strftime("%e %b %Y") %></p>
-          <p class="m-0"><%= DateTime.now.strftime("%H:%M:%S") %></p>
+          <p class="m-0 font-weight-bold" id="current-date"><%= DateTime.now.strftime("%e %b %Y").upcase %></p>
+          <p class="m-0" id="current-time"><%= DateTime.now.strftime("%H:%M:%S") %></p>
         </div>
         <div class="pr-0">
           <p class="m-0"><i class="far fa-bell"></i></p>
