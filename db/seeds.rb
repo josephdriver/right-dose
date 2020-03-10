@@ -2744,6 +2744,7 @@ RULES = [
 ]
 
 RULES.each do |rule|
+  rule[:min_weight] && rule[:max_weight] ? rule[:calc_type] = 'age' : rule[:calc_type] = 'weight'
   Rule.create!(rule)
 end
 puts "\trules have been established"

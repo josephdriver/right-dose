@@ -120,7 +120,28 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "rules" because of following StandardError
-#   Unknown type 'value' for column 'max_total_dose'
+  create_table "rules", force: :cascade do |t|
+    t.integer "min_age"
+    t.integer "max_age"
+    t.integer "repeat_dose"
+    t.integer "min_interval"
+    t.integer "max_interval"
+    t.integer "min_weight"
+    t.integer "max_weight"
+    t.string "calc_type"
+    t.integer "paramedic_type_id"
+    t.integer "route_id"
+    t.integer "indication_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "interval_unit"
+    t.integer "min_initial_dose"
+    t.integer "max_initial_dose"
+    t.integer "max_single_dose"
+    t.integer "max_total_dose"
+    t.index ["indication_id"], name: "index_rules_on_indication_id"
+    t.index ["paramedic_type_id"], name: "index_rules_on_paramedic_type_id"
+    t.index ["route_id"], name: "index_rules_on_route_id"
+  end
 
 end
