@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_09_105933) do
+ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -120,24 +120,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_105933) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "rules", force: :cascade do |t|
-    t.integer "min_age"
-    t.integer "max_age"
-    t.integer "initial_dose"
-    t.integer "repeat_dose"
-    t.integer "min_interval"
-    t.integer "max_interval"
-    t.integer "min_weight"
-    t.integer "max_weight"
-    t.string "calc_type"
-    t.integer "paramedic_type_id"
-    t.integer "route_id"
-    t.integer "indication_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["indication_id"], name: "index_rules_on_indication_id"
-    t.index ["paramedic_type_id"], name: "index_rules_on_paramedic_type_id"
-    t.index ["route_id"], name: "index_rules_on_route_id"
-  end
+# Could not dump table "rules" because of following StandardError
+#   Unknown type 'value' for column 'max_total_dose'
 
 end
