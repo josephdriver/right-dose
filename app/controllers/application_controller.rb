@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_admin!
+  before_action :authenticate_paramedic!
   include Pundit
 
   # Pundit: white-list approach.
@@ -11,14 +13,14 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)
   end
-  
+
    def after_sign_in_path_for(resource)
     if resource.class == Admin
       admin_dashboard_path
     else
       paramedic_dashboard_path
     end
-  end 
+  end
 
   private
 
