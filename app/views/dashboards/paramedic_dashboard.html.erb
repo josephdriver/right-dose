@@ -8,9 +8,9 @@
 
 
   <!-- PAGE CONTENT -->
-  <div class="drug-queue-conatainer row">
-      <div class="card-category">
-        DRUGS
+  <div class="drug-queue-container row">
+<!--       <div class="card-category">
+        DRUGS -->
 
     <!-- MAIN CONTENT -->
     <div class="container-fluid p-0">
@@ -18,26 +18,25 @@
     <!-- DRUG LIST (SCROLL) -->
       <div class="row mt-5">
         <div class="col-sm-8 text-left">
-
         </div>
 
         <div class="col-sm-4 mt-4 scroll text-left">
-          <input type="text" name="search" id="search"/>
-
-          <div id="drug-list">
+          <input type="text" id="myInput" placeholder="Search for drugs..">
+          <ul id="myUL">
             <% @drugs.order(:name).each do |drug| %>
-              <div class="m-0 border border-primary border-top-0 p-3 ">
-                  <h4 class="m-0 font-weight-bold"><%= drug.name %></h4>
-              </div>
+              <li><a href="#"><%= drug.name %></a></li>
             <% end %>
-          </div>
+          </ul>
         </div>
-
       </div>
 
-    <div class="col-md-4">
-        DRUG QUEUE
-    </div>
+      <div class="col-md-4">
+          DRUG QUEUE
+      </div>
+
+
+
+<!--     </div> -->
   </div>
 
 
@@ -63,6 +62,7 @@
     <%= render 'shared/paramedic/footer' %>
   </div>
 
+</div>
 </div>
 
 
