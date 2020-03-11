@@ -16,6 +16,7 @@ body {
 
 .header-container {
   grid-area: header;
+  overflow: hidden;
 }
 
 .active-container {
@@ -24,9 +25,16 @@ body {
 
 .queue-container {
   grid-area: queue;
+  overflow: auto;
 }
 
 .footer-container {
   grid-area: footer;
+  overflow: hidden;
+}
+
+.drug-card {
+  padding: 5px;
+  border: 1px solid black;
 }
 

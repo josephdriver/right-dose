@@ -9,7 +9,13 @@
   </div>
 
   <div class="queue-container">
-    QUEUE
+    <% 5.times do %>
+      <% @drugs.order(:name).each do |drug| %>
+        <div class="drug-card header-font text-center">
+          <%= drug.name %>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 
   <div class="footer-container">
@@ -21,9 +27,6 @@
 
 <!--       <div class="container-fluid p-0 m-0">
 
-        <div class="row">
-          <div class="col-sm-8 left p-0 scroll text-left">
-          </div>
 
           <div class="col-sm-4 p-0 mt-2 scroll text-left">
             <%# @drugs.order(:name).each do |drug| %>
@@ -32,6 +35,6 @@
               </div>
             <%# end %>
           </div>
-        </div>
+
 
       </div> -->
