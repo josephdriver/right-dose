@@ -158,17 +158,17 @@ PRESENTATIONS = [
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
-    dose: nil,
-    dose_unit: '',
-    volume: 150,
-    volume_unit: 'mcg',
+    dose: 150,
+    dose_unit: 'mcg',
+    volume: nil,
+    volume_unit: 'EpiPen',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
-    dose: nil,
-    dose_unit: '',
-    volume: 300,
-    volume_unit: 'mmcg',
+    dose: 300,
+    dose_unit: 'mcg',
+    volume: nil,
+    volume_unit: 'EpiPen',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
