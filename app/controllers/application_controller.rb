@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_admin!
-  before_action :authenticate_paramedic!
+  # before_action :authenticate_paramedic!
   include Pundit
   # Pundit: white-list approach.
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
@@ -13,7 +13,11 @@ class ApplicationController < ActionController::Base
     redirect_to(root_path)
   end
 
-   def after_sign_in_path_for(resource)
+  def current_user
+    current_admin || current_paramedic
+  end
+
+  def after_sign_in_path_for(resource)
     if resource.class == Admin
       admin_dashboard_path
     else
