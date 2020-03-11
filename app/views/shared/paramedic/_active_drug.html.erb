@@ -1,0 +1,37 @@
+<!--
+VARIABES:
+drug
+-->
+
+<div class="active-drug">
+  <div class="ad-icon">
+    <% if true %>
+      <%= icon('fa', 'lock-open') %>
+    <% else %>
+      <%= icon('fa', 'lock') %>
+    <% end %>
+  </div>
+  <div class="ad-name">
+    <%= drug.name %>
+  </div>
+  <div class="ad-presentation">
+    <em>PRESENTATION</em>
+  </div>
+  <div class="ad-administration">
+    LAST ADMINISTRATION: HH:MM
+    <br>
+    NEXT ADMINISTRATION: *COUNTDOWN*
+  </div>
+  <div class="ad-calculation">
+    ##kg @ 200 mg/KG
+    <br>
+    TOTAL mg/TOTAL VOLUME
+  </div>
+  <div class="ad-dose">
+    NEXT DOSE: XX ml
+    <br>
+    REPEAT DOSE: XX ml
+    <br>
+    MAX DOSE: XX ml
+  </div>
+</div>
