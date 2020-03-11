@@ -4,14 +4,24 @@
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
 
+  <div class="patient-container">
+    PATIENT INFORMATION
+    AGE: XX yo
+    WEIGHT: XX kg
+  </div>
+
   <div class="active-container">
     DRUGS
+  </div>
+
+  <div class="search-container">
+    SEARCH BAR
   </div>
 
   <div class="queue-container">
     <% 5.times do %>
       <% @drugs.order(:name).each do |drug| %>
-        <div class="drug-card header-font text-center">
+        <div class="drug-queue-card header-font text-center">
           <%= drug.name %>
         </div>
       <% end %>

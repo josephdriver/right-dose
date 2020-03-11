@@ -5,11 +5,13 @@ body {
 
 .page-container {
   height: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 50px 1fr auto;
   grid-template-areas:
     "header header header header"
+    "patient patient patient search"
     "active active active queue"
     "footer footer footer footer";
 }
@@ -17,6 +19,14 @@ body {
 .header-container {
   grid-area: header;
   overflow: hidden;
+}
+
+.patient-container {
+  grid-area: patient;
+}
+
+.search-container {
+  grid-area: search;
 }
 
 .active-container {
@@ -32,10 +42,5 @@ body {
 .footer-container {
   grid-area: footer;
   overflow: hidden;
-}
-
-.drug-card {
-  padding: 5px;
-  border: 1px solid black;
 }
 
