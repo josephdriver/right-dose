@@ -8,6 +8,10 @@ class ParamedicPolicy < ApplicationPolicy
     user.class == Admin
   end
 
+  def new?
+    create?
+  end
+
   def destroy?
     user.class == Admin
   end

@@ -1,0 +1,58 @@
+<div class="overview-card">
+  <div>
+    <div class="d-flex p-3 justify-content-between">
+      <div>
+        <h3 class="no-margin">Current Users List</h3>
+        <p class="grey">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
+      </div>
+      <div class="d-flex">
+        <div>
+          <%= link_to 'Add Users', new_paramedic_path, class: "btn btn-primary" %>
+        </div>
+        <div class="search-form">
+          <input class="form-control main-form" type="text" placeholder="Search" aria-label="Search">
+        </div>
+      </div>
+    </div>
+    <div class="d-flex px-4 justify-content-between grey-btm-border">
+      <div class="lg-inf">
+        <p class="grey">User Name</p>
+      </div>
+      <div class="lg-inf">
+        <p class="grey">User Email</p>
+      </div>
+      <div class="d-flex">
+        <div class="xs-inf">
+          <p class="grey">Skill Level</p>
+        </div>
+        <div class="xs-inf">
+          <p class="grey">ID number</p>
+        </div>
+        <div class="xs-inf">
+          <p class="grey">Last Updated</p>
+        </div>
+      </div>
+    </div>
+    <% @paramedics.each do |paramedic| %>
+    <div class="d-flex px-4 justify-content-between grey-btm-border margin-y">
+      <div class="lg-inf">
+        <p><%= paramedic.first_name %> <%= paramedic.last_name %></p>
+      </div>
+      <div class="lg-inf">
+        <p><%= paramedic.email %></p>
+      </div>
+      <div class="d-flex">
+        <div class="xs-inf">
+          <p><%= paramedic.paramedic_type.acronym %></p>
+        </div>
+        <div class="xs-inf">
+          <p><%= paramedic.employee_num %></p>
+        </div>
+        <div class="xs-inf">
+          <p> <%= paramedic.created_at.strftime("%m/%d/%Y") %> </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

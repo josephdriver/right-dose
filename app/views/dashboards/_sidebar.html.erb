@@ -8,7 +8,7 @@
     </div>
   </div>
   <%= link_to admin_dashboard_path, class: "no-deco" do %>
-  <div id="overview"class="sb-btn active">
+  <div id="overview"class="sb-btn <%= "active" if params[:controller] == "dashboards" && params[:action] == "admin_dashboard" %> ">
     <div class="sb-opt-content">
       <div>
         <i class="fas fa-chart-pie"></i>
@@ -20,7 +20,7 @@
   </div>
   <% end %>
   <%= link_to paramedic_types_path, class: "no-deco" do %>
-  <div id="scopes"class="sb-btn">
+  <div id="scopes"class="sb-btn <% "active" if params[:controller] == "paramedic_types" && params[:action] == "index" %> ">
     <div class="sb-opt-content">
       <div>
         <i class="fas fa-ambulance"></i>
@@ -32,7 +32,7 @@
   </div>
   <% end %>
   <%= link_to paramedics_path, class: "no-deco" do %>
-  <div id="users"class="sb-btn">
+  <div id="users"class="sb-btn <%= "active" if params[:controller] == "paramedics" && params[:action] == "index" %>">
     <div class="sb-opt-content">
       <div>
         <i class="fas fa-user-md"></i>
@@ -44,7 +44,7 @@
   </div>
   <% end %>
   <%= link_to drugs_path, class: "no-deco" do %>
-  <div id="drugs"class="sb-btn">
+  <div id="drugs"class="sb-btn <%= "active" if params[:controller] == "drugs" && params[:action] == "index" %>">
     <div class="sb-opt-content">
       <div>
         <i class="fas fa-heartbeat"></i>

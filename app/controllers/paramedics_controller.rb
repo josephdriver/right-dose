@@ -1,5 +1,7 @@
 class ParamedicsController < ApplicationController
   def new
+    @paramedic = Paramedic.new
+    authorize @paramedic
   end
 
   def create
