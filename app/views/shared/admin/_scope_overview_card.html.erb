@@ -1,0 +1,43 @@
+<div class="overview-card">
+  <div>
+    <div class="d-flex p-3 justify-content-between">
+      <div>
+        <h3 class="no-margin">Current Medication List</h3>
+        <p class="grey">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
+      </div>
+      <div class="d-flex">
+        <div class="search-form">
+          <input class="form-control main-form" type="text" placeholder="Search" aria-label="Search">
+        </div>
+      </div>
+    </div>
+    <div class="d-flex px-4 justify-content-between grey-btm-border">
+        <div class="lg-inf">
+          <p class="grey">User Information</p>
+        </div>
+        <div class="lg-inf">
+          <p class="grey">Medal No</p>
+        </div>
+        <div class="sm-inf float-left">
+          <p class="grey">Skill Level</p>
+        </div>
+        <div class="sm-inf float-left">
+          <p class="grey">Date</p>
+        </div>
+        <div class="sm-inf">
+          <p class="grey">Status</p>
+        </div>
+    </div>
+      <div class="d-flex row-row">
+        <div class="d-flex col-12 justify-content-around margin-tp">
+            <%= render 'shared/admin/cc_scope_card' %>
+            <%= render 'shared/admin/ac_scope_card' %>
+        </div>
+      </div>
+      <div class="d-flex row-row">
+        <div class="d-flex col-12 justify-content-around margin-tp">
+            <%= render 'shared/admin/pt_scope_card' %>
+        </div>
+      </div>
+  </div>
+</div>
