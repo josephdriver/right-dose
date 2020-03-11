@@ -12,11 +12,14 @@
 
 ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "administrations", force: :cascade do |t|
     t.time "time"
     t.integer "dose"
     t.integer "cummulative_dose"
-    t.integer "case_drug_id"
+    t.bigint "case_drug_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["case_drug_id"], name: "index_administrations_on_case_drug_id"
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.string "first_name"
     t.string "last_name"
     t.integer "employee_num"
-    t.integer "organization_id"
+    t.bigint "organization_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -40,10 +43,10 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
   end
 
   create_table "case_drugs", force: :cascade do |t|
-    t.integer "case_id"
+    t.bigint "case_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "rule_id"
+    t.bigint "rule_id"
     t.index ["case_id"], name: "index_case_drugs_on_case_id"
     t.index ["rule_id"], name: "index_case_drugs_on_rule_id"
   end
@@ -51,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
   create_table "cases", force: :cascade do |t|
     t.integer "age"
     t.integer "weight"
-    t.integer "paramedic_id"
+    t.bigint "paramedic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["paramedic_id"], name: "index_cases_on_paramedic_id"
@@ -59,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
   create_table "drugs", force: :cascade do |t|
     t.string "name"
-    t.integer "organization_id"
+    t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_drugs_on_organization_id"
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
   create_table "indications", force: :cascade do |t|
     t.string "name"
-    t.integer "presentation_id"
+    t.bigint "presentation_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["presentation_id"], name: "index_indications_on_presentation_id"
@@ -89,7 +92,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
   create_table "paramedic_types", force: :cascade do |t|
     t.string "title"
     t.string "acronym"
-    t.integer "organization_id"
+    t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["organization_id"], name: "index_paramedic_types_on_organization_id"
@@ -101,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.string "first_name"
     t.string "last_name"
     t.integer "employee_num"
-    t.integer "paramedic_type_id"
+    t.bigint "paramedic_type_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -117,7 +120,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.string "dose_unit"
     t.integer "volume"
     t.string "volume_unit"
-    t.integer "drug_id"
+    t.bigint "drug_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["drug_id"], name: "index_presentations_on_drug_id"
@@ -139,9 +142,9 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.integer "min_weight"
     t.integer "max_weight"
     t.string "calc_type"
-    t.integer "paramedic_type_id"
-    t.integer "route_id"
-    t.integer "indication_id"
+    t.bigint "paramedic_type_id"
+    t.bigint "route_id"
+    t.bigint "indication_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "interval_unit"
@@ -154,4 +157,17 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.index ["route_id"], name: "index_rules_on_route_id"
   end
 
+  add_foreign_key "administrations", "case_drugs"
+  add_foreign_key "admins", "organizations"
+  add_foreign_key "case_drugs", "cases"
+  add_foreign_key "case_drugs", "rules"
+  add_foreign_key "cases", "paramedics"
+  add_foreign_key "drugs", "organizations"
+  add_foreign_key "indications", "presentations"
+  add_foreign_key "paramedic_types", "organizations"
+  add_foreign_key "paramedics", "paramedic_types"
+  add_foreign_key "presentations", "drugs"
+  add_foreign_key "rules", "indications"
+  add_foreign_key "rules", "paramedic_types"
+  add_foreign_key "rules", "routes"
 end
