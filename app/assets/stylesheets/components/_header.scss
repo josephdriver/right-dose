@@ -1,0 +1,51 @@
+.header-wrapper {
+  display:flex;
+  justify-content:space-between;
+  padding:24px;
+  & h2 {
+    margin:0;
+  }
+  & h5 {
+    margin:0;
+  }
+}
+
+.org-logo {
+  text-align: center;
+  justify:center;
+  width:75px;
+  height:75px;
+  border-radius: 50px;
+  background-color: $sidebar-text;
+  color: white;
+  font-weight: bold;
+  & p {
+    padding:24px 0px;
+  }
+}
+
+.org-logo-wrapper {
+  display:flex;
+  justify-content:flex-end;
+  width:200px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: $sidebar-text;
+  opacity: 0.4;
+  &.org-logo {
+    opacity:1;
+  }
+}
+
+.search-wrapper {
+  display:flex;
+  align-items: center;
+}
+
+.search-form {
+  padding: 0px 32px;
+}
+
+.main-form {
+  width:20vw;
+}
