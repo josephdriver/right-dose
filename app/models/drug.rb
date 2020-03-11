@@ -7,7 +7,7 @@ class Drug < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  algoliasearch per_environment: true do
+  algoliasearch do
     # Use all default configuration
     attribute :name
   end
