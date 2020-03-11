@@ -1,0 +1,16 @@
+<%= simple_form_for Presentation.new  do |f| %>
+  <div class="form-inputs">
+    <%= f.association :drug %>
+    <div class="d-flex">
+      <%= f.input :dose %>
+      <%= f.input :dose_unit, collection: Presentation::DOSE_UNITS %>
+      <%= f.input :volume %>
+      <%= f.input :volume_unit, collection: Presentation::VOLUME_UNITS %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create Drug", class: "btn btn-primary" %>
+  </div>
+<% end %>
