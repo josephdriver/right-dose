@@ -17,5 +17,9 @@ class DrugsController < ApplicationController
   end
 
   def destroy
+    @drug = Drug.find(params[:id])
+    authorize @drug
+    @drug.destroy
+    redirect_to drugs_path
   end
 end

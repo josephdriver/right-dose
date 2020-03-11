@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex px-4 justify-content-between grey-btm-border">
+    <div class="d-flex px-5 justify-content-between grey-btm-border">
       <div class="lg-inf">
         <p class="grey">Medication Name</p>
       </div>
@@ -22,16 +22,16 @@
         <p class="grey">Presentations</p>
       </div>
       <div class="d-flex">
-        <div class="sm-inf">
+        <div class="xs-inf">
           <p class="grey">Date Created</p>
         </div>
-        <div class="sm-inf">
+        <div class="xs-inf">
           <p class="grey">Last Updated</p>
         </div>
       </div>
     </div>
     <% @drugs.each do |drug| %>
-    <div class="d-flex px-4 justify-content-between grey-btm-border margin-tp">
+    <div class="d-flex px-5 justify-content-between grey-btm-border margin-tp">
       <div class="lg-inf">
         <p class=""><%= drug.name %></p>
       </div>
@@ -43,11 +43,16 @@
         <% end %>
       </div>
       <div class="d-flex">
-        <div class="sm-inf">
+        <div class="xs-inf">
           <p class=""> <%= drug.created_at.strftime("%m/%d/%Y") %> </p>
         </div>
-        <div class="sm-inf">
+        <div class="xs-inf d-flex justify-content-around">
           <p class=""> <%= drug.updated_at.strftime("%m/%d/%Y") %> </p>
+        </div>
+        <div>
+          <%= link_to drug_path(drug), method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
         </div>
       </div>
     </div>
