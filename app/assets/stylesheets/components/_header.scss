@@ -1,7 +1,7 @@
 .header-wrapper {
   display:flex;
   justify-content:space-between;
-  padding:24px;
+  padding:16px 24px;
   & h2 {
     margin:0;
   }
@@ -48,4 +48,8 @@
 
 .main-form {
   width:20vw;
+}
+
+.page-heading {
+  padding:24px;
 }
