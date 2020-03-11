@@ -349,9 +349,9 @@ RULES = [
   # ADULT DOSAGES
     # CARDIAC ARREST
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -366,9 +366,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -383,9 +383,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -401,9 +401,9 @@ RULES = [
   },
     # Anaphylaxis OR SEVERE ALLERGIC REACTION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'PTO'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'PTS').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -418,9 +418,9 @@ RULES = [
     max_total_dose: 300
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -435,9 +435,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -452,9 +452,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'NEB'),
+    route_id: Route.find_by(acronym: 'NEB').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -469,9 +469,9 @@ RULES = [
     max_total_dose: 5
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'NEB'),
+    route_id: Route.find_by(acronym: 'NEB').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -487,9 +487,9 @@ RULES = [
   },
     # SEVERE LIFE-THREATENING BRONCHOSPASM OR SILENT CHEST
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -504,9 +504,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -522,9 +522,9 @@ RULES = [
   },
     # BRADYCARDIA
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Bradycardia', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -541,9 +541,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # CARDIAC ARREST
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: 3,
@@ -558,9 +558,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: 3,
@@ -575,9 +575,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: 3,
@@ -592,9 +592,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: 3,
@@ -609,9 +609,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 1,
     max_age: 12,
     min_interval: 3,
@@ -627,9 +627,9 @@ RULES = [
   },
     # ANAPHLAXIS OR SEVERE ALLERGIC REACTION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'PTO'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'PTS').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 6,
     max_age: 12,
     min_interval: nil,
@@ -644,9 +644,9 @@ RULES = [
     max_total_dose: 300
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'PTO'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'PTS').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 6,
     min_interval: nil,
@@ -661,9 +661,9 @@ RULES = [
     max_total_dose: 150
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 6,
     max_age: 12,
     min_interval: nil,
@@ -678,9 +678,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 6,
     min_interval: nil,
@@ -695,9 +695,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0.5,
     max_age: 1,
     min_interval: nil,
@@ -712,9 +712,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0,
     max_age: 0.5,
     min_interval: nil,
@@ -729,9 +729,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 6,
     max_age: 12,
     min_interval: nil,
@@ -746,9 +746,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 6,
     min_interval: nil,
@@ -763,9 +763,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0.5,
     max_age: 1,
     min_interval: nil,
@@ -780,9 +780,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0,
     max_age: 0.5,
     min_interval: nil,
@@ -797,9 +797,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'NEB'),
+    route_id: Route.find_by(acronym: 'NEB').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -814,9 +814,9 @@ RULES = [
     max_total_dose: 5
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Anaphylaxis OR severe allergic reaction', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'NEB'),
+    route_id: Route.find_by(acronym: 'NEB').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -832,9 +832,9 @@ RULES = [
   },
     # SEVERE LIFE-THREATENING BROCHOSPASM OR SILENT CHEST
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 6,
     max_age: 12,
     min_interval: nil,
@@ -849,9 +849,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 6,
     min_interval: nil,
@@ -866,9 +866,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0.5,
     max_age: 1,
     min_interval: nil,
@@ -883,9 +883,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0,
     max_age: 0.5,
     min_interval: nil,
@@ -900,9 +900,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 6,
     max_age: 12,
     min_interval: nil,
@@ -917,9 +917,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 6,
     min_interval: nil,
@@ -934,9 +934,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0.5,
     max_age: 1,
     min_interval: nil,
@@ -951,9 +951,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Severe life-threatening bronchospasm OR silent chest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 0,
     max_age: 0.5,
     min_interval: nil,
@@ -971,9 +971,9 @@ RULES = [
   # ADULT DOSAGES
     # SIGNIFICANT PAIN
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -988,9 +988,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1005,9 +1005,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1022,9 +1022,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1039,9 +1039,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1056,9 +1056,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1074,9 +1074,9 @@ RULES = [
   },
     # AUTONOMIC DYSREFLEXIA
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1091,9 +1091,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1108,9 +1108,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1125,9 +1125,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1142,9 +1142,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1159,9 +1159,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1177,9 +1177,9 @@ RULES = [
   },
     # SEDATION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1194,9 +1194,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1213,9 +1213,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # SIGNIFICANT PAIN
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1230,9 +1230,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1247,9 +1247,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1264,9 +1264,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1282,9 +1282,9 @@ RULES = [
   },
     # AUTONOMIC DYSREFLEXIA
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1299,9 +1299,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1316,9 +1316,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1333,9 +1333,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1351,9 +1351,9 @@ RULES = [
   },
     # SEDATION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1368,9 +1368,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Morphine'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1388,9 +1388,9 @@ RULES = [
   # ADULT DOSAGES
     # SIGNIFICANT PAIN
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1405,9 +1405,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1422,9 +1422,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1439,9 +1439,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1456,9 +1456,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1473,9 +1473,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1490,9 +1490,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1507,9 +1507,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1524,9 +1524,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1542,9 +1542,9 @@ RULES = [
   },
     # AUTONOMIC DYSREFLEXIA
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1559,9 +1559,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1576,9 +1576,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1593,9 +1593,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1610,9 +1610,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1627,9 +1627,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1644,9 +1644,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -1661,9 +1661,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -1678,9 +1678,9 @@ RULES = [
     max_total_dose: 200
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Autonomic dysreflexia', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1696,9 +1696,9 @@ RULES = [
   },
     # SEDATION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1715,9 +1715,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # SIGNIFICANT PAIN
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1732,9 +1732,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 0.5,
     max_age: 12,
     min_interval: nil,
@@ -1749,9 +1749,9 @@ RULES = [
     max_total_dose: 100
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1766,9 +1766,9 @@ RULES = [
     max_total_dose: 2
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1783,9 +1783,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1800,9 +1800,9 @@ RULES = [
     max_total_dose: 2
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant pain', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1818,9 +1818,9 @@ RULES = [
   },
     # SEDATION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1835,9 +1835,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Fentanyl'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 1,
     max_age: 12,
     min_interval: nil,
@@ -1855,9 +1855,9 @@ RULES = [
   # ADULT DOSAGES
     # SIGNIFICANT NAUSEA AND/OR VOMITING
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'PO'),
+    route_id: Route.find_by(acronym: 'PO').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1872,9 +1872,9 @@ RULES = [
     max_total_dose: 8
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'PO'),
+    route_id: Route.find_by(acronym: 'PO').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1889,9 +1889,9 @@ RULES = [
     max_total_dose: 8
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1906,9 +1906,9 @@ RULES = [
     max_total_dose: 8
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1923,9 +1923,9 @@ RULES = [
     max_total_dose: 8
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1940,9 +1940,9 @@ RULES = [
     max_total_dose: 8
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -1959,9 +1959,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # SIGNIFICANT NAUSEAU AND/OR VOMITING
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'PO'),
+    route_id: Route.find_by(acronym: 'PO').id,
     min_age: 5,
     max_age: 12,
     min_interval: nil,
@@ -1976,9 +1976,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'PO'),
+    route_id: Route.find_by(acronym: 'PO').id,
     min_age: 5,
     max_age: 12,
     min_interval: nil,
@@ -1993,9 +1993,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 5,
     max_age: 12,
     min_interval: nil,
@@ -2010,9 +2010,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 3,
     max_age: 12,
     min_interval: nil,
@@ -2027,9 +2027,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 3,
     max_age: 12,
     min_interval: nil,
@@ -2044,9 +2044,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 3,
     max_age: 12,
     min_interval: 2,
@@ -2061,9 +2061,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Significant nausea AND/OR vomiting', 'Ondansetron'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 3,
     max_age: 12,
     min_interval: 2,
@@ -2081,9 +2081,9 @@ RULES = [
   # ADULT DOSAGES
     # SYMPTOMATIC HYPOGLYCEMIA
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Symptomatic hypoglycemia', 'Glucose 10%'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -2098,9 +2098,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Symptomatic hypoglycemia', 'Glucose 10%'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -2115,9 +2115,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Symptomatic hypoglycemia', 'Glucose 10%'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -2134,9 +2134,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # SYMPTOMATIC HYPO GLYCEMIA
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Symptomatic hypoglycemia', 'Glucose 10%'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2151,9 +2151,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Symptomatic hypoglycemia', 'Glucose 10%'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2168,9 +2168,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Symptomatic hypoglycemia', 'Glucose 10%'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2188,9 +2188,9 @@ RULES = [
   # ADULT DOSAGES
     # GENERALIZED SEIZURE/FOCAL SEIZURE
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2205,9 +2205,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2222,9 +2222,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2239,9 +2239,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2256,9 +2256,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2273,9 +2273,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2290,9 +2290,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2307,9 +2307,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2324,9 +2324,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2341,9 +2341,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2358,9 +2358,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2375,9 +2375,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2392,9 +2392,9 @@ RULES = [
     max_total_dose: 20
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 70,
     max_age: nil,
     min_interval: nil,
@@ -2409,9 +2409,9 @@ RULES = [
     max_total_dose: 10
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 12,
     max_age: 70,
     min_interval: nil,
@@ -2427,9 +2427,9 @@ RULES = [
   },
     # SEDATION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -2444,9 +2444,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -2462,9 +2462,9 @@ RULES = [
   },
     # ACUTE BEHAVIORAL DISTURBANCE
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Acute behavioral disturbance', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -2479,9 +2479,9 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Acute behavioral disturbance', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: 12,
     max_age: nil,
     min_interval: 3,
@@ -2498,9 +2498,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # GENERALISED SEIZURES/FOCAL SEIZURE
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure/focal seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2515,9 +2515,9 @@ RULES = [
     max_total_dose: 10_000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure/focal seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IN'),
+    route_id: Route.find_by(acronym: 'IN').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2532,9 +2532,9 @@ RULES = [
     max_total_dose: 10_000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Generalised seizure/focal seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2549,9 +2549,9 @@ RULES = [
     max_total_dose: 10_000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure/focal seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2566,9 +2566,9 @@ RULES = [
     max_total_dose: 10_000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure/focal seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2583,9 +2583,9 @@ RULES = [
     max_total_dose: 10_000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Generalised seizure/focal seizure', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2601,9 +2601,9 @@ RULES = [
   },
     # SEDATION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: nil,
     max_age: 12,
     min_interval: 3,
@@ -2618,9 +2618,9 @@ RULES = [
     max_total_dose: 5000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Sedation', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: nil,
     max_age: 12,
     min_interval: 3,
@@ -2636,9 +2636,9 @@ RULES = [
   },
     # ACUTE BEHAVIORAL DISTURBANCE
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Acute behavioral disturbance', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: nil,
     max_age: 12,
     min_interval: 3,
@@ -2653,9 +2653,9 @@ RULES = [
     max_total_dose: 5000
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Acute behavioral disturbance', 'Midazolam'),
-    route_id: Route.find_by(acronym: 'IO'),
+    route_id: Route.find_by(acronym: 'IO').id,
     min_age: nil,
     max_age: 12,
     min_interval: 3,
@@ -2673,9 +2673,9 @@ RULES = [
   # ADULT DOSAGES
     # RESPIRATORY DEPRESSION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Respiratory depression', 'Naloxone'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -2690,9 +2690,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Respiratory depression', 'Naloxone'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -2707,9 +2707,9 @@ RULES = [
     max_total_dose: nil
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Respiratory depression', 'Naloxone'),
-    route_id: Route.find_by(acronym: 'IV'),
+    route_id: Route.find_by(acronym: 'IV').id,
     min_age: 12,
     max_age: nil,
     min_interval: nil,
@@ -2727,9 +2727,9 @@ RULES = [
   # PAEDIATRIC DOSAGES
     # RESPIRATORY DEPRESSION
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
     indication_id: find_indication('Respiratory depression', 'Naloxone'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
@@ -2744,9 +2744,9 @@ RULES = [
     max_total_dose: 800
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP'),
+    paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Respiratory depression', 'Naloxone'),
-    route_id: Route.find_by(acronym: 'IM'),
+    route_id: Route.find_by(acronym: 'IM').id,
     min_age: nil,
     max_age: 12,
     min_interval: nil,
