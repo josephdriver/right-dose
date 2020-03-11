@@ -1,65 +1,35 @@
-<div class="container">
+<div class="page-container">
 
-
-  <!-- NAVBAR -->
-  <div class="nav-container">
+  <div class="header-container">
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
 
-
-  <!-- PAGE CONTENT -->
-  <div class="drug-queue-conatainer row">
-      <div class="card-category">
-        DRUGS
-
-    <!-- MAIN CONTENT -->
-    <div class="container-fluid p-0">
-
-    <!-- DRUG LIST (SCROLL) -->
-      <div class="row mt-5">
-        <div class="col-sm-8 text-left">
-
-        </div>
-
-        <div class="col-sm-4 mt-4 scroll text-left">
-          <input type="text" name="search" id="search"/>
-          <% @drugs.order(:name).each do |drug| %>
-            <div class="m-0 border border-primary border-top-0 p-3 ">
-                <h4 class="m-0 font-weight-bold"><%= drug.name %></h4>
-            </div>
-          <% end %>
-        </div>
-
-      </div>
-
-    <div class="col-md-4">
-        DRUG QUEUE
-    </div>
+  <div class="patient-container">
+    PATIENT INFORMATION
+    AGE: XX yo
+    WEIGHT: XX kg
   </div>
 
 
-<!--       <div class="container-fluid p-0 m-0">
+  <div class="active-container">
+    ACTIVE DRUGS
+  </div>
 
-        <div class="row">
-          <div class="col-sm-8 left p-0 scroll text-left">
-          </div>
+  <div class="search-container">
+    <input type="text" id="myInput" placeholder="Search for drugs..">
+  </div>
 
-          <div class="col-sm-4 p-0 mt-2 scroll text-left">
-            <%# @drugs.order(:name).each do |drug| %>
-              <div class="m-0 border border-primary border-top-0 p-3 ">
-                  <h4 class="m-0 font-weight-bold"><%#= drug.name %></h4>
-              </div>
-            <%# end %>
-          </div>
-        </div>
+  <div class="queue-container">
+    <% 5.times do %>
+      <ul id="myUL">
+        <% @drugs.order(:name).each do |drug| %>
+          <li><a href="#"><%= drug.name %></a></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
 
-      </div> -->
-
-  <!-- FOOTER -->
   <div class="footer-container">
     <%= render 'shared/paramedic/footer' %>
   </div>
-
 </div>
-
-
