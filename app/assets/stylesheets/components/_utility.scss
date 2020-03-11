@@ -9,11 +9,27 @@
 }
 
 .md-margin-btm {
-  margin-bottom:16px;
+  margin-bottom:24px;
 }
 
+.margin-y {
+  margin: 24px 0px;
+}
+
+.no-margin {
+  margin:0;
+}
+
+.margin-tp {
+  margin-top:24px;
+  margin-bottom:8px;
+}
+
+.no-btm-margin {
+  margin-bottom:0;
+}
 .grey-btm-border {
-  border-bottom:1px solid #7b7c88;
+  border-bottom: 1px solid $card-border;
 }
 
 .no-deco {
@@ -22,3 +38,12 @@
     text-decoration:none;
   }
 }
+
+.main-content {
+  padding:24px;
+}
+
+.grey {
+  color: $sidebar-text;
+}
+
