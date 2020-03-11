@@ -18,20 +18,20 @@
 #sidebar {
   width:350px;
   min-height: 100vh;
-  background-color: #363740;
+  background-color: $sidebar;
 }
 
 .sb-btn {
   transition:0.07s;
   &:hover {
-    background-color:#3F4049;
+    background-color: $sidebar-btn-active;
   }
   &:hover p {
-    color:#c1c2c9;
+    color: $sidebar-text-active;
 
   }
   &:hover i {
-    color:#c1c2c9;
+    color: $sidebar-text-active;
   }
 }
 
@@ -41,23 +41,23 @@
   height: 60px;
   margin: 8px 40px;
   & p {
-    color: #7b7c88;
+    color: $sidebar-text;
     margin:0;
   }
   & i {
-    color: #7b7c88;
+    color: $sidebar-text;
   }
 }
 
 .active {
-  background-color:#3F4049;
+  background-color: $sidebar-btn-active;
   & p {
-    color:#c1c2c9;
+    color: $sidebar-text-active;
     font-weight:500;
 
   }
   & i {
-    color:#c1c2c9;
+    color: $sidebar-text-active;
   }
 }
 
