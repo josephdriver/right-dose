@@ -6,7 +6,7 @@
       <h3>Scopes Overview</h3>
     </div>
     <div class="main-content">
-      <%= render 'shared/admin/scope_overview_card' %>
+      <%= render 'shared/admin/scope_overview_card', types_array: ParamedicType.all %>
     </div>
   </div>
 </div>
