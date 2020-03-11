@@ -1,0 +1,46 @@
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.page-container {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header header header header"
+    "patient patient patient search"
+    "active active active queue"
+    "footer footer footer footer";
+}
+
+.header-container {
+  grid-area: header;
+  overflow: hidden;
+}
+
+.patient-container {
+  grid-area: patient;
+}
+
+.search-container {
+  grid-area: search;
+}
+
+.active-container {
+ grid-area: active;
+ overflow: auto;
+}
+
+.queue-container {
+  grid-area: queue;
+  overflow: auto;
+}
+
+.footer-container {
+  grid-area: footer;
+  overflow: hidden;
+}
+
