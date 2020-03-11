@@ -4,29 +4,27 @@
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
 
-  <div class="patient-container">
+  <div class="patient-container px-2 py-1">
     PATIENT INFORMATION
     AGE: XX yo
     WEIGHT: XX kg
   </div>
 
 
-  <div class="active-container">
+  <div class="active-container px-2 py-1">
     ACTIVE DRUGS
   </div>
 
-  <div class="search-container">
+  <div class="search-container px-2 pt-1">
     <input type="text" id="myInput" placeholder="Search for drugs..">
   </div>
 
-  <div class="queue-container">
-    <% 5.times do %>
-      <ul id="myUL">
-        <% @drugs.order(:name).each do |drug| %>
-          <li><a href="#"><%= drug.name %></a></li>
-        <% end %>
-      </ul>
-    <% end %>
+  <div class="queue-container px-2 pb-1">
+    <ul id="myUL">
+      <% @drugs.order(:name).each do |drug| %>
+        <li><a href="#"><%= drug.name %></a></li>
+      <% end %>
+    </ul>
   </div>
 
   <div class="footer-container">
