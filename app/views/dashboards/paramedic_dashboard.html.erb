@@ -10,21 +10,22 @@
     WEIGHT: XX kg
   </div>
 
+
   <div class="active-container">
-    DRUGS
+    ACTIVE DRUGS
   </div>
 
   <div class="search-container">
-    SEARCH BAR
+    <input type="text" id="myInput" placeholder="Search for drugs..">
   </div>
 
   <div class="queue-container">
     <% 5.times do %>
-      <% @drugs.order(:name).each do |drug| %>
-        <div class="drug-queue-card header-font text-center">
-          <%= drug.name %>
-        </div>
-      <% end %>
+      <ul id="myUL">
+        <% @drugs.order(:name).each do |drug| %>
+          <li><a href="#"><%= drug.name %></a></li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
 
@@ -32,19 +33,3 @@
     <%= render 'shared/paramedic/footer' %>
   </div>
 </div>
-
-
-
-<!--       <div class="container-fluid p-0 m-0">
-
-
-          <div class="col-sm-4 p-0 mt-2 scroll text-left">
-            <%# @drugs.order(:name).each do |drug| %>
-              <div class="m-0 border border-primary border-top-0 p-3 ">
-                  <h4 class="m-0 font-weight-bold"><%#= drug.name %></h4>
-              </div>
-            <%# end %>
-          </div>
-
-
-      </div> -->

@@ -7,6 +7,7 @@ class DrugsController < ApplicationController
 
   def index
     @drugs = policy_scope(Drug)
+    @admin = current_admin
   end
 
   def edit
