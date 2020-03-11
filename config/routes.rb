@@ -13,9 +13,9 @@ Rails.application.routes.draw do
   resources :organizations, only: [:edit, :update]
 
   resources :drugs, only: [:index, :new, :create, :destroy] do
-    resources :presentations, only: [:new, :create, :destroy]
   end
 
+  resources :presentations, only: [:new, :create, :destroy]
   resources :presentations, only: [] do
     resources :indications, only: [:new, :create, :destroy]
   end

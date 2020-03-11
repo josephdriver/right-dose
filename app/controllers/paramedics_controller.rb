@@ -5,6 +5,12 @@ class ParamedicsController < ApplicationController
   end
 
   def create
+    @paramedic = Paramedic.new(paramedic_params)
+    @paramedic.organization = current_admin.organization
+    authorize @paramedic
+    if @paramedic.save
+      redirect_to paramedics_path
+    end
   end
 
   def index
@@ -16,5 +22,11 @@ class ParamedicsController < ApplicationController
     authorize @paramedic
     @paramedic.destroy
     redirect_to paramedics_path
+  end
+
+  private
+
+  def paramedic_params
+    params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num)
   end
 end
