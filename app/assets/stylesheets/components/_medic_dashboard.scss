@@ -21,6 +21,7 @@ body {
 
 .active-container {
  grid-area: active;
+ overflow: auto;
 }
 
 .queue-container {
