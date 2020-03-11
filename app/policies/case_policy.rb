@@ -1,9 +1,11 @@
 class CasePolicy < ApplicationPolicy
-    class Scope < Scope
+
+  class Scope < Scope
     def resolve
       scope.all
     end
   end
+
   def create?
     user.class == Paramedic
   end
