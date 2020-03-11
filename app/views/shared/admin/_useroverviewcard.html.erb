@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div class="d-flex px-4 justify-content-between grey-btm-border">
+    <div class="d-flex px-5 justify-content-between grey-btm-border">
       <div class="lg-inf">
         <p class="grey">User Name</p>
       </div>
@@ -34,7 +34,7 @@
       </div>
     </div>
     <% @paramedics.each do |paramedic| %>
-    <div class="d-flex px-4 justify-content-between grey-btm-border margin-y">
+    <div class="d-flex px-5 justify-content-between grey-btm-border margin-y">
       <div class="lg-inf">
         <p><%= paramedic.first_name %> <%= paramedic.last_name %></p>
       </div>
@@ -48,8 +48,15 @@
         <div class="xs-inf">
           <p><%= paramedic.employee_num %></p>
         </div>
-        <div class="xs-inf">
-          <p> <%= paramedic.created_at.strftime("%m/%d/%Y") %> </p>
+        <div class="xs-inf d-flex justify-content-around">
+          <div>
+            <p><%= paramedic.created_at.strftime("%m/%d/%Y") %></p>
+          </div>
+          <div>
+            <%= link_to paramedic_path(paramedic), method: :delete do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

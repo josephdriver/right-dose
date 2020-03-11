@@ -16,7 +16,8 @@
 }
 
 #sidebar {
-  width:330px;
+  min-width: 330px;
+  max-width:330px;
   min-height: 100vh;
   background-color: $sidebar;
 }
