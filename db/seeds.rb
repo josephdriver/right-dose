@@ -15,41 +15,61 @@ Organization.destroy_all
 
 puts 'Building your database...'
 ORGANIZATIONS = []
-1.times do
-  organization = {
-    name: 'Le Wagon Ambulance Service',
-    location: 'Canggu, Bali',
-    pediatric_cutoff: 12,
-    multiplier: 3,
-    addition_num: 7,
-    weight_3mth: 3.5,
-    weight_6mth: 7,
-    weight_unit: 'kg'
-  }
 
-  ORGANIZATIONS << organization
-end
+organization = {
+  name: 'Le Wagon Ambulance Service',
+  location: 'Canggu, Bali',
+  pediatric_cutoff: 12,
+  multiplier: 3,
+  addition_num: 7,
+  weight_3mth: 3.5,
+  weight_6mth: 7,
+  weight_unit: 'kg'
+}
+ORGANIZATIONS << organization
+test_organization = {
+  name: 'Test Organization',
+  location: 'Canggu, Bali',
+  pediatric_cutoff: 12,
+  multiplier: 3,
+  addition_num: 7,
+  weight_3mth: 3.5,
+  weight_6mth: 7,
+  weight_unit: 'kg'
+}
+ORGANIZATIONS << test_organization
+
 ORGANIZATIONS.each do |org|
   Organization.create!(org)
   puts "  #{org[:name]} has created an account"
 end
 
 ADMINS = []
-1.times do
-  first = 'Bob'
-  last = 'Dylan'
+# LE WAGON ADMIN
+first = 'Bob'
+last = 'Dylan'
+admin_lwas = {
+  first_name: first,
+  last_name: last,
+  email: "#{first}.#{last}@LWAS.com",
+  password: 'password',
+  employee_num: 0,
+  organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
+}
+ADMINS << admin_lwas
+# TEST ORG ADMIN
+first_test = 'Test'
+last_test = 'Admin'
+admin_test = {
+  first_name: first_test,
+  last_name: last_test,
+  email: "#{first_test}.#{last_test}@testorg.com",
+  password: 'password',
+  employee_num: 0,
+  organization_id: Organization.find_by(name: 'Test Organization').id
+}
+ADMINS << admin_test
 
-  admin = {
-    first_name: first,
-    last_name: last,
-    email: "#{first}.#{last}@LWAS.com",
-    password: 'password',
-    employee_num: 0,
-    organization_id: Organization.find_by(name: 'Le Wagon Ambulance Service').id
-  }
-
-  ADMINS << admin
-end
 ADMINS.each do |admin|
   Admin.create!(admin)
   puts "  #{admin[:first_name]} #{admin[:last_name]} has been named administrator"
