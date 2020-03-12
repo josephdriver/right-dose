@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get 'paramedics/new'
-  get 'paramedics/create'
-  get 'paramedics/index'
-  get 'paramedics/destroy'
   root 'pages#home'
   devise_for :paramedics
   devise_for :admins, :skip => [:registrations]
@@ -11,6 +7,7 @@ Rails.application.routes.draw do
     put 'admins' => 'devise/registrations#update', :as => 'user_registration'
     end
 
+  post '/add_paramedic', to: 'paramedics#create', as: 'add_paramedic'
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
   resources :paramedic_types, only: [:index, :new, :create, :destroy]
   resources :paramedics, only: [:index, :show, :new, :create, :destroy]
