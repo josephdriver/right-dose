@@ -158,17 +158,17 @@ PRESENTATIONS = [
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
-    dose: nil,
-    dose_unit: '',
-    volume: 150,
-    volume_unit: 'mcg',
+    dose: 150,
+    dose_unit: 'mcg',
+    volume: nil,
+    volume_unit: 'EpiPen',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
-    dose: nil,
-    dose_unit: '',
-    volume: 300,
-    volume_unit: 'mmcg',
+    dose: 300,
+    dose_unit: 'mcg',
+    volume: nil,
+    volume_unit: 'EpiPen',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
@@ -193,10 +193,10 @@ PRESENTATIONS = [
     drug_id: Drug.find_by(name: 'Ondansetron').id
   },
   {
-    dose: nil,
-    dose_unit: '',
+    dose: 250,
+    dose_unit: 'ml',
     volume: 250,
-    volume_unit: 'ml',
+    volume_unit: 'ml ViaFlex Bag',
     drug_id: Drug.find_by(name: 'Glucose 10%').id
   },
   {

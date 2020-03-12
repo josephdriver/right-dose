@@ -7,7 +7,12 @@
       </div>
       <div class="d-flex">
         <div>
-          <%= link_to 'Add Medication', new_drug_path, class: "btn btn-primary" %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDrugForm">
+            Add Medication
+          </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPresentationForm">
+            Add Presentation
+          </button>
         </div>
         <div class="search-form">
           <input class="form-control main-form" type="text" placeholder="Search" aria-label="Search">
@@ -30,8 +35,8 @@
         </div>
       </div>
     </div>
-    <% @drugs.each do |drug| %>
-    <div class="d-flex px-5 justify-content-between grey-btm-border margin-tp">
+    <% @drugs.each_with_index do |drug, index| %>
+    <div class="d-flex px-5 justify-content-between <%= 'grey-btm-border' if index != @drugs.size - 1 %> margin-tp">
       <div class="lg-inf">
         <p class=""><%= drug.name %></p>
       </div>
@@ -57,5 +62,37 @@
       </div>
     </div>
     <% end %>
+  </div>
+</div>
+
+<div class="modal fade" id="newDrugForm" tabindex="-1" role="dialog" aria-labelledby="newDrugFormTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add New Medication</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'newdrugform' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="newPresentationForm" tabindex="-1" role="dialog" aria-labelledby="newDrugFormTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add Presentations</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'presentations/form' %>
+      </div>
+    </div>
   </div>
 </div>

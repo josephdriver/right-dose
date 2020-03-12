@@ -1,36 +1,74 @@
+// PADDING: T R B L
+
 .active-drug {
   border: 1px solid black;
   width: 100%;
   // height: 250px;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto auto 1fr auto;
   grid-template-areas:
-    "icon title calculation"
-    "icon presentation calculation"
-    "icon administration dose";
+    "icon title routes calculation"
+    "icon presentation routes calculation"
+    "icon administration administration dose";
 }
 
 .ad-icon {
   grid-area: icon;
+  padding: 0.5rem;
+  font-size: 20px;
 }
 .ad-name {
   grid-area: title;
+  padding-top: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.ad-routes {
+  grid-area: routes;
+  padding-top: 0.5rem;
 }
 
 .ad-calculation {
   grid-area: calculation;
+  padding-top: 0.5rem;
+  padding-right: 0.5rem;
+  justify-self: end;
+  text-align: right;
 }
 
 .ad-presentation {
   grid-area: presentation;
+  padding-left: 0.5rem;
 }
 
 .ad-administration {
   grid-area: administration;
+  padding-bottom: 0.5rem;
+  align-self: end;
+  padding-left: 0.5rem;
 }
 
 .ad-dose {
   grid-area: dose;
+  padding-right: 0.5rem;
+  padding-bottom: 0.5rem;
+  justify-self:end;
+  align-self: end;
+  text-align: right;
 }
 
+
+// ROUTE BTNS
+
+.btn-route {
+  border: 1px solid transparent;
+  width: 50px;
+  text-align: center;
+}
+
+.btn-route-active {
+  border: 1px solid black;
+  width: 50px;
+  text-align: center;
+}

@@ -1,0 +1,15 @@
+<%= simple_form_for Paramedic.new  do |f| %>
+  <div class="form-inputs">
+    <div class="d-flex">
+      <%= f.input :first_name %>
+      <%= f.input :last_name %>
+      <%= f.input :email %>
+      <%= f.input :employee_num %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create User", class: "btn btn-primary" %>
+  </div>
+<% end %>

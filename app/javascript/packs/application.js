@@ -5,12 +5,20 @@ import "regenerator-runtime/runtime";
 import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
 import { displayDrugs } from "../paramedic/druglist.js";
 import { updateTime } from "../paramedic/updateTime.js";
+import { activateRoute } from "../paramedic/activateRoute.js";
 
+
+// PARAMEDIC JAVASCRIPT
 updateTime();
 
+  // DRUG QUEUE
 displayDrugs();
-
 initAlgoliaSearch();
+
+  // ACTIVE CASE DRUGS
+activateRoute();
+
+
 /* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in

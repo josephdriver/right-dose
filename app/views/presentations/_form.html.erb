@@ -1,0 +1,31 @@
+<%= simple_form_for Presentation.new  do |f| %>
+  <div class="form-inputs p-4">
+    <%= f.association :drug %>
+    <div>
+      <div class="d-flex justify-content-between">
+        <div class="width-70">
+          <%= f.input :dose %>
+        </div>
+        <div class="width-20">
+          <%= f.input :dose_unit, collection: Presentation::DOSE_UNITS %>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="d-flex justify-content-between">
+        <div class="width-70">
+          <%= f.input :volume %>
+        </div>
+        <div class="width-20">
+          <%= f.input :volume_unit, collection: Presentation::VOLUME_UNITS %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <div class="create">
+      <%= f.button :submit, "Create Drug", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

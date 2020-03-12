@@ -7,8 +7,11 @@
       </div>
       <div class="d-flex">
         <div>
-          <%= link_to 'Add Users', new_paramedic_path, class: "btn btn-primary" %>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newParamedicForm">
+            Add User
+          </button>
         </div>
+      </div>
         <div class="search-form">
           <input class="form-control main-form" type="text" placeholder="Search" aria-label="Search">
         </div>
@@ -33,8 +36,8 @@
         </div>
       </div>
     </div>
-    <% @paramedics.each do |paramedic| %>
-    <div class="d-flex px-5 justify-content-between grey-btm-border margin-y">
+    <% @paramedics.each_with_index do |paramedic, index| %>
+    <div class="d-flex px-5 justify-content-between margin-y <%= 'grey-btm-border' if index != @paramedics.size - 1 %>">
       <div class="lg-inf">
         <p><%= paramedic.first_name %> <%= paramedic.last_name %></p>
       </div>
@@ -61,5 +64,21 @@
       </div>
     </div>
     <% end %>
+  </div>
+</div>
+
+<div class="modal fade" id="newParamedicForm" tabindex="-1" role="dialog" aria-labelledby="newParamedicFormTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Add New User</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= render 'form' %>
+      </div>
+    </div>
   </div>
 </div>
