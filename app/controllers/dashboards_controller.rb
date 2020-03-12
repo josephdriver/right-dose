@@ -9,5 +9,6 @@ class DashboardsController < ApplicationController
 
   def admin_dashboard
     @admin = current_admin
+    @organization = current_admin.organization
   end
 end
