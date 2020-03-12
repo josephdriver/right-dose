@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="page-container" style="background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);">
 
   <div class="header-container">
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
@@ -34,14 +34,14 @@
     <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
   </div>
 
-  <div class="search-container px-2 pt-1">
-    <input type="text" id="myInput" placeholder="Search for drugs..">
+  <div class="search-container px-2 pt-1 mr-2">
+    <input class="shadow" type="text" id="myInput" placeholder="Search for drugs..">
   </div>
 
-  <div class="queue-container px-2 pb-1">
+  <div class="queue-container px-2 pb-1 mr-2">
     <ul id="myUL">
       <% @drugs.order(:name).each do |drug| %>
-        <li class="header-font"><a href="#"><%= drug.name %></a></li>
+        <li class="header-font shadow mb-1  "><a href="#"><%= drug.name %></a></li>
       <% end %>
     </ul>
   </div>
