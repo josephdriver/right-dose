@@ -29,4 +29,8 @@ class ParamedicsController < ApplicationController
   def paramedic_params
     params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num)
   end
+
 end
+
+
+
