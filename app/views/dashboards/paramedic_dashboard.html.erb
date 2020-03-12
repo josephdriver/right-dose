@@ -8,6 +8,26 @@
     PATIENT INFORMATION
     AGE: XX yo
     WEIGHT: XX kg
+
+    <!-- AGE/WEIGHT MODAL -->
+    <div>
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <%= simple_form_for @case do |cf| %>
+              <%= cf.input :age %>
+              <%= cf.input :weight %>
+              <%= cf.input :paramedic_id,
+                as: :hidden,
+                input_html: { value: @paramedic.id } %>
+              <%= cf.button :submit %>
+            <% end %>
+      </div>
+    </div>
+  </div>
+
+      <%#= render 'shared/paramedic/age_weight_modal', case: @case %>
+    </div>
   </div>
 
   <div class="active-container px-2 py-1">
