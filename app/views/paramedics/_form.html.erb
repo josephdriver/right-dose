@@ -1,4 +1,4 @@
-<%= simple_form_for Paramedic.new  do |f| %>
+<%= simple_form_for Paramedic.new, url: add_paramedic_path  do |f| %>
   <div class="form-inputs">
     <div class="d-flex">
       <%= f.input :first_name %>
@@ -12,9 +12,6 @@
       <%= f.input :password,
                   required: true,
                   hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
