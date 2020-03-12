@@ -193,10 +193,10 @@ PRESENTATIONS = [
     drug_id: Drug.find_by(name: 'Ondansetron').id
   },
   {
-    dose: nil,
-    dose_unit: '',
+    dose: 250,
+    dose_unit: 'ml',
     volume: 250,
-    volume_unit: 'ml',
+    volume_unit: 'ml ViaFlex Bag',
     drug_id: Drug.find_by(name: 'Glucose 10%').id
   },
   {

@@ -1,6 +1,6 @@
 class Presentation < ApplicationRecord
-  DOSE_UNITS = ["", "g", "mg", "mcg"]
-  VOLUME_UNITS = ["ml", "EpiPen"]
+  DOSE_UNITS = ["", "g", "mg", "mcg", "ml"]
+  VOLUME_UNITS = ["ml", "EpiPen", "ml ViaFlex Bag"]
   belongs_to :drug
   has_many :indications, dependent: :destroy
   validates :dose_unit, inclusion: { in: DOSE_UNITS}
