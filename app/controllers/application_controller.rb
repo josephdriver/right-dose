@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_admin!
+  before_action :store_admin_location!, if: :storable_location?
   # before_action :authenticate_paramedic!
   include Pundit
   # Pundit: white-list approach.
@@ -29,5 +30,13 @@ class ApplicationController < ActionController::Base
 
   def skip_pundit?
     devise_controller? || params[:controller] == 'dashboards' || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+  end
+
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  def store_admin_location!
+    store_location_for(:admin, request.fullpath)
   end
 end
