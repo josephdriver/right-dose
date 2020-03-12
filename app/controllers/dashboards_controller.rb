@@ -5,7 +5,6 @@ class DashboardsController < ApplicationController
   def paramedic_dashboard
     @paramedic = current_paramedic
     @drugs = Drug.all
-
     @case = Case.new
     # @case.paramedic_id = @paramedic
     # raise

@@ -14,13 +14,14 @@
       <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-
-            <%= simple_form_for @case do |f| %>
-              <%= f.input :age %>
-              <%= f.input :weight %>
-            <%= f.button :submit %>
-          <% end %>
-
+            <%= simple_form_for @case do |cf| %>
+              <%= cf.input :age %>
+              <%= cf.input :weight %>
+              <%= cf.input :paramedic_id,
+                as: :hidden,
+                input_html: { value: @paramedic.id } %>
+              <%= cf.button :submit %>
+            <% end %>
       </div>
     </div>
   </div>

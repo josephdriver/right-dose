@@ -14,4 +14,6 @@ class Paramedic < ApplicationRecord
   # validates :employee_num, presence: true, uniqueness: true
   # paramedic_type_id could do with an inclusion validation once paramedic_types have been created.
   validates :paramedic_type_id, presence: true
+
+  accepts_nested_attributes_for :cases
 end
