@@ -27,7 +27,8 @@ class ParamedicsController < ApplicationController
   private
 
   def paramedic_params
-    params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num)
+    params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num,
+      cases_attributes: [:age, :weigh, :paramedic_id])
   end
 
 end

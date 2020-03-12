@@ -6,10 +6,9 @@ class CasesController < ApplicationController
 
   def create
     @case = Case.new(case_params)
-    @case.user = current_user
-    raise
+    authorize @case
     if @case.save
-      # redirect_to paramedic_dashboard_path(@case)
+      redirect_to paramedic_dashboard_path
     else
       render 'new'
     end
@@ -21,6 +20,6 @@ class CasesController < ApplicationController
   private
 
   def case_params
-    params.require(:case).permit(:age, :weight)
+    params.require(:case).permit(:age, :weight, :paramedic_id)
   end
 end
