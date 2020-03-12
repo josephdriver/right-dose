@@ -5,4 +5,11 @@ class Presentation < ApplicationRecord
   has_many :indications, dependent: :destroy
   validates :dose_unit, inclusion: { in: DOSE_UNITS}
   validates :volume_unit, inclusion: { in: VOLUME_UNITS}
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attributes :dose, :dose_unit, :volume, :volume_unit, :drug_id
+    searchableAttributes ['dose', 'dose_unit', 'volume', 'volume_unit', 'drug_id']
+  end
 end
