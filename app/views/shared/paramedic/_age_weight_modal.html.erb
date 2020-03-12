@@ -2,14 +2,11 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
 
-      <%= simple_form_for [@case] do |f| %>
+      <%= simple_form_for case do |f| %>
         <%= f.input :age %>
         <%= f.input :weight %>
-
-        <%= f.submit "Submit", class: "nav-custom grey" %>
+        <%= f.button :submit %>
       <% end %>
-
-
 
     </div>
   </div>

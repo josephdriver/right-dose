@@ -17,4 +17,8 @@ class ParamedicsController < ApplicationController
     @paramedic.destroy
     redirect_to paramedics_path
   end
+
 end
+
+
+
