@@ -1,5 +1,5 @@
 class RulePolicy < ApplicationPolicy
-    class Scope < Scope
+  class Scope < Scope
     def resolve
       scope.all
     end
