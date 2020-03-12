@@ -1,10 +1,11 @@
 class CasesController < ApplicationController
-  def new
-    @case = Case.new
+  def edit
+    raise
+    @case = Case.find(params[:case_id])
     authorize @case
   end
 
-  def create
+  def update
     @case = Case.new(case_params)
     authorize @case
     if @case.save

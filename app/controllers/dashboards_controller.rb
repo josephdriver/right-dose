@@ -5,7 +5,8 @@ class DashboardsController < ApplicationController
   def paramedic_dashboard
     @paramedic = current_paramedic
     @drugs = Drug.all
-    @case = Case.new
+    @case = Case.create!(paramedic_id: @paramedic.id)
+    raise
     # @case.paramedic_id = @paramedic
     # raise
     # puts "hello"
