@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   devise_for :paramedics
   devise_for :admins, :skip => [:registrations]
+    as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+    put 'admins' => 'devise/registrations#update', :as => 'user_registration'
+    end
 
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
   resources :paramedic_types, only: [:index, :new, :create, :destroy]
