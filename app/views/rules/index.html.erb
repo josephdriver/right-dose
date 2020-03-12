@@ -1,2 +1,108 @@
-<h1>Rules#index</h1>
-<p>Find me in app/views/rules/index.html.erb</p>
+<% @rule.each_with_index do |rule, index| %>
+<div class="card">
+  <div class="d-flex">
+    <div>
+      <h3> <%= rule.indication.presentation.drug.name %> </h3>
+    </div>
+    <div>
+      <p><%= rule.indication.presentation.dose %><%= rule.indication.presentation.dose_unit %> in <%=rule.indication.presentation.volume %><%= rule.indication.presentation.volume_unit %></p>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div>
+      <h5><%= rule.indication.name %></h5> <p>Calc Type <%= rule.calc_type %> based</p>
+    </div>
+  </div>
+  <div class="d-flex justify-content-around">
+    <div>
+      <div>
+        <p>Patient</p>
+      </div>
+      <div>
+        <% if rule.min_age.nil? && rule.max_age.nil? %>
+        <% elsif rule.min_age.nil? %>
+          <p>Child up to <%= rule.max_age %></p>
+        <% elsif rule.min_age == rule.paramedic_type.organization.pediatric_cutoff || rule.min_age > rule.paramedic_type.organization.pediatric_cutoff && rule.max_age.nil? %>
+          <p>Adult</p>
+        <% elsif rule.min_age == rule.paramedic_type.organization.pediatric_cutoff || rule.min_age > rule.paramedic_type.organization.pediatric_cutoff && !rule.max_age.nil? %>
+          <p>Adult between <%= rule.min_age %> and <%= rule.max_age %></p>
+        <% elsif rule.min_age < rule.paramedic_type.organization.pediatric_cutoff && rule.max_age == rule.paramedic_type.organization.pediatric_cutoff || rule.max_age < rule.paramedic_type.organization.pediatric_cutoff %>
+          <p>Child between <%= rule.min_age %> - <%= rule.max_age %>yrs</p>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Initial Dose</p>
+      </div>
+      <div>
+        <% if rule.min_initial_dose.nil? %>
+          <p><%= rule.max_initial_dose %><%= rule.indication.presentation.dose_unit %></p>
+        <% elsif rule.max_initial_dose.nil? %>
+          <p><%= rule.min_initial_dose %><%= rule.indication.presentation.dose_unit %></p>
+        <% else %>
+          <p><%= rule.min_initial_dose %><%= rule.indication.presentation.dose_unit %> - <%= rule.max_initial_dose %><%= rule.indication.presentation.dose_unit %></p>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Repeat Interval</p>
+      </div>
+      <div>
+        <% if !rule.min_interval.nil? && !rule.max_interval.nil? %>
+          <p><%= rule.min_interval %> - <%= rule.max_interval %>mins</p>
+          <% elsif !rule.min_interval.nil? && rule.max_interval.nil?%>
+            <p><%= rule.min_interval %>mins</p>
+          <% else %>
+            <p><%= rule.max_interval %>mins</p>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <% if rule.repeat_dose.nil? %>
+        <% else %>
+          <p>Repeat Dose</p>
+        <% end %>
+      </div>
+      <div>
+        <p><%= rule.repeat_dose %><%= rule.indication.presentation.dose_unit %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Max Initial Dose</p>
+      </div>
+      <div>
+        <p><%= rule.max_initial_dose %></p>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Max Single Dose</p>
+      </div>
+      <div>
+        <p><%= rule.max_single_dose %><%= rule.indication.presentation.dose_unit %></p>
+      </div>
+    </div>
+    <div>
+      <p>Max Total Dose</p>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div>
+    </div>
+    <div class="d-flex">
+      <div>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+  <p>Min Weight</p><%= rule.min_weight %>
+  <p>Max Weight</p><%= rule.max_weight %>
+  <p>Interval Unit</p><%= rule.interval_unit %>
+</div>
+<% end %>

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     resources :indications, only: [:new, :create, :destroy]
   end
 
-  resources :rules, only: [:new, :create, :destroy]
+  resources :rules, only: [:index, :show, :new, :create, :destroy]
 
   get 'paramedic_dashboard', to: 'dashboards#paramedic_dashboard', as: 'paramedic_dashboard'
   resources :cases, only: [:new, :create] do
