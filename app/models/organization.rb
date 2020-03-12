@@ -10,4 +10,11 @@ class Organization < ApplicationRecord
   has_many :cases, through: :paramedics
 
   validates :weight_unit, inclusion: { in: WEIGHT_UNITS}
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attributes :name, :location, :pediatric_cutoff, :multiplier, :addition_num, :weight_6mth, :weight_3mth, :weight_unit
+    searchableAttributes ['name', 'location', 'pediatric_cutoff', 'multiplier', 'addition_num', 'weight_6mth', 'weight_3mth', 'weight_unit']
+  end
 end
