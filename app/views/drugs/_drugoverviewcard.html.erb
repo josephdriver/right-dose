@@ -43,7 +43,7 @@
       <div class="lg-inf md-margin-btm">
           <% drug.presentations.each do |presentation| %>
         <div>
-          <p class="no-margin"><%= presentation.dose %><%= presentation.dose_unit %> in <%= presentation.volume %><%= presentation.volume_unit %></p>
+          <p class="no-margin"><%= presentation.dose %><%= presentation.drug_unit %> in <%= presentation.volume %><%= presentation.volume_unit %></p>
         </div>
         <% end %>
       </div>
