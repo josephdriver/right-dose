@@ -8,6 +8,7 @@ import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
 
 // ETC
 import { updateTime } from "../paramedic/updateTime.js";
+import { updatePatientInfo } from "../paramedic/updatePatientInfo.js";
 import { displayDrugs } from "../paramedic/druglist.js";
 import { activateRoute } from "../paramedic/activateRoute.js";
 import { activateDrugs } from "../paramedic/activateDrugs.js";
@@ -19,24 +20,15 @@ initAlgoliaSearch();
 // PARAMEDIC JAVASCRIPT
 updateTime();
 
+  // PATIENT INFO
+updatePatientInfo();
+
   // DRUG QUEUE
 displayDrugs();
 
   // ACTIVATE DRUGS
 // activateDrugs();
 activateRoute();
-
-
-
-const active = document.querySelector('.active-container');
-
-active.addEventListener('change', (event) => {
-  console.log('hello');
-});
-
-
-
-
 
 
 

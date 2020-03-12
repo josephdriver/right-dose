@@ -1,5 +1,0 @@
-const updatePatientInformation = () => {
-
-};
-
-export { updatePatientInformation };
