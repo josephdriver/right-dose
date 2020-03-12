@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   post '/add_paramedic', to: 'paramedics#create', as: 'add_paramedic'
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
-  resources :paramedic_types, only: [:index, :destroy]
+  resources :paramedic_types, only: [:index, :new, :create, :destroy]
   resources :paramedics, only: [:index, :show, :new, :create, :destroy]
   resources :organizations, only: [:edit, :update]
 
