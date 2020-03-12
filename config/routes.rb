@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'paramedics/destroy'
   root 'pages#home'
   devise_for :paramedics
-  devise_for :admins
+  devise_for :admins, :skip => [:registrations]
 
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
   resources :paramedic_types, only: [:index, :new, :create, :destroy]
