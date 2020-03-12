@@ -6,7 +6,7 @@ class CasePolicy < ApplicationPolicy
     end
   end
 
-  def create?
+  def update?
     user.class == Paramedic
   end
 end

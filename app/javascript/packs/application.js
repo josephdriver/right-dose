@@ -2,21 +2,42 @@ import 'bootstrap';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+// PLUGINS
+import Sortable from 'sortablejs';
 import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
-import { displayDrugs } from "../paramedic/druglist.js";
-import { updateTime } from "../paramedic/updateTime.js";
-import { activateRoute } from "../paramedic/activateRoute.js";
 
+// ETC
+import { updateTime } from "../paramedic/updateTime.js";
+import { displayDrugs } from "../paramedic/druglist.js";
+import { activateRoute } from "../paramedic/activateRoute.js";
+import { activateDrugs } from "../paramedic/activateDrugs.js";
+
+
+// PLUGINS
+initAlgoliaSearch();
 
 // PARAMEDIC JAVASCRIPT
 updateTime();
 
   // DRUG QUEUE
 displayDrugs();
-initAlgoliaSearch();
 
-  // ACTIVE CASE DRUGS
+  // ACTIVATE DRUGS
+// activateDrugs();
 activateRoute();
+
+
+
+const active = document.querySelector('.active-container');
+
+active.addEventListener('change', (event) => {
+  console.log('hello');
+});
+
+
+
+
+
 
 
 /* eslint no-console:0 */

@@ -1,0 +1,5 @@
+const updatePatientInformation = () => {
+
+};
+
+export { updatePatientInformation };

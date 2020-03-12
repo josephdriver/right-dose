@@ -1,17 +1,23 @@
 class CasesController < ApplicationController
   def edit
-    raise
     @case = Case.find(params[:case_id])
     authorize @case
   end
 
   def update
-    @case = Case.new(case_params)
+    @case = Case.find(params[:id])
     authorize @case
+    @case.update(case_params)
     if @case.save
-      redirect_to paramedic_dashboard_path
+      respond_to do |format|
+        format.html { redirect_to paramedic_dashboard_path }
+        format.js
+      end
     else
-      render 'new'
+      respond_to do |format|
+        format.html { render 'edit' }
+        format.js
+      end
     end
   end
 
