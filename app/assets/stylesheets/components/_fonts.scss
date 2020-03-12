@@ -11,8 +11,22 @@
 
 .header-font {
   font-family: 'Karla', sans-serif;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.25rem;
   text-transform: uppercase;
+}
+
+.small-font {
+  font-size: 0.80rem;
+}
+.large-font {
+  font-size: 1.25rem;
+}
+
+.bold-font {
+  font-weight: 700;
+}
+.italic-font {
+  text-style: italic;
 }
 
 .logo-font {

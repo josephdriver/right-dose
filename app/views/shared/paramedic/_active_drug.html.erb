@@ -1,37 +1,63 @@
 <!--
 VARIABES:
 drug
+indication
+presentation
 -->
 
 <div class="active-drug">
-  <div class="ad-icon">
-    <% if true %>
-      <%= icon('fa', 'lock-open') %>
-    <% else %>
-      <%= icon('fa', 'lock') %>
-    <% end %>
-  </div>
-  <div class="ad-name">
-    <%= drug.name %>
+<!--   <div class="ad-icon">
+    <%# if true %>
+      <%#= icon('fa', 'lock-open') %>
+    <%# else %>
+      <%#= icon('fa', 'lock') %>
+    <%# end %>
+  </div> -->
+  <div class="ad-name header-font large-font bold-font">
+    <strong><%= drug.name %></strong>
   </div>
   <div class="ad-presentation">
-    <em>PRESENTATION</em>
+    <div class="small-font">
+      <em>
+        <%= drug.presentations[0].dose %> <%= drug.presentations[0].dose_unit %> |
+        <%= drug.presentations[0].volume %> <%= drug.presentations[0].volume_unit %>
+      </em>
+    </div>
   </div>
   <div class="ad-administration">
-    LAST ADMINISTRATION: HH:MM
-    <br>
-    NEXT ADMINISTRATION: *COUNTDOWN*
+    <div class="">
+      LAST ADMINISTRATION: <span><em><%= DateTime.now %></em></span>
+      <br>
+      NEXT ADMINISTRATION: <span><em>*COUNTDOWN*</em></span>
+    </div>
+  </div>
+  <div class="ad-routes list-inline d-flex justify-content-center">
+    <ul class="ad-route-list">
+      <% Route.all.each do |route| %>
+        <li class="list-inline-item px-2 btn-route">
+          <a href="#"><%= route.acronym %></a>
+        </li>
+      <% end %>
+    </ul>
   </div>
   <div class="ad-calculation">
-    ##kg @ 200 mg/KG
-    <br>
-    TOTAL mg/TOTAL VOLUME
+    <div class="small-font">
+      <em>
+        ##kg @ 200 mg/KG
+        <br>
+        TOTAL mg/TOTAL VOLUME
+      </em>
+    </div>
   </div>
   <div class="ad-dose">
-    NEXT DOSE: XX ml
-    <br>
-    REPEAT DOSE: XX ml
-    <br>
-    MAX DOSE: XX ml
+    <strong>
+      NEXT DOSE: XX ml
+    </strong>
+
+    <div class="small-font">
+      REPEAT DOSE: XX ml
+      <br>
+      MAX DOSE: XX ml
+    </div>
   </div>
 </div>

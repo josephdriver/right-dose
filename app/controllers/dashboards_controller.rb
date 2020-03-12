@@ -5,9 +5,23 @@ class DashboardsController < ApplicationController
   def paramedic_dashboard
     @paramedic = current_paramedic
     @drugs = Drug.all
+    @routes = Route.all
   end
 
   def admin_dashboard
     @admin = current_admin
   end
+
+  private
+
+  # def medic_drugs
+  #   drugs_arr = []
+  #   Drug.all.each do |drug|
+  #     drug.rules.each do |rule|
+  #       next if drugs_arr.include?(drug)
+
+  #       drugs_arr << drug if rule.paramedic_type_id == @paramedic.paramedic_type_id
+  #     end
+  #   end
+  # end
 end
