@@ -1,3 +1,25 @@
-function closeModal(){
-  const updatePatientModal = document.querySelector('.modal');
-  updatePatientModal.style.display('none');
+function addPatientInfo() {
+const age = document.querySelector('#case_age').value;
+const weight = document.querySelector('#case_weight').value;
+const submit = document.querySelector('')
+
+document.querySelector('.patient-info-age').innerText = `AGE: ${age}`;
+document.querySelector('.patient-info-weight').innerText = `WEIGHT: ${weight}`;
+
+
+}
+
+function closeModal() {
+  // const updatePatientModal = document.querySelector('.modal');
+  // updatePatientModal.style.display('none');
+  const btn = document.querySelector('#btn');
+  btn.click();
+}
+
+addPatientInfo();
+closeModal();
+
+
+
+
+
