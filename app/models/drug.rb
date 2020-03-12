@@ -7,8 +7,10 @@ class Drug < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  include AlgoliaSearch
+
   algoliasearch do
-    # Use all default configuration
-    attribute :name
+    attributes :name
+    searchableAttributes ['name']
   end
 end
