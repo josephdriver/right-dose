@@ -1,26 +1,26 @@
-<nav class="navbar w-100 navbar-expand-lg navbar-light bg-light border-bottom border-primary">
+<nav class="navbar w-100 navbar-expand-lg border-bottom border-primary">
   <!-- NAVBAR LEFT -->
   <div class="col-sm d-flex flex-row align-items-center justify-content-start">
     <div>
       <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
     </div>
     <div class="pl-3">
-      <p class="m-0 mono-font"><%= medic.first_name %> <%= medic.last_name %> (<%= medic.employee_num %>)</p>
-      <p class="m-0 mono-font"><%= medic.paramedic_type.title %></p>
+      <p class="m-0"><%= medic.first_name %> <%= medic.last_name %> (<%= medic.employee_num %>)</p>
+      <p class="m-0"><%= medic.paramedic_type.title %></p>
     </div>
   </div>
 
   <!-- NAVBAR MIDDLE -->
   <div class="col-sm d-flex flex-column align-items-center justify-content-center">
-    <h5 class="m-0 text-center text-primary font-weight-bold">RIGHT DOSE</h5>
-    <p class="m-0 mono-font text-center"><%= medic.paramedic_type.organization.name.upcase %></p>
+    <h5 class="m-0 text-center" id="rd-name"><span id="rd-logo">RD</span> Right Dose</h5>
+    <p class="m-0 body-font text-center"><%= medic.paramedic_type.organization.name.upcase %></p>
   </div>
 
   <!-- NAVBAR RIGHT -->
   <div class="col-sm d-flex flex-row align-items-center justify-content-end">
     <div class="pr-3 text-right">
-      <p class="m-0 mono-font" id="current-date"><%= DateTime.now.strftime("%e %b %Y").upcase %></p>
-      <p class="m-0 font-weight-bolddate-time mono-font" id="current-time"><%= DateTime.now.strftime("%H:%M:%S") %></p>
+      <p class="m-0 body-font" id="current-date"><%= DateTime.now.strftime("%e %b %Y").upcase %></p>
+      <p class="m-0 font-weight-bold date-time body-font" id="current-time"><%= DateTime.now.strftime("%H:%M:%S") %></p>
     </div>
     <div class="pr-0">
       <p class="m-0"><i class="far fa-bell"></i></p>
