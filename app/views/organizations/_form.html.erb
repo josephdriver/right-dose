@@ -1,0 +1,35 @@
+<%= simple_form_for @organization  do |f| %>
+  <div class="form-inputs p-4">
+    <div>
+      <%= f.input :name %>
+      <%= f.input :location %>
+      <div class="d-flex justify-content-around">
+        <div class="width-20">
+          <%= f.input :pediatric_cutoff %>
+        </div>
+        <div class="width-20">
+          <%= f.input :multiplier %>
+        </div>
+        <div class="width-20">
+          <%= f.input :addition_num %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-around">
+        <div class="width-20">
+          <%= f.input :weight_6mth %>
+        </div>
+        <div class="width-20">
+          <%= f.input :weight_3mth %>
+        </div>
+        <div class="width-20">
+          <%= f.input :weight_unit, collection: Organization::WEIGHT_UNITS %>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Create User", class: "btn btn-primary" %>
+  </div>
+<% end %>
