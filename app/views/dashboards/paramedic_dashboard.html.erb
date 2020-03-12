@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="page-container" style="background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);">
 
   <div class="header-container">
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
@@ -40,7 +40,7 @@
   <div class="queue-container px-2 pb-1">
     <ul id="myUL">
       <% @drugs.order(:name).each do |drug| %>
-        <li class="header-font"><a href="#"><%= drug.name %></a></li>
+        <li class="header-font shadow"><a href="#"><%= drug.name %></a></li>
       <% end %>
     </ul>
   </div>
