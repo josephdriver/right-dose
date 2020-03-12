@@ -145,70 +145,70 @@ puts "\tdrugs have been established"
 PRESENTATIONS = [
   {
     dose: 1,
-    dose_unit: 'mg',
+    drug_unit: 'mg',
     volume: 1,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
     dose: 1,
-    dose_unit: 'mg',
+    drug_unit: 'mg',
     volume: 10,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
     dose: 150,
-    dose_unit: 'mcg',
+    drug_unit: 'mcg',
     volume: nil,
     volume_unit: 'EpiPen',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
     dose: 300,
-    dose_unit: 'mcg',
+    drug_unit: 'mcg',
     volume: nil,
     volume_unit: 'EpiPen',
     drug_id: Drug.find_by(name: 'Adrenaline').id
   },
   {
     dose: 10,
-    dose_unit: 'mg',
+    drug_unit: 'mg',
     volume: 1,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Morphine').id
   },
   {
     dose: 100,
-    dose_unit: 'mcg',
+    drug_unit: 'mcg',
     volume: 2,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Fentanyl').id
   },
   {
     dose: 4,
-    dose_unit: 'mg',
+    drug_unit: 'mg',
     volume: 1,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Ondansetron').id
   },
   {
     dose: 250,
-    dose_unit: 'ml',
+    drug_unit: 'ml',
     volume: 250,
     volume_unit: 'ml ViaFlex Bag',
     drug_id: Drug.find_by(name: 'Glucose 10%').id
   },
   {
     dose: 5,
-    dose_unit: 'mg',
+    drug_unit: 'mg',
     volume: 1,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Midazolam').id
   },
   {
     dose: 400,
-    dose_unit: 'mcg',
+    drug_unit: 'mcg',
     volume: 1,
     volume_unit: 'ml',
     drug_id: Drug.find_by(name: 'Naloxone').id

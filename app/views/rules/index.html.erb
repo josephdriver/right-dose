@@ -5,7 +5,7 @@
       <h3> <%= rule.indication.presentation.drug.name %> </h3>
     </div>
     <div>
-      <p><%= rule.indication.presentation.dose %><%= rule.indication.presentation.dose_unit %> in <%=rule.indication.presentation.volume %><%= rule.indication.presentation.volume_unit %></p>
+      <p><%= rule.indication.presentation.dose %><%= rule.indication.presentation.drug_unit %> in <%=rule.indication.presentation.volume %><%= rule.indication.presentation.volume_unit %></p>
     </div>
   </div>
   <div class="d-flex">
@@ -37,11 +37,11 @@
       </div>
       <div>
         <% if rule.min_initial_dose.nil? %>
-          <p><%= rule.max_initial_dose %><%= rule.indication.presentation.dose_unit %></p>
+          <p><%= rule.max_initial_dose %><%= rule.indication.presentation.drug_unit %></p>
         <% elsif rule.max_initial_dose.nil? %>
-          <p><%= rule.min_initial_dose %><%= rule.indication.presentation.dose_unit %></p>
+          <p><%= rule.min_initial_dose %><%= rule.indication.presentation.drug_unit %></p>
         <% else %>
-          <p><%= rule.min_initial_dose %><%= rule.indication.presentation.dose_unit %> - <%= rule.max_initial_dose %><%= rule.indication.presentation.dose_unit %></p>
+          <p><%= rule.min_initial_dose %><%= rule.indication.presentation.drug_unit %> - <%= rule.max_initial_dose %><%= rule.indication.presentation.drug_unit %></p>
         <% end %>
       </div>
     </div>
@@ -67,7 +67,7 @@
         <% end %>
       </div>
       <div>
-        <p><%= rule.repeat_dose %><%= rule.indication.presentation.dose_unit %>
+        <p><%= rule.repeat_dose %><%= rule.indication.presentation.drug_unit %>
       </div>
     </div>
     <div>
@@ -83,7 +83,7 @@
         <p>Max Single Dose</p>
       </div>
       <div>
-        <p><%= rule.max_single_dose %><%= rule.indication.presentation.dose_unit %></p>
+        <p><%= rule.max_single_dose %><%= rule.indication.presentation.drug_unit %></p>
       </div>
     </div>
     <div>
