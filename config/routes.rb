@@ -6,11 +6,13 @@ Rails.application.routes.draw do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'devise/registrations#update', :as => 'user_registration'
     end
-
+  patch '/edit_paramedic', to: 'paramedics#update', as: 'edit_paramedic'
+  put '/edit_paramedic', to: 'paramedics#update'
+  get '/edit_paramedic', to: 'paramedics#edit'
   post '/add_paramedic', to: 'paramedics#create', as: 'add_paramedic'
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
   resources :paramedic_types, only: [:index, :new, :create, :destroy, :edit, :update]
-  resources :paramedics, only: [:index, :show, :new, :create, :destroy]
+  resources :paramedics, only: [:index, :show, :new, :create, :destroy, :edit, :update]
   resources :organizations, only: [:edit, :update]
 
   resources :drugs, only: [:index, :new, :create, :destroy] do

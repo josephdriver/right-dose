@@ -56,6 +56,10 @@
             <p><%= paramedic.created_at.strftime("%m/%d/%Y") %></p>
           </div>
           <div>
+            <%= link_to 'edit', edit_paramedic_path(paramedic), data: {toggle: "modal", target: "#editOrgModal-#{paramedic.id}"} %>
+            <%= render 'edit_modal', paramedic: paramedic %>
+          </div>
+          <div>
             <%= link_to paramedic_path(paramedic), method: :delete do %>
               <i class="fas fa-trash"></i>
             <% end %>
@@ -67,18 +71,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="newParamedicForm" tabindex="-1" role="dialog" aria-labelledby="newParamedicFormTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add New User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'form' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'add_paramedic_modal' %>
+
+
