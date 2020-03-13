@@ -4,8 +4,10 @@ import "regenerator-runtime/runtime";
 
 // PLUGINS
 import Sortable from 'sortablejs';
+
 import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
 import { initSweetalert } from "../plugins/init_sweetalert.js"
+
 import { updateTime } from "../paramedic/updateTime.js";
 import { updatePatientInfo } from "../paramedic/updatePatientInfo.js";
 import { displayDrugs } from "../paramedic/druglist.js";

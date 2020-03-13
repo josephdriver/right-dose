@@ -9,7 +9,7 @@ class RulesController < ApplicationController
   def search
     @drug = Drug.find(params[:drug_id])
     @paramedic_type = ParamedicType.all[0]
-    @age = 6
+    @age = 7
     @pediatric_cutoff = 12
     if params[:drug]
       rules = @drug.rules.where(paramedic_type: @paramedic_type)
