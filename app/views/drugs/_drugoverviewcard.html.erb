@@ -65,34 +65,7 @@
   </div>
 </div>
 
-<div class="modal fade" id="newDrugForm" tabindex="-1" role="dialog" aria-labelledby="newDrugFormTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add New Medication</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'newdrugform' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'new_drug_modal' %>
 
-<div class="modal fade" id="newPresentationForm" tabindex="-1" role="dialog" aria-labelledby="newDrugFormTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add Presentations</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'presentations/form' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'presentations/new_presentation_modal' %>
+
