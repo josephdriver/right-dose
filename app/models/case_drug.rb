@@ -7,4 +7,11 @@ class CaseDrug < ApplicationRecord
 
   validates :case_id, presence: true
   validates :drug_id, presence: true
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attributes :rule_id, :case_id
+    searchableAttributes ['rule_id', 'case_id']
+  end
 end

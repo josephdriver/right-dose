@@ -2,14 +2,14 @@
 
 one:
   dose: 1
-  dose_unit: MyString
+  drug_unit: MyString
   volume: 1
   volume_unit: MyString
   drug: one
 
 two:
   dose: 1
-  dose_unit: MyString
+  drug_unit: MyString
   volume: 1
   volume_unit: MyString
   drug: two

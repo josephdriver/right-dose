@@ -2,6 +2,7 @@ class Paramedic < ApplicationRecord
   has_many :cases
   # has_many :drugs
   belongs_to :paramedic_type
+  has_many :rules, through: :paramedic_type
   has_one :organization, through: :paramedic_type
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -17,4 +18,11 @@ class Paramedic < ApplicationRecord
   validates :paramedic_type_id, presence: true
 
   accepts_nested_attributes_for :cases
+
+  include AlgoliaSearch
+
+  algoliasearch do
+    attributes :first_name, :last_name, :email, :employee_num, :paramedic_type_id
+    searchableAttributes ['first_name', 'last_name', 'employee_num', 'paramedic_type_id', 'unordered(description)']
+  end
 end

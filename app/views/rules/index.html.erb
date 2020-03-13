@@ -1,2 +1,152 @@
-<h1>Rules#index</h1>
-<p>Find me in app/views/rules/index.html.erb</p>
+<% @rule.each_with_index do |rule, index| %>
+<div class="card">
+  <div class="d-flex">
+    <div>
+      <h3> <%= rule.indication.presentation.drug.name %> </h3>
+    </div>
+    <div>
+      <p><%= rule.indication.presentation.dose %><%= rule.indication.presentation.drug_unit %> in <%=rule.indication.presentation.volume %><%= rule.indication.presentation.volume_unit %></p>
+    </div>
+  </div>
+  <div class="d-flex">
+    <div>
+      <h5><%= rule.indication.name %></h5> <p>Calc Type <%= rule.calc_type %> based</p>
+    </div>
+  </div>
+  <div class="d-flex justify-content-around">
+    <div>
+      <div>
+        <p>Patient</p>
+      </div>
+      <div>
+        <% if rule.patient_type == 'Adult' && rule.max_age.nil? && rule.min_age > rule.paramedic_type.organization.pediatric_cutoff %>
+          <p><%= rule.patient_type %></p>
+        <% elsif rule.patient_type == 'Adult' && rule.max_age > rule.paramedic_type.organization.pediatric_cutoff && rule.min_age > rule.paramedic_type.organization.pediatric_cutoff %>
+          <p><%= rule.patient_type %> (<%= rule.min_age %> - <%= rule/min_age %>yrs)</p>
+        <% elsif rule.patient_type == 'Pediatric' && rule.max_age == rule.paramedic_type.organization.pediatric_cutoff && rule.min_age.nil? %>
+          <p><%= rule.paramedic_type %></p>
+          <% if rule.min_weight.nil? || rule.min_weight == 0 && rule.max_weight.nil? || rule.max_weight == 0 %>
+          <% elsif rule.min_weight.nil? || rule.min_weight == 0 %>
+            <p>Max Weight <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
+          <% elsif rule.max_weight.nil? || rule.max_weight == 0 %>
+            <p>Mix Weight <%= rule.min_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
+          <% else %>
+            <p> Weight <%= rule.min_weight %> - <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
+          <% end %>
+        <% elsif rule.patient_type == 'Pediatric' && rule.max_age == rule.paramedic_type.organization.pediatric_cutoff || rule.max_age < rule.paramedic_type.organization.pediatric_cutoff && rule.min_age < rule.paramedic_type.organization.pediatric_cutoff %>
+          <p><%= rule.patient_type %> (<%= rule.min_age %> - <%= rule.max_age %>yrs)</p>
+          <% if rule.min_weight.nil? || rule.min_weight == 0 && rule.max_weight.nil? || rule.max_weight == 0 %>
+          <% elsif rule.min_weight.nil? || rule.min_weight == 0 %>
+            <p>Max Weight <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
+          <% elsif rule.max_weight.nil? || rule.max_weight == 0 %>
+            <p>Mix Weight <%= rule.min_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
+          <% else %>
+            <p> Weight <%= rule.min_weight %> - <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
+          <% end %>
+        <% else %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Initial Dose</p>
+      </div>
+      <div>
+        <% if rule.calc_type == 'Age based'%>
+          <% if rule.min_initial_dose.nil? %>
+            <p><%= rule.max_initial_dose %><%= rule.dose_unit %></p>
+          <% elsif rule.max_initial_dose.nil? %>
+            <p><%= rule.min_initial_dose %><%= rule.dose_unit %></p>
+          <% else %>
+            <p><%= rule.min_initial_dose %><%= rule.dose_unit %> - <%= rule.max_initial_dose %><%= rule.dose_unit %></p>
+          <% end %>
+        <% elsif rule.calc_type == 'Weight based' %>
+          <% if rule.min_initial_dose.nil? %>
+          <p><%= rule.max_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+          <% elsif rule.max_initial_dose.nil? %>
+            <p><%= rule.min_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+          <% else %>
+            <p><%= rule.min_initial_dose %><%= rule.dose_unit %> - <%= rule.max_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Repeat Interval</p>
+      </div>
+      <div>
+        <% if !rule.min_interval.nil? && !rule.max_interval.nil? %>
+          <p><%= rule.min_interval %> - <%= rule.max_interval %>mins</p>
+          <% elsif !rule.min_interval.nil? && rule.max_interval.nil?%>
+            <p><%= rule.min_interval %>mins</p>
+          <% else %>
+            <p><%= rule.max_interval %>mins</p>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <% if rule.repeat_dose.nil? %>
+        <% else %>
+          <p>Repeat Dose</p>
+        <% end %>
+      </div>
+      <div>
+        <% if rule.calc_type == 'Age based' %>
+          <p><%= rule.repeat_dose %><%= rule.dose_unit %></p>
+        <% else %>
+          <p><%= rule.repeat_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Max Initial Dose</p>
+      </div>
+      <div>
+        <% if rule.calc_type == 'Age based' %>
+          <p><%= rule.max_initial_dose %><%= rule.dose_unit %></p>
+        <% else %>
+          <p><%= rule.max_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <div>
+        <p>Max Single Dose</p>
+      </div>
+        <% if rule.calc_type == 'Age based' %>
+          <p><%= rule.max_single_dose %><%= rule.dose_unit %></p>
+        <% else %>
+          <p><%= rule.max_single_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+        <% end %>
+      </div>
+    <div>
+      <div>
+        <p>Max Total Dose</p>
+      </div>
+      <div>
+        <% if rule.max_total_dose.nil? || rule.max_total_dose == 0 %>
+          <p>No Maximum Dose</p>
+        <% elsif rule.calc_type == 'Age based' %>
+          <p><%= rule.max_total_dose %><%= rule.dose_unit %></p>
+        <% else %>
+          <p><%= rule.max_total_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <div>
+    </div>
+    <div class="d-flex">
+      <div>
+      </div>
+    </div>
+    <div>
+    </div>
+  </div>
+</div>
+<% end %>

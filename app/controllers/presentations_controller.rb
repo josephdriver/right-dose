@@ -26,6 +26,6 @@ class PresentationsController < ApplicationController
   private
 
   def presentation_params
-    params.require(:presentation).permit(:drug_id, :dose, :dose_unit, :volume, :volume_unit)
+    params.require(:presentation).permit(:drug_id, :dose, :drug_unit, :volume, :volume_unit)
   end
 end
