@@ -4,9 +4,7 @@
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
 
-  <div class="patient-container px-2 py-1 ml-2 mr-2">
-
-
+  <div class="patient-container px-2 py-1 ml-2 mr-2" id="patient-info-container">
     <%= render 'shared/paramedic/patient_information', medic: @paramedic %>
 
     <!-- AGE/WEIGHT MODAL -->
@@ -15,14 +13,19 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="edit-case-form">
-              <%= simple_form_for @case, url: case_path(@case.id), remote: true do |cf| %>
-                <%= cf.input :age %>
-                <%= cf.input :weight %>
+              <%= simple_form_for @case, remote: true, html: { id: 'hahaha', method: :patch } do |cf| %>
+                <%= cf.input :age,
+                  input_html: { id: 'input-age' } %>
+                <%= cf.input :weight,
+                  input_html: { id: 'input-weight' } %>
                 <%= cf.input :paramedic_id,
                   as: :hidden,
-                  input_html: { value: @paramedic.id } %>
-                <%= cf.button :submit %>
+                  input_html: {
+                    value: @paramedic.id,
+                    id: 'medic-id' } %>
+                <%= cf.submit id: 'input-submit-btn', class: 'd-none' %>
               <% end %>
+
             </div>
           </div>
         </div>

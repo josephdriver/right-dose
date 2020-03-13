@@ -16,7 +16,7 @@
 //= require_tree .
 //= require algolia/v3/algoliasearch.min
 
-import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
+// import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
 
-initAlgoliaSearch();
+// initAlgoliaSearch();
 
