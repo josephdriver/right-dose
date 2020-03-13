@@ -1,1 +1,25 @@
 // Specific CSS for your home-page
+.background-color {
+  background: linear-gradient(87deg, #363740, #005c91, #021cd2);
+  background-size: 600% 600%;
+
+  -webkit-animation: AnimationName 15s ease infinite;
+  -moz-animation: AnimationName 15s ease infinite;
+  animation: AnimationName 15s ease infinite;
+
+  @-webkit-keyframes AnimationName {
+      0%{background-position:0% 55%}
+      50%{background-position:100% 46%}
+      100%{background-position:0% 55%}
+  }
+  @-moz-keyframes AnimationName {
+      0%{background-position:0% 55%}
+      50%{background-position:100% 46%}
+      100%{background-position:0% 55%}
+  }
+  @keyframes AnimationName {
+      0%{background-position:0% 55%}
+      50%{background-position:100% 46%}
+      100%{background-position:0% 55%}
+  }
+}
