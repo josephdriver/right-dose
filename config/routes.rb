@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   end
 
   resources :rules, only: [:index, :show, :new, :create, :destroy]
+  get 'search/:drug_id', to: 'rules#search', as: :find_rules_path
+
+
 
   get 'paramedic_dashboard', to: 'dashboards#paramedic_dashboard', as: 'paramedic_dashboard'
   resources :cases, only: [:edit, :update] do
