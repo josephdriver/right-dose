@@ -11,8 +11,12 @@
     </div>
   </div>
   <div>
-    <div class="org-logo">
-      <p>logo</p>
+    <div>
+      <% if @organization.photo.attached? %>
+      <%= cl_image_tag @organization.photo.key, class: "avatar", alt: "avatar" %>
+      <% else %>
+      <p>Logo</p>
+      <% end %>
     </div>
   </div>
 </div>
