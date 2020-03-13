@@ -1,5 +1,7 @@
 <div class="page-container" style="background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);">
-
+<% @case.age = "6".to_i %>
+<% @case.weight = @case.age * @case.paramedic.paramedic_type.organization.multiplier + @case.paramedic.paramedic_type.organization.addition_num %>
+<%  %>
   <div class="header-container">
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
