@@ -2,6 +2,14 @@
   <div class="card-body">
     <h5 class="card-title font-weight-bold"> <%= type.title %> </h5>
     <p class="card-subtitle"><small class="text-muted"><%= type.acronym %></small></p>
+    <p><%= link_to 'edit', edit_paramedic_type_path(type), data: {toggle: "modal", target: "#editOrgModal-#{type.id}"} %></p>
+    <div>
+        <% if type.photo.attached? %>
+        <%= cl_image_tag type.photo.key, class: "avatar", alt: "avatar" %>
+        <% else %>
+        <p>Logo</p>
+        <% end %>
+    </div>
   </div>
   <br>
   <ul class="list-group list-group-flush border-bottom-0">
@@ -22,3 +30,5 @@
     <p class="card-text text-danger"><%= rand(1..15) %> Pending Changes</p>
   </div>
 </div>
+
+<%= render 'form_modal', type: type %>

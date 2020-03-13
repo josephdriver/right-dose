@@ -1,6 +1,7 @@
 class ParamedicType < ApplicationRecord
   belongs_to :organization
   has_many :paramedics
+  has_one_attached :photo
 
   include AlgoliaSearch
 
