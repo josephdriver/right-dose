@@ -8,30 +8,19 @@
     <%= render 'shared/paramedic/patient_information', medic: @paramedic %>
 
     <!-- AGE/WEIGHT MODAL -->
-    <div id="edit-case-modal">
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="edit-case-form">
-              <%= simple_form_for @case, remote: true, html: { id: 'hahaha', method: :patch } do |cf| %>
-                <%= cf.input :age,
-                  input_html: { id: 'input-age' } %>
-                <%= cf.input :weight,
-                  input_html: { id: 'input-weight' } %>
-                <%= cf.input :paramedic_id,
-                  as: :hidden,
-                  input_html: {
-                    value: @paramedic.id,
-                    id: 'medic-id' } %>
-                <%= cf.submit id: 'input-submit-btn', class: 'd-none' %>
-              <% end %>
-
-            </div>
-          </div>
-        </div>
-     </div>
-
-      <%#= render 'shared/paramedic/age_weight_modal', case: @case %>
+    <div id="edit-case-form-container" style="display:none;">
+      <%= simple_form_for @case, remote: true, html: { id: 'edit-case-form', method: :patch } do |cf| %>
+        <%= cf.input :age,
+          input_html: { id: 'input-age' } %>
+        <%= cf.input :weight,
+          input_html: { id: 'input-weight' } %>
+        <%= cf.input :paramedic_id,
+          as: :hidden,
+          input_html: {
+            value: @paramedic.id,
+            id: 'medic-id' } %>
+        <%= cf.submit id: 'input-submit-btn', class: 'd-none' %>
+      <% end %>
     </div>
   </div>
 

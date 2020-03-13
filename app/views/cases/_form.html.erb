@@ -1,4 +1,4 @@
-<%= simple_form_for case_two, remote: true do |cf| %>
+<%= simple_form_for @case, remote: true, html: { id: 'hahaha', method: :patch } do |cf| %>
   <%= cf.input :age,
     input_html: { id: 'input-age' } %>
   <%= cf.input :weight,
@@ -8,6 +8,5 @@
     input_html: {
       value: @paramedic.id,
       id: 'medic-id' } %>
-  <%= cf.button :submit,
-    id: 'input-submit-btn' %>
+  <%= cf.submit id: 'input-submit-btn', class: 'd-none' %>
 <% end %>

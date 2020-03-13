@@ -2,10 +2,11 @@ import Swal from 'sweetalert2';
 
 const updatePatientInfo = () => {
   const btn = document.querySelector('#patient-info-container');
-  const form = document.querySelector('#hahaha');
-  const update = document.getElementById('input-submit-btn');
+  const form = document.querySelector('#edit-case-form');
 
   btn.addEventListener('click', async (e) => {
+    form.style.display = 'unset';
+
     const {value: output} = await Swal.fire(
     {
       title: 'EDIT PATIENT INFO',
@@ -16,7 +17,7 @@ const updatePatientInfo = () => {
         const age = parseInt(document.getElementById('input-age').value);
         const weight = parseInt(document.getElementById('input-weight').value);
 
-        return [ age , weight ]
+        console.log([ age , weight ])
       }
     });
     Rails.fire(form, 'submit')
