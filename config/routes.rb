@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'devise/registrations#update', :as => 'user_registration'
     end
-  patch '/edit_paramedic', to: 'paramedics#update', as: 'edit_paramedic'
-  put '/edit_paramedic', to: 'paramedics#update'
+  put '/edit_paramedic/:id', to: 'paramedics#update'
+  patch '/edit_paramedic/:id', to: 'paramedics#update', as: 'edit_paramedic'
   get '/edit_paramedic', to: 'paramedics#edit'
   post '/add_paramedic', to: 'paramedics#create', as: 'add_paramedic'
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
