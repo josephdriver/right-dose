@@ -5,6 +5,8 @@ class Rule < ApplicationRecord
   belongs_to :paramedic_type, optional: true
   belongs_to :route, optional: true
   belongs_to :indication
+  has_one :presentation, through: :indication
+  has_one :drug, through: :presentation
   has_one :organization, through: :paramedic_type
   validates :patient_type, inclusion: { in: PATIENT_TYPES }
   validates :calc_type, inclusion: { in: CALC_TYPES }
