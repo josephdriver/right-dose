@@ -9,7 +9,10 @@
     "jquery": "^3.4.1",
     "moment": "^2.24.0",
     "popper.js": "^1.16.1",
-    "sortablejs": "^1.10.2"
+    "sortablejs": "^1.10.2",
+    "swal-forms": "^0.5.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^9.10.0"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.10.3"
