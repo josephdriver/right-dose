@@ -13,15 +13,19 @@ const updatePatientInfo = () => {
       html: form,
       focusConfirm: false,
       showConfirmButton: true,
+      showCancelButton: true,
+      allowOutsideClick: false,
+      confirmButtonText: 'UPDATE',
       preConfirm: () => {
         const age = parseInt(document.getElementById('input-age').value);
         const weight = parseInt(document.getElementById('input-weight').value);
-
-        console.log([ age , weight ])
+        return [ age , weight ]
       }
-    });
-    Rails.fire(form, 'submit')
-  })
+    })
+
+      Rails.fire(form, 'submit')
+
+  }); // end of event
 };
 
 export { updatePatientInfo };
