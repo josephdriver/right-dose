@@ -8,7 +8,7 @@ class DashboardsController < ApplicationController
     @case = Case.create!(paramedic_id: @paramedic.id)
     @drugs = Drug.all
     @routes = Route.all
-    @final_rules = []
+    @final_rule = []
     @available_drugs = current_paramedic.rules.map { |rule| rule.drug }.uniq
 
     if params[:drug]
@@ -23,10 +23,10 @@ class DashboardsController < ApplicationController
         rules_route = rules_indication.select { |rule| rule.route == Route.find(params[:other][:routes]) }
 
         if @age > @pediatric_cutoff
-          final_rule = rules_route.select { |rule| rule.patient_type == "Adult" }
+          @final_rule = rules_route.select { |rule| rule.patient_type == "Adult" }
         elsif @age <= @pediatric_cutoff
-          final_rule = rules_route.select { |rule| rule.patient_type == "Pediatric"}
-          final_rule = final_rule.select do |rule|
+          @final_rule = rules_route.select { |rule| rule.patient_type == "Pediatric"}
+          @final_rule = @final_rule.select do |rule|
             rule.min_age <= @age && rule.max_age >= @age
           end
         end
