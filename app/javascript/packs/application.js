@@ -4,7 +4,7 @@ import "regenerator-runtime/runtime";
 
 // PLUGINS
 import Sortable from 'sortablejs';
-import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
+import { initAlgoliaSearch } from "../plugins/init_algolia_search";
 
 // ETC
 import { updateTime } from "../paramedic/updateTime.js";
