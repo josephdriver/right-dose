@@ -1,12 +1,16 @@
 function addPatientInfo() {
-const age = document.querySelector('#case_age').value;
-const weight = document.querySelector('#case_weight').value;
-const submit = document.querySelector('')
+  const age = document.querySelector('#case_age').value;
+  const weight = document.querySelector('#case_weight').value;
+  const submit = document.querySelector('input.btn');
 
-document.querySelector('.patient-info-age').innerText = `AGE: ${age}`;
-document.querySelector('.patient-info-weight').innerText = `WEIGHT: ${weight}`;
+  submit.addEventListener('click', (event)=> {
+    // event.preventDefault();
 
+    document.querySelector('.patient-info-age').innerText = `AGE: ${age}`;
+    document.querySelector('.patient-info-weight').innerText = `WEIGHT: ${weight}`;
 
+    closeModal();
+  })
 }
 
 function closeModal() {
@@ -17,7 +21,6 @@ function closeModal() {
 }
 
 addPatientInfo();
-closeModal();
 
 
 
