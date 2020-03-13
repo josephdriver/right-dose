@@ -1,0 +1,8 @@
+<%= simple_form_for @case, remote: true do |cf| %>
+  <%= cf.input :age %>
+  <%= cf.input :weight %>
+  <%= cf.input :paramedic_id,
+    as: :hidden,
+    input_html: { value: @paramedic.id } %>
+  <%= cf.button :submit %>
+<% end %>

@@ -4,14 +4,10 @@ class DashboardsController < ApplicationController
 
   def paramedic_dashboard
     @paramedic = current_paramedic
+    # CREATE A NEW CASE WHEN THE DASHBOARD IS OPENED
+    @case = Case.create!(paramedic_id: @paramedic.id)
     @drugs = Drug.all
-    @case = Case.new
-    # @case.paramedic_id = @paramedic
-    # raise
-    # puts "hello"
-
     @routes = Route.all
-
   end
 
   def admin_dashboard

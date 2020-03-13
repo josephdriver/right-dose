@@ -10,21 +10,23 @@
     <%= render 'shared/paramedic/patient_information', medic: @paramedic %>
 
     <!-- AGE/WEIGHT MODAL -->
-    <div>
+    <div id="edit-case-modal">
       <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <%= simple_form_for @case do |cf| %>
-              <%= cf.input :age %>
-              <%= cf.input :weight %>
-              <%= cf.input :paramedic_id,
-                as: :hidden,
-                input_html: { value: @paramedic.id } %>
-              <%= cf.button :submit %>
-            <% end %>
-      </div>
-    </div>
-  </div>
+            <div class="edit-case-form">
+              <%= simple_form_for @case, url: case_path(@case.id), remote: true do |cf| %>
+                <%= cf.input :age %>
+                <%= cf.input :weight %>
+                <%= cf.input :paramedic_id,
+                  as: :hidden,
+                  input_html: { value: @paramedic.id } %>
+                <%= cf.button :submit %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+     </div>
 
       <%#= render 'shared/paramedic/age_weight_modal', case: @case %>
     </div>

@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2020_03_13_011217) do
   end
 
   create_table "cases", force: :cascade do |t|
-    t.integer "age"
-    t.integer "weight"
+    t.integer "age", default: nil
+    t.integer "weight", default: nil
     t.bigint "paramedic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
