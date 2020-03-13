@@ -36,6 +36,7 @@
 
   <div class="active-container px-2 py-1 mr-3">
     <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
+    <h1><%= @final_rules.size %>jljljlkjljk</h1>
   </div>
 
   <div class="search-container px-2 pt-1 mr-2">
@@ -44,9 +45,19 @@
 
   <div class="queue-container px-2 pb-1 mr-2">
     <ul id="myUL">
-      <% @drugs.order(:name).each do |drug| %>
+      <% @available_drugs.each do |drug| %>
         <li class="header-font shadow mb-1  "><a href="#"><%= drug.name %></a></li>
-      <% end %>
+        <h1><%= drug.name %></h1>
+          <%= simple_form_for drug, url: paramedic_dashboard_path , method: :get do |f| %>
+            <%= f.hidden_field :drug_id, value: drug.id %>
+            <%= f.association :presentations, collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] }, input_html: {multiple: false} %>
+            <%= f.association :indications, input_html: {multiple: false} %>
+              <%= simple_fields_for :other do |o| %>
+                <%= o.input :routes, collection: Route.all %>
+            <% end %>
+            <%= f.submit %>
+          <% end %>
+        <% end %>
     </ul>
   </div>
 

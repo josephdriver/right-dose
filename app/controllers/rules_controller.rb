@@ -1,6 +1,6 @@
 class RulesController < ApplicationController
   skip_after_action :verify_authorized
-
+  skip_before_action :authenticate_admin!
 
   def index
     @rule = policy_scope(Rule)
@@ -31,6 +31,7 @@ class RulesController < ApplicationController
         end
       end
     end
+
   end
 
   def show
