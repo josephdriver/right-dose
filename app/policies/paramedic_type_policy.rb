@@ -9,6 +9,10 @@ class ParamedicTypePolicy < ApplicationPolicy
     user.class == Admin
   end
 
+  def update?
+    user.class == Admin
+  end
+
   def destroy?
     user.class == Admin
   end

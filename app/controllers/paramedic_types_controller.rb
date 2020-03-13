@@ -1,4 +1,6 @@
 class ParamedicTypesController < ApplicationController
+  skip_before_action :authenticate_admin!
+
   def new
   end
 
@@ -17,7 +19,12 @@ class ParamedicTypesController < ApplicationController
   def update
     @paramedic_type = ParamedicType.find(params[:id])
     authorize @paramedic_type
-    @paramedic_type.update(paramedic_type_params)
+    if @paramedic_type.update(paramedic_type_params)
+      redirect_to paramedic_types_path
+    else
+      flash[:alert] = 'Updated did not succeed!'
+      redirect_to paramedic_types_path
+    end
   end
 
   def destroy
@@ -26,6 +33,6 @@ class ParamedicTypesController < ApplicationController
   private
 
   def paramedic_type_params
-    params.require(:paramedic_type).permit(:title, :acronym)
+    params.require(:paramedic_type).permit(:title, :acronym, :photo)
   end
 end
