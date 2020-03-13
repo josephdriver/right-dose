@@ -14,7 +14,7 @@ class Drug < ApplicationRecord
   include AlgoliaSearch
 
   algoliasearch do
-    attributes :name
-    searchableAttributes ['name']
+    attributes :name, :created_at, :updated_at
+    searchableAttributes ['name', 'created_at', 'updated_at']
   end
 end
