@@ -1,5 +1,6 @@
 class RulesController < ApplicationController
   def index
+    @rule = policy_scope(Rule)
   end
 
   def show

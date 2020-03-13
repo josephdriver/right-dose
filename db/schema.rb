@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_063626) do
+ActiveRecord::Schema.define(version: 2020_03_13_011217) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
   create_table "presentations", force: :cascade do |t|
     t.integer "dose"
-    t.string "dose_unit"
+    t.string "drug_unit"
     t.integer "volume"
     t.string "volume_unit"
     t.bigint "drug_id"
@@ -152,6 +152,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.integer "max_initial_dose"
     t.integer "max_single_dose"
     t.integer "max_total_dose"
+    t.string "dose_unit"
+    t.string "patient_type"
     t.index ["indication_id"], name: "index_rules_on_indication_id"
     t.index ["paramedic_type_id"], name: "index_rules_on_paramedic_type_id"
     t.index ["route_id"], name: "index_rules_on_route_id"

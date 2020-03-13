@@ -6,10 +6,12 @@ class ParamedicsController < ApplicationController
 
   def create
     @paramedic = Paramedic.new(paramedic_params)
-    @paramedic.organization = current_admin.organization
     authorize @paramedic
     if @paramedic.save
       redirect_to paramedics_path
+    else
+      redirect_to paramedics_path
+      flash[:alert] = 'Paramedic did not save!'
     end
   end
 
@@ -27,7 +29,7 @@ class ParamedicsController < ApplicationController
   private
 
   def paramedic_params
-    params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num,
+    params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num, :password, :paramedic_type_id,
       cases_attributes: [:age, :weigh, :paramedic_id])
   end
 

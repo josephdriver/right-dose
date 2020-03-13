@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
-  get 'paramedics/new'
-  get 'paramedics/create'
-  get 'paramedics/index'
-  get 'paramedics/destroy'
   root 'pages#home'
   devise_for :paramedics
-  devise_for :admins
+  devise_for :admins, :skip => [:registrations]
+    as :admin do
+    get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
+    put 'admins' => 'devise/registrations#update', :as => 'user_registration'
+    end
 
+  post '/add_paramedic', to: 'paramedics#create', as: 'add_paramedic'
   get 'admin_dashboard', to: 'dashboards#admin_dashboard', as: 'admin_dashboard'
   resources :paramedic_types, only: [:index, :new, :create, :destroy]
   resources :paramedics, only: [:index, :show, :new, :create, :destroy]
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
     resources :indications, only: [:new, :create, :destroy]
   end
 
-  resources :rules, only: [:new, :create, :destroy]
+  resources :rules, only: [:index, :show, :new, :create, :destroy]
 
   get 'paramedic_dashboard', to: 'dashboards#paramedic_dashboard', as: 'paramedic_dashboard'
   resources :cases, only: [:edit, :update] do

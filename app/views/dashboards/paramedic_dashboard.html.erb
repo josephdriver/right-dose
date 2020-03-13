@@ -1,21 +1,13 @@
-<div class="page-container">
+<div class="page-container" style="background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);">
 
   <div class="header-container">
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
 
-  <div class="patient-container px-2 py-1">
-    <div class="patient-info-container d-flex justify-content-around">
-      <div class="patient-info-header header-font">
-        PATIENT INFORMATION:
-      </div>
-      <div class="patient-info-age body-font">
-        <p>AGE: <%= @case.age %></p>
-      </div>
-      <div class="patient-info-weight body-font">
-        <p>WEIGHT: <%= @case.weight %></p>
-      </div>
-    </div>
+  <div class="patient-container px-2 py-1 ml-2 mr-2">
+
+
+    <%= render 'shared/paramedic/patient_information', medic: @paramedic %>
 
     <!-- AGE/WEIGHT MODAL -->
     <div id="edit-case-modal">
@@ -40,18 +32,18 @@
     </div>
   </div>
 
-  <div class="active-container px-2 py-1">
-    <%#= render 'shared/paramedic/active_drug', drug: @drugs.first %>
+  <div class="active-container px-2 py-1 mr-3">
+    <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
   </div>
 
-  <div class="search-container px-2 pt-1">
-    <input type="text" id="myInput" placeholder="Search for drugs..">
+  <div class="search-container px-2 pt-1 mr-2">
+    <input class="shadow" type="text" id="myInput" placeholder="Search for drugs..">
   </div>
 
-  <div class="queue-container px-2 pb-1">
+  <div class="queue-container px-2 pb-1 mr-2">
     <ul id="myUL">
       <% @drugs.order(:name).each do |drug| %>
-        <li class="drug header-font"><a datae href="#"><%= drug.name %></a></li>
+        <li class="header-font shadow mb-1  "><a href="#"><%= drug.name %></a></li>
       <% end %>
     </ul>
   </div>

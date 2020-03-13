@@ -4,6 +4,7 @@
     <h3>Improving patient outcomes</h3>
   </div>
 </div>
+<% if policy(@paramedic).create? %>
 <div class="small-form">
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
@@ -22,13 +23,14 @@
                   input_html: { autocomplete: "new-password" } %>
     </div>
 
-
     <div class="form-actions d-flex justify-content-center md-margin-btm">
       <%= f.button :submit, "Sign up", class: "btn btn-primary inline" %>
     </div>
   <% end %>
+
   <div class="text-center">
     <%= render "devise/shared/links" %>
     <%= link_to "back", root_path %>
   </div>
 </div>
+<% end %>
