@@ -644,26 +644,6 @@ RULES = [
     max_total_dose: 'No maximum dose'
   },
   {
-    paramedic_type_id: ParamedicType.find_by(acronym: 'ACP').id,
-    indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
-    route_id: Route.find_by(acronym: 'IV').id,
-    patient_type: 'Pediatric',
-    calc_type: 'Weight based',
-    min_age: 1,
-    max_age: 12,
-    min_interval: 3,
-    max_interval: 5,
-    interval_unit: 'min',
-    min_weight: nil,
-    max_weight: 10,
-    min_initial_dose: nil,
-    max_initial_dose: 100,
-    dose_unit: 'mcg',
-    repeat_dose: 100,
-    max_single_dose: 100,
-    max_total_dose: 'No maximum dose'
-  },
-  {
     paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id,
     indication_id: find_indication('Cardiac arrest', 'Adrenaline'),
     route_id: Route.find_by(acronym: 'IV').id,

@@ -29,14 +29,7 @@
   <div class="active-container px-2 py-1 mr-3">
     <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
     <div>
-      <% @final_rules.each do |rule| %>
-      <p><%= @final_rules.initial_dose %></p>
-      <p><%= @final_rules.size %></p>
-      <p><%= @final_rules.size %></p>
-      <p><%= @final_rules.size %></p>
-      <p><%= @final_rules.size %></p>
-      <p><%= @final_rules.size %></p>
-      <% end %>
+      <p><%= @final_rule %></p>
     </div>
   </div>
 
