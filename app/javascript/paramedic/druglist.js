@@ -1,7 +1,7 @@
 const drugList = () => {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
+  input = document.getElementById('search');
   filter = input.value.toUpperCase();
   ul = document.getElementById("myUL");
   li = ul.querySelectorAll('li');
@@ -20,7 +20,7 @@ const drugList = () => {
 }
 
 const displayDrugs = () => {
-  document.getElementById("myInput").addEventListener('keyup', drugList );
+  document.getElementById("search").addEventListener('keyup', drugList );
 }
 
 export { displayDrugs };

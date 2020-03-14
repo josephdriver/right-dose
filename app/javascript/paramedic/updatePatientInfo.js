@@ -11,6 +11,7 @@ const updatePatientInfo = () => {
     {
       title: 'EDIT PATIENT INFO',
       html: form,
+      heightAuto: false,
       focusConfirm: false,
       showConfirmButton: true,
       showCancelButton: true,
