@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  devise_for :paramedics
+  devise_for :paramedics, :skip => [:registrations]
+    as :paramedic do
+      get 'paramedics/edit' => 'devise/registrations#edit', :as => 'edit_paramedic_registration'
+      put 'paramedics' => 'devise/registrations#update', :as => 'paramedic_registration'
+      end
   devise_for :admins, :skip => [:registrations]
     as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
-    put 'admins' => 'devise/registrations#update', :as => 'user_registration'
+    put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
     end
   put '/edit_paramedic/:id', to: 'paramedics#update'
   patch '/edit_paramedic/:id', to: 'paramedics#update', as: 'edit_paramedic'
