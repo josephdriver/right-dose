@@ -10,7 +10,6 @@ const initAlgoliaSearch = () => {
 
     const client = algoliasearch(appId, searchOnlyApiKey);
     const index = client.initIndex(indexType);
-    console.log(index);
 
     inputField.addEventListener("input", () => {
       index.search(inputField.value, { hitsPerPage: 10, page: 0 }).then((content) => {
