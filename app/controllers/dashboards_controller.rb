@@ -8,6 +8,7 @@ class DashboardsController < ApplicationController
     @case = Case.create!(paramedic_id: @paramedic.id)
     @drugs = Drug.all
     @routes = Route.all
+
     @final_rule = []
     @available_drugs = current_paramedic.rules.map { |rule| rule.drug }.uniq
 
