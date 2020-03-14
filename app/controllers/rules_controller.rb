@@ -9,7 +9,7 @@ class RulesController < ApplicationController
   def search
     @drug = Drug.find(params[:drug_id])
     @paramedic_type = ParamedicType.all[0]
-    @age = 6
+    @age = 7
     @pediatric_cutoff = 12
     if params[:drug]
       rules = @drug.rules.where(paramedic_type: @paramedic_type)
@@ -17,9 +17,8 @@ class RulesController < ApplicationController
       rules_indication = rules_presentation.select { |rule| rule.indication == Indication.find(params[:drug][:indication_ids]) }
       rules_route = rules_indication.select { |rule| rule.route == Route.find(params[:other][:routes]) }
 
-      @final_rules = if @age > @pediatric_cutoff
-        @calculation_type = "Age"
-        adult_rules = rules_route.select { |rule| rule.patient_type == "Adult" }
+      if @age > @pediatric_cutoff
+        @final_rules = rules_route.select { |rule| rule.patient_type == "Adult" }
         if adult_rules.nil?
         else
           adult_rules
