@@ -32,7 +32,7 @@ updatePatientInfo();
 displayDrugs();
 
   // ACTIVATE DRUGS
-// activateDrugs();
+activateDrugs();
 activateRoute();
 
 

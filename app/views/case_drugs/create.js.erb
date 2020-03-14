@@ -1,0 +1,3 @@
+const activeContainer = document.querySelector('.active-container');
+
+activeContainer.insertAdjacentHTML('beforeend', '<%= j render "shared/paramedic/active_drug", drug: @drugs.first %>');

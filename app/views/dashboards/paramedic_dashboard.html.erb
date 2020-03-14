@@ -27,10 +27,10 @@
   </div>
 
   <div class="active-container px-2 py-1 mr-3">
-    <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
-    <div>
-      <p><%= @final_rule %></p>
-    </div>
+    <%#= render 'shared/paramedic/active_drug', drug: @drugs.first %>
+  <!--   <div>
+      <p><%#= @final_rule %></p>
+    </div> -->
   </div>
 
   <div class="search-container px-2 pt-1 mr-2">
@@ -40,18 +40,50 @@
   <div class="queue-container px-2 pb-1 mr-2">
     <ul id="myUL">
       <% @available_drugs.each do |drug| %>
-        <li class="header-font shadow mb-1  "><a href="#"><%= drug.name %></a></li>
-        <h1><%= drug.name %></h1>
-          <%= simple_form_for drug, url: paramedic_dashboard_path , method: :get do |f| %>
-            <%= f.hidden_field :drug_id, value: drug.id %>
-            <%= f.association :presentations, collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] }, input_html: {multiple: false} %>
-            <%= f.association :indications, input_html: {multiple: false} %>
+        <li class="header-font shadow mb-1  ">
+          <a href="#"><%= drug.name %></a>
+
+          <div class="case-drug-form-container" style="display:none;">
+            <%= simple_form_for CaseDrug.new,
+              url: paramedic_dashboard_path ,
+              remote:true,
+              html: {id: 'case-drug-form'},
+              method: :get do |f| %>
+              <%= f.hidden_field :case_id,
+                value: @case.id,
+                input_html: {
+                  value: @case.id,
+                  id: 'case-drug-case' } %>
+              <%= f.hidden_field :drug_id,
+                value: drug.id,
+                input_html: {
+                  value: drug.id,
+                  id: 'case-drug-drug' } %>
               <%= simple_fields_for :other do |o| %>
-                <%= o.input :routes, collection: Route.all %>
+                <%= o.input :presentation,
+                  collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] },
+                  input_html: {
+                    multiple: false,
+                    id: 'case-drug-presentation' } %>
+              <% end %>
+              <%= simple_fields_for :other do |o| %>
+                <%= o.input :indication,
+                  collection: Indication.all,
+                  input_html: {
+                    multiple: false,
+                    id: 'case-drug-indication' } %>
+              <% end %>
+              <%= simple_fields_for :other do |o| %>
+                <%= o.input :route,
+                  collection: Route.all,
+                  input_html: { id: 'case-drug-route' } %>
+              <% end %>
+              <%= f.submit id: 'case-drug-submit-btn',
+                class: 'd-none' %>
             <% end %>
-            <%= f.submit %>
-          <% end %>
-        <% end %>
+          </div>
+        </li>
+      <% end %>
     </ul>
   </div>
 
