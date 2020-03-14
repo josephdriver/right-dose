@@ -1,18 +1,27 @@
-<%= simple_form_for Rule.new, url: add_paramedic_path  do |f| %>
+<%= simple_form_for [Rule.new, type] url: add_paramedic_path  do |f| %>
   <div class="form-inputs">
     <div class="d-flex">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.association :paramedic_type %>
-      <%= f.input :employee_num %>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+    <%= f.input :min_age %>
+    <%= f.input :max_age %>
+    <%= f.input :repeat_dose %>
+    <%= f.input :min_interval %>
+    <%= f.input :max_interval %>
+    <%= f.input :min_weight %>
+    <%= f.input :max_weight %>
+    <%= f.input :calc_type %>
+    <%= f.association :paramedic_type_id %>
+    <%= f.association :route_id %>
+    <%= f.association :indication_id %>
+    <%= f.input :created_at, null: false %>
+    <%= f.input :updated_at, null: false %>
+    <%= f.input :interval_unit %>
+    <%= f.input :min_initial_dose %>
+    <%= f.input :max_initial_dose %>
+    <%= f.input :max_single_dose %>
+    <%= f.input :max_total_dose %>
+    <%= f.input :dose_unit %>
+    <%= f.input :patient_type %>
+
     </div>
 
   </div>

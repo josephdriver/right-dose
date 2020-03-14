@@ -1,6 +1,5 @@
 class ParamedicTypesController < ApplicationController
-  skip_before_action :authenticate_admin!
-
+  before_action :authenticate_admin!
   def new
   end
 

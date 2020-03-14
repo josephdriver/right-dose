@@ -1,4 +1,4 @@
-<div class="modal fade" id="newRuleForm" tabindex="-1" role="dialog" aria-labelledby="newRuleFormTitle" aria-hidden="true">
+<div class="modal fade" id="newRuleForm-<%= type.id %>" tabindex="-1" role="dialog" aria-labelledby="newRuleFormTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= render 'new_form' %>
+        <%= render 'new_form', type: type %>
       </div>
     </div>
   </div>
