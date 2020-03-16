@@ -19,11 +19,12 @@
     <li class="list-group-item">
     </li>
     <li class="list-group-item" style="height: 5rem;">
-      <div class="float-right">
-        <button type="button" class="card-button btn btn-success btn-sm" style="width: 10rem;">Add Treatment</button>
-        <button type="button" class="card-button btn btn-success btn-sm" style="width: 10rem;">Remove Treatment</button>
-      </div>
-      <%= link_to 'Review', rules_path, class: "btn btn-primary" %>
+
+      <button type="button" class="card-button btn btn-success btn-sm float-right" style="width: 10rem;">Add Treatment</button>
+      <button type="button" class="card-button btn btn-success btn-sm float-right" style="width: 10rem;">Remove Treatment</button>
+      <%= link_to 'Review', rules_path(paramedic_type: type), class: "btn btn-primary" %>
+      <%= link_to 'New Rule', new_rule_path(paramedic_type: type), class: "btn btn-primary" %>
+
       <p class="card-text"><%= rand(7..30) %> Interventions</p>
     </li>
   </ul>
