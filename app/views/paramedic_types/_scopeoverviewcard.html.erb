@@ -4,6 +4,11 @@
       <div class="p-5">
         <h3 class="no-margin">Scopes of Practice by Skill Level</h3>
         <p class="grey">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
+        <div>
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newParamedicTypeForm">
+            Add Scope
+          </button>
+        </div>
       </div>
     </div>
     </div>
@@ -16,3 +21,5 @@
       </div>
   </div>
 </div>
+
+<%= render 'new_modal' %>
