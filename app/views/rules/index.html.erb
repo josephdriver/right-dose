@@ -3,6 +3,7 @@
   <div class="d-flex">
     <div>
       <h3> <%= rule.indication.presentation.drug.name %> </h3>
+      <p><%= rule.paramedic_type.title %></p>
     </div>
     <div>
       <p><%= rule.indication.presentation.dose %><%= rule.indication.presentation.drug_unit %> in <%=rule.indication.presentation.volume %><%= rule.indication.presentation.volume_unit %></p>
