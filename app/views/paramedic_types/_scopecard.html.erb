@@ -17,7 +17,7 @@
     </li>
     <li class="list-group-item" style="height: 5rem;">
       <div class="float-right">
-        <button type="button" class="card-button btn btn-success btn-sm" data-toggle="modal" data-target="#newRuleForm-#{type.id}" style="width: 10rem;">Add Treatment</button>
+        <button type="button" class="card-button btn btn-success btn-sm" style="width: 10rem;">Add Treatment</button>
         <button type="button" class="card-button btn btn-success btn-sm" style="width: 10rem;">Remove Treatment</button>
       </div>
       <%= link_to 'Review', rules_path, class: "btn btn-primary" %>
@@ -34,4 +34,4 @@
 </div>
 
 <%= render 'edit_modal', type: type %>
-<%= render 'rules/new_modal', type: type %>
+
