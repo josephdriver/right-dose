@@ -3,6 +3,9 @@
     <h5 class="card-title font-weight-bold"> <%= type.title %> </h5>
     <p class="card-subtitle"><small class="text-muted"><%= type.acronym %></small></p>
     <p><%= link_to 'edit', edit_paramedic_type_path(type), data: {toggle: "modal", target: "#editOrgModal-#{type.id}"} %></p>
+    <%= link_to paramedic_type_path(type), method: :delete do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
     <div>
         <% if type.photo.attached? %>
         <%= cl_image_tag type.photo.key, class: "avatar", alt: "avatar" %>

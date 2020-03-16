@@ -39,6 +39,10 @@ class ParamedicTypesController < ApplicationController
   end
 
   def destroy
+    @paramedic_type = ParamedicType.find(params[:id])
+    authorize @paramedic_type
+    @paramedic_type.destroy
+    redirect_to paramedic_types_path
   end
 
   private
