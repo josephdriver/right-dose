@@ -8,21 +8,29 @@
   <%= simple_form_for rule  do |f| %>
     <div class="form-inputs">
       <div class="width-70">
-        <%= f.input :paramedic_type_id, input_html: { value: @paramedic_type.id }, as: :hidden %>
+        <%= f.input :paramedic_type_id,
+          input_html: { value: @paramedic_type.id },
+          as: :hidden %>
       </div>
       <div class="width-70">
-        <%= f.association :indication, collection: Indication.all.order(:name) %>
+        <%= f.association :indication,
+          collection: Indication.all.order(:name) %>
       </div>
       <div class="d-flex">
         <div class="width-70">
-          <%= f.input :drug, collection: Drug.all.order(:name), disabled: true %>
+          <%= f.input :drug,
+            collection: Drug.all.order(:name),
+            disabled: true %>
         </div>
         <div class="width-20">
-          <%= f.input :presentation_id, collection: [], disabled: true %>
+          <%= f.input :presentation_id,
+            collection: [],
+            disabled: true %>
         </div>
       </div>
         <div class="width-20">
-          <%= f.association :route, disabled: true %>
+          <%= f.association :route,
+            disabled: true %>
         </div>
     </div>
     <div>

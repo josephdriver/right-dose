@@ -1,6 +1,8 @@
 import Sortable from 'sortablejs';
 import Swal from 'sweetalert2';
 
+
+
 async function populateDrugs() {
   const form = document.querySelector('#case-drug-form');
 
