@@ -1,7 +1,6 @@
 const bindDrugInput = () => {
   const info = JSON.parse(document.getElementById("info").dataset.presentations);
     if (info) {
-
     const drugInput = document.getElementById("rule_drug");
 
     const presentationsInput = document.getElementById("rule_presentation_id");

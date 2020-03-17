@@ -3,8 +3,13 @@ class RulesController < ApplicationController
   skip_before_action :authenticate_admin!
 
   def index
-    @paramedic_type = ParamedicType.find(params[:paramedic_type])
-    @rule = policy_scope(Rule).where(paramedic_type: @paramedic_type)
+    if params[:paramedic_type].nil?
+      @rule = policy_scope(Rule)
+      redirect_to paramedic_types_path
+    else
+      @paramedic_type = ParamedicType.find(params[:paramedic_type])
+      @rule = policy_scope(Rule).where(paramedic_type: @paramedic_type)
+    end
   end
 
   def search
@@ -47,7 +52,7 @@ class RulesController < ApplicationController
 
   def create
     @rule = Rule.new(rule_params)
-    @paramedic_type = ParamedicType.find(params[:rule][:paramedic_type_id])
+    @paramedic_type = ParamedicType.find(params[:rule][:paramedic_type_id].to_i)
     if params[:rule][:patient_type] == "Adult"
       @rule.calc_type = "Age based"
     end
@@ -55,7 +60,8 @@ class RulesController < ApplicationController
     if @rule.save
       redirect_to paramedic_types_path
     else
-      render :new
+
+      render :new, paramedic_type: params[:rule][:paramedic_type_id]
     end
   end
 

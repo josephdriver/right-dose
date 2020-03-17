@@ -1,5 +1,5 @@
 class Route < ApplicationRecord
-  ACRONYMS = ['IV', 'IMI', 'PO', 'IO']
+  ACRONYMS = ['IV', 'IM', 'PO', 'IO', 'NEB', 'IN']
   has_many :rules
   validates :acronym, inclusion: { in: ACRONYMS}
   include AlgoliaSearch

@@ -2,7 +2,7 @@
 <div class="card">
   <div class="d-flex">
     <div>
-      <h3> <%= rule.indication.presentation.drug.name %> </h3>
+      <h3><%= rule.indication.presentation.drug.name %></h3>
       <p><%= rule.paramedic_type.title %></p>
     </div>
     <div>
@@ -28,31 +28,12 @@
         <p>Patient</p>
       </div>
       <div>
-        <% if rule.patient_type == 'Adult' && rule.max_age.nil? && rule.min_age > rule.paramedic_type.organization.pediatric_cutoff %>
+        <% raise %>
+        <% if  %>
+          <% rule.patient_type == 'Adult' && rule.min_age.nil? && rule.max_age.nil? %>
           <p><%= rule.patient_type %></p>
-        <% elsif rule.patient_type == 'Adult' && rule.max_age > rule.paramedic_type.organization.pediatric_cutoff && rule.min_age > rule.paramedic_type.organization.pediatric_cutoff %>
-          <p><%= rule.patient_type %> (<%= rule.min_age %> - <%= rule.min_age %>yrs)</p>
-        <% elsif rule.patient_type == 'Pediatric' && rule.max_age == rule.paramedic_type.organization.pediatric_cutoff && rule.min_age.nil? %>
-          <p><%= rule.paramedic_type %></p>
-          <% if rule.min_weight.nil? || rule.min_weight == 0 && rule.max_weight.nil? || rule.max_weight == 0 %>
-          <% elsif rule.min_weight.nil? || rule.min_weight == 0 %>
-            <p>Max Weight <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
-          <% elsif rule.max_weight.nil? || rule.max_weight == 0 %>
-            <p>Mix Weight <%= rule.min_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
-          <% else %>
-            <p> Weight <%= rule.min_weight %> - <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
-          <% end %>
-        <% elsif rule.patient_type == 'Pediatric' && rule.max_age == rule.paramedic_type.organization.pediatric_cutoff || rule.max_age < rule.paramedic_type.organization.pediatric_cutoff && rule.min_age < rule.paramedic_type.organization.pediatric_cutoff %>
-          <p><%= rule.patient_type %> (<%= rule.min_age %> - <%= rule.max_age %>yrs)</p>
-          <% if rule.min_weight.nil? || rule.min_weight == 0 && rule.max_weight.nil? || rule.max_weight == 0 %>
-          <% elsif rule.min_weight.nil? || rule.min_weight == 0 %>
-            <p>Max Weight <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
-          <% elsif rule.max_weight.nil? || rule.max_weight == 0 %>
-            <p>Mix Weight <%= rule.min_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
-          <% else %>
-            <p> Weight <%= rule.min_weight %> - <%= rule.max_weight %><%= rule.paramedic_type.organization.weight_unit %></p>
-          <% end %>
-        <% else %>
+        <% elsif rule.patient_type == 'Adult' && rule.min_age > rule.paramedic_type.organization.pediatric_cutoff && rule.max_age.nil? %>
+          <p><%= rule.patient_type %></p>
         <% end %>
       </div>
     </div>
