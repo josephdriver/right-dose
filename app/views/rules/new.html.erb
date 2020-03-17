@@ -1,2 +1,11 @@
-<h1>Rules#new</h1>
-<p>Find me in app/views/rules/new.html.erb</p>
+<div class="wrapper d-flex">
+  <%= render '/dashboards/sidebar' %>
+  <div class="container-fluid">
+    <div class="main-content">
+      <%= render '/dashboards/header' %>
+      <div class="d-flex justify-content-around md-margin-btm">
+        <%= render 'form', rule: @rule %>
+      </div>
+    </div>
+  </div>
+</div>
