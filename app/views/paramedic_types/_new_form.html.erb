@@ -1,0 +1,14 @@
+<%= simple_form_for ParamedicType.new  do |f| %>
+  <div class="form-inputs p-4">
+    <div>
+      <%= f.input :title %>
+      <%= f.input :acronym %>
+      <%= f.input :photo, as: :file %>
+    </div>
+
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Submit Changes", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,48 +1,57 @@
 <div class="page-container" style="background: linear-gradient(45deg, rgba(226,226,226,1) 0%, rgba(219,219,219,1) 50%, rgba(209,209,209,1) 51%, rgba(254,254,254,1) 100%);">
-
+<% @case.age = "6".to_i %>
+<% @case.weight = @case.age * @case.paramedic.paramedic_type.organization.multiplier + @case.paramedic.paramedic_type.organization.addition_num %>
+<%  %>
   <div class="header-container">
     <%= render 'shared/paramedic/navbar', medic: @paramedic %>
   </div>
 
-  <div class="patient-container px-2 py-1 ml-2 mr-2">
-
-
+  <div class="patient-container px-2 py-1 ml-2 mr-2" id="patient-info-container">
     <%= render 'shared/paramedic/patient_information', medic: @paramedic %>
 
     <!-- AGE/WEIGHT MODAL -->
-    <div>
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <%= simple_form_for @case do |cf| %>
-              <%= cf.input :age %>
-              <%= cf.input :weight %>
-              <%= cf.input :paramedic_id,
-                as: :hidden,
-                input_html: { value: @paramedic.id } %>
-              <%= cf.button :submit %>
-            <% end %>
-      </div>
-    </div>
-  </div>
-
-      <%#= render 'shared/paramedic/age_weight_modal', case: @case %>
+    <div id="edit-case-form-container" style="display:none;">
+      <%= simple_form_for @case, remote: true, html: { id: 'edit-case-form', method: :patch } do |cf| %>
+        <%= cf.input :age,
+          input_html: { id: 'input-age' } %>
+        <%= cf.input :weight,
+          input_html: { id: 'input-weight' } %>
+        <%= cf.input :paramedic_id,
+          as: :hidden,
+          input_html: {
+            value: @paramedic.id,
+            id: 'medic-id' } %>
+        <%= cf.submit id: 'input-submit-btn', class: 'd-none' %>
+      <% end %>
     </div>
   </div>
 
   <div class="active-container px-2 py-1 mr-3">
     <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
+    <div>
+      <p><%= @final_rule %></p>
+    </div>
   </div>
 
   <div class="search-container px-2 pt-1 mr-2">
-    <input class="shadow" type="text" id="myInput" placeholder="Search for drugs..">
+    <input class="shadow" type="text" id="search" placeholder="Search for drugs..">
   </div>
 
   <div class="queue-container px-2 pb-1 mr-2">
     <ul id="myUL">
-      <% @drugs.order(:name).each do |drug| %>
+      <% @available_drugs.each do |drug| %>
         <li class="header-font shadow mb-1  "><a href="#"><%= drug.name %></a></li>
-      <% end %>
+        <h1><%= drug.name %></h1>
+          <%= simple_form_for drug, url: paramedic_dashboard_path , method: :get do |f| %>
+            <%= f.hidden_field :drug_id, value: drug.id %>
+            <%= f.association :presentations, collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] }, input_html: {multiple: false} %>
+            <%= f.association :indications, input_html: {multiple: false} %>
+              <%= simple_fields_for :other do |o| %>
+                <%= o.input :routes, collection: Route.all %>
+            <% end %>
+            <%= f.submit %>
+          <% end %>
+        <% end %>
     </ul>
   </div>
 

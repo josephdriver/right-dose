@@ -13,7 +13,7 @@
         </div>
       </div>
         <div class="search-form">
-          <input class="form-control main-form" type="text" placeholder="Search" aria-label="Search">
+          <input type="text" name="search" id="search" placeholder="Paramedic"/>
         </div>
       </div>
     </div>
@@ -38,22 +38,26 @@
     </div>
     <% @paramedics.each_with_index do |paramedic, index| %>
     <div class="d-flex px-5 justify-content-between margin-y <%= 'grey-btm-border' if index != @paramedics.size - 1 %>">
-      <div class="lg-inf">
+      <div class="lg-inf" id='c-1'>
         <p><%= paramedic.first_name %> <%= paramedic.last_name %></p>
       </div>
-      <div class="lg-inf">
+      <div class="lg-inf" id='c-2'>
         <p><%= paramedic.email %></p>
       </div>
       <div class="d-flex">
-        <div class="xs-inf">
+        <div class="xs-inf" id='c-3'>
           <p><%= paramedic.paramedic_type.acronym %></p>
         </div>
-        <div class="xs-inf">
+        <div class="xs-inf" id='c-4'>
           <p><%= paramedic.employee_num %></p>
         </div>
-        <div class="xs-inf d-flex justify-content-around">
+        <div class="xs-inf d-flex justify-content-around" id='c-5'>
           <div>
             <p><%= paramedic.created_at.strftime("%m/%d/%Y") %></p>
+          </div>
+          <div>
+            <%= link_to 'edit', edit_paramedic_path(paramedic), data: {toggle: "modal", target: "#editOrgModal-#{paramedic.id}"} %>
+            <%= render 'edit_modal', paramedic: paramedic %>
           </div>
           <div>
             <%= link_to paramedic_path(paramedic), method: :delete do %>
@@ -67,18 +71,6 @@
   </div>
 </div>
 
-<div class="modal fade" id="newParamedicForm" tabindex="-1" role="dialog" aria-labelledby="newParamedicFormTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Add New User</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <%= render 'form' %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'add_paramedic_modal' %>
+
+

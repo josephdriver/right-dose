@@ -1,4 +1,8 @@
 class ParamedicsController < ApplicationController
+  def index
+    @paramedics = policy_scope(Paramedic)
+  end
+
   def new
     @paramedic = Paramedic.new
     authorize @paramedic
@@ -15,8 +19,20 @@ class ParamedicsController < ApplicationController
     end
   end
 
-  def index
-    @paramedics = policy_scope(Paramedic)
+  def edit
+    @paramedic = Paramedic.find(params[:id])
+    authorize @paramedic
+  end
+
+  def update
+    @paramedic = Paramedic.find(params[:id])
+    authorize @paramedic
+    if @paramedic.update(paramedic_params)
+      redirect_to paramedics_path
+    else
+      flash[:alert] = 'update failed'
+      redirect_to paramedics_path
+    end
   end
 
   def destroy
@@ -29,7 +45,7 @@ class ParamedicsController < ApplicationController
   private
 
   def paramedic_params
-    params.require(:paramedic).permit(:first_name, :last_name, :email, :employee_num, :password, :paramedic_type_id,
+    params.require(:paramedic).permit(:id, :first_name, :last_name, :email, :employee_num, :password, :paramedic_type_id,
       cases_attributes: [:age, :weigh, :paramedic_id])
   end
 

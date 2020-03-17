@@ -1,4 +1,8 @@
 class Drug < ApplicationRecord
+
+   attr_accessor :routes
+
+
   include AlgoliaSearch
   belongs_to :organization
   has_many :presentations, dependent: :destroy
@@ -7,8 +11,10 @@ class Drug < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  include AlgoliaSearch
+
   algoliasearch do
-    # Use all default configuration
-    attribute :name
+    attributes :name, :created_at, :updated_at
+    searchableAttributes ['name', 'created_at', 'updated_at']
   end
 end

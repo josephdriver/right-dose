@@ -2,21 +2,47 @@ import 'bootstrap';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+// PLUGINS
+import Sortable from 'sortablejs';
+
 import { initAlgoliaSearch } from "../plugins/init_algolia_search.js";
-import { displayDrugs } from "../paramedic/druglist.js";
+import { initSweetalert } from "../plugins/init_sweetalert.js"
+
 import { updateTime } from "../paramedic/updateTime.js";
+import { updatePatientInfo } from "../paramedic/updatePatientInfo.js";
+import { displayDrugs } from "../paramedic/druglist.js";
 import { activateRoute } from "../paramedic/activateRoute.js";
+import { activateDrugs } from "../paramedic/activateDrugs.js";
+
+import { bindDrugInput } from "../admin/updatePresentations.js";
+import { dynamicRule } from "../admin/dynamicRulesNew.js";
+import { dynamicFieldUpdate } from "../admin/dynamicFieldEnable.js";
+
+bindDrugInput();
+dynamicRule();
+dynamicFieldUpdate();
+
+// PLUGINS
+initAlgoliaSearch();
+initSweetalert();
+
+// ETC
+
 
 
 // PARAMEDIC JAVASCRIPT
 updateTime();
 
+  // PATIENT INFO
+updatePatientInfo();
+
   // DRUG QUEUE
 displayDrugs();
-initAlgoliaSearch();
 
-  // ACTIVE CASE DRUGS
+  // ACTIVATE DRUGS
+// activateDrugs();
 activateRoute();
+
 
 
 /* eslint no-console:0 */

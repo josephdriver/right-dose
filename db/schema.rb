@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_063626) do
+ActiveRecord::Schema.define(version: 2020_03_13_030104) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "administrations", force: :cascade do |t|
     t.time "time"
@@ -117,7 +138,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
 
   create_table "presentations", force: :cascade do |t|
     t.integer "dose"
-    t.string "dose_unit"
+    t.string "drug_unit"
     t.integer "volume"
     t.string "volume_unit"
     t.bigint "drug_id"
@@ -152,11 +173,14 @@ ActiveRecord::Schema.define(version: 2020_03_10_063626) do
     t.integer "max_initial_dose"
     t.integer "max_single_dose"
     t.integer "max_total_dose"
+    t.string "dose_unit"
+    t.string "patient_type"
     t.index ["indication_id"], name: "index_rules_on_indication_id"
     t.index ["paramedic_type_id"], name: "index_rules_on_paramedic_type_id"
     t.index ["route_id"], name: "index_rules_on_route_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "administrations", "case_drugs"
   add_foreign_key "admins", "organizations"
   add_foreign_key "case_drugs", "cases"

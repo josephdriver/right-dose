@@ -1,0 +1,41 @@
+<div class="card" style="width: 35rem; height: 20rem;">
+  <div class="card-body">
+    <h5 class="card-title font-weight-bold"> <%= type.title %> </h5>
+    <p class="card-subtitle"><small class="text-muted"><%= type.acronym %></small></p>
+    <p><%= link_to 'edit', edit_paramedic_type_path(type), data: {toggle: "modal", target: "#editOrgModal-#{type.id}"} %></p>
+    <%= link_to paramedic_type_path(type), method: :delete do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+    <div>
+        <% if type.photo.attached? %>
+        <%= cl_image_tag type.photo.key, class: "avatar", alt: "avatar" %>
+        <% else %>
+        <p>Logo</p>
+        <% end %>
+    </div>
+  </div>
+  <br>
+  <ul class="list-group list-group-flush border-bottom-0">
+    <li class="list-group-item">
+    </li>
+    <li class="list-group-item" style="height: 5rem;">
+
+      <button type="button" class="card-button btn btn-success btn-sm float-right" style="width: 10rem;">Add Treatment</button>
+      <button type="button" class="card-button btn btn-success btn-sm float-right" style="width: 10rem;">Remove Treatment</button>
+      <%= link_to 'Review', rules_path(paramedic_type: type), class: "btn btn-primary" %>
+      <%= link_to 'New Rule', new_rule_path(paramedic_type: type), class: "btn btn-primary" %>
+
+      <p class="card-text"><%= rand(7..30) %> Interventions</p>
+    </li>
+  </ul>
+  <div class="card-body">
+    <div class="float-right">
+      <button type="button" class="card-button btn btn-info btn-sm" style="width: 10rem;">Edit</button>
+      <button type="button" class="card-button btn btn-primary btn-sm" style="width: 10rem;">Deploy</button>
+    </div>
+    <p class="card-text text-danger"><%= rand(1..15) %> Pending Changes</p>
+  </div>
+</div>
+
+<%= render 'edit_modal', type: type %>
+

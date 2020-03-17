@@ -7,7 +7,7 @@
           <%= f.input :dose %>
         </div>
         <div class="width-20">
-          <%= f.input :dose_unit, collection: Presentation::DOSE_UNITS %>
+          <%= f.input :drug_unit, collection: Presentation::DRUG_UNITS %>
         </div>
       </div>
     </div>
@@ -22,10 +22,9 @@
       </div>
     </div>
   </div>
-
   <div class="form-actions">
     <div class="create">
-      <%= f.button :submit, "Create Drug", class: "btn btn-primary" %>
+      <%= f.button :submit, "Create Presentation", class: "btn btn-primary" %>
     </div>
   </div>
 <% end %>

@@ -3,6 +3,7 @@
     <div>
       <%= f.input :name %>
       <%= f.input :location %>
+      <%= f.input :photo, as: :file %>
       <div class="d-flex justify-content-around">
         <div class="width-20">
           <%= f.input :pediatric_cutoff %>
@@ -30,6 +31,6 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Create User", class: "btn btn-primary" %>
+    <%= f.button :submit, "Submit Changes", class: "btn btn-primary" %>
   </div>
 <% end %>
