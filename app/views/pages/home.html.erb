@@ -1,63 +1,47 @@
-<!-- <div class="banner-wrapper d-flex" style="background-image: radial-gradient(circle, rgba(63,94,251,0) 0%, rgba(0,0,0,0.7808857808857809) 100%), url(<%= asset_path('banner.jpg') %>);"> -->
+<nav id="white-background" class="navbar bg-white p-1 d-flex justify-content-between">
+  <h2 class="ml-4 font-weight-bold" id="rd-namex"><span id="rd-logo">RD</span> Right Dose</h2>
+  <div class="d-flex py-3 text-center">
+    <div>
+      <%= link_to "Paramedic", new_paramedic_session_path, class: "btn btn-ghost" %>
+      <%= link_to "Administrator", new_admin_session_path, class: "btn btn-ghost" %>
+    </div>
+  </div>
+</nav>
 <div class="background-color">
-<!--   <div id="ekg-background"> -->
-    <div class="banner-wrapper">
-
-        <div class="banner-content container my-auto mx-auto">
-          <div class="d-flex">
+  <div class="d-flex container text-white">
+    <div class="container text-white">
+      <div id="particles-js" class="d-flex justify-content-left">
+        <div class="btext text-left">
+          <div>
+            <h1 id="rd-namex"><span id="rd-logo">RD</span> Right Dose <i class="small fas fa-heartbeat" style="color:red"></i></h1>
+            <h3>A revolutionary app designed to prevent drug dosing errors in prehospital patients.</h3>
+          </div>
+          <div class="d-flex py-3 text-center">
             <div>
-              <div>
-                <h1 id="rd-name"><span id="rd-logo">RD</span> Right Dose <i class="small fas fa-heartbeat" style="color:red"></i></h1>
-                <h3>Improving patient outcomes</h3>
-              </div>
-              <div class="d-flex py-3">
-                <div>
-                  <%= link_to "Paramedic", new_paramedic_session_path, class: "btn blue-background width-150px mx-3 border-0" %>
-                  <%= link_to "Admin", new_admin_session_path, class: "btn blue-background width-150px border-0" %>
-                </div>
-              </div>
+              <%= link_to "Paramedic", new_paramedic_session_path, class: "btn blue-background width-150px mr-2 border-0" %>
+              <%= link_to "Admin", new_admin_session_path, class: "btn blue-background width-150px border-0" %>
             </div>
-            <%= image_tag('ekg.png', class: "pl-4 d-none d-md-block", style: "height: auto; width: 50%") %>
           </div>
         </div>
-        </div>
-    </div>
-<!--   </div> -->
-</div>
-
-
-
-<div class="container">
-  <div class="card-deck">
-    <div class="card">
-      <%= image_tag('ambulance.jpg', style: "height: auto; width: 100%") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est voluptas earum quod aliquam repellat enim voluptatem, numquam, excepturi molestiae modi et ducimus quaerat, harum veritatis autem dolor at quidem maiores.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-    <div class="card">
-      <%= image_tag('ambulance.jpg', style: "height: auto; width: 100%") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, omnis, quos. Consequuntur id soluta atque nam distinctio eveniet voluptate beatae voluptatum. Alias mollitia aliquid, nam magni dolor cupiditate consequuntur facilis!</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-    <div class="card">
-      <%= image_tag('ambulance.jpg', style: "height: auto; width: 100%") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae itaque iusto voluptatibus nulla quam aliquam magni in, ea fugiat accusamus labore deserunt delectus. Porro assumenda, tenetur quo ex hic rem.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
       </div>
     </div>
   </div>
 </div>
+<div class="container-fluid">
+  <h1 class="text-center text-dark p-5 border-bottom m-5">How <strong><span id="rd-logo">RD</span> Right Dose </strong> works to prevent dosing errors</h1>
+  <div class="text-left d-flex align-items-center bg-white shadow rounded p-5">
+    <h4 style="color: #313131;">Medication errors by emergency medical providers account for an estimated 7,000 deaths per year</h4>
+    <%= image_tag "ambulance.jpg", class: "w-50 shadow rounded", style: "margin-top: -70px; margin-bottom: -70px" %>
+  </div>
+</div>
+
+
+
+
+
+
+<%= javascript_include_tag 'particles.min', 'application'%>
+<script>particlesJS.load('particles-js', 'assets/particles.json', function() {
+  console.log('callback - particles.js config loaded');
+ });</script>
+
