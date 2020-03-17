@@ -1,31 +1,37 @@
-<%= simple_form_for CaseDrug.new,
-  url: paramedic_dashboard_path ,
+<%= simple_form_for [@case, CaseDrug.new],
   remote:true,
   html: {id: 'case-drug-form'},
-  method: :get do |f| %>
+  method: :post do |f| %>
   <%= f.hidden_field :case_id,
     value: @case.id,
     input_html: {
       value: @case.id,
       id: 'case-drug-case' } %>
-  <%= f.hidden_field :drug_id,
-    value: drug.id,
-    input_html: {
+  <%= simple_fields_for :drug do |o| %>
+    <%= o.hidden_field :drug_id,
       value: drug.id,
-      id: 'case-drug-drug' } %>
-  <%= f.association :presentations,
-    collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] },
-    input_html: {
-      multiple: false,
-      id: 'case-drug-presentation' } %>
-  <%= f.association :indications,
-    input_html: {
-      multiple: false,
-      id: 'case-drug-indication' } %>
-    <%= simple_fields_for :other do |o| %>
-      <%= o.input :routes,
-        collection: Route.all,
-        input_html: { id: 'case-drug-route' } %>
+      input_html: {
+       value: drug.id,
+        id: 'case-drug-drug' } %>
+  <% end %>
+  <%= simple_fields_for :presentation do |o| %>
+    <%= o.input :presentation_id,
+      collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] },
+      input_html: {
+        multiple: false,
+        id: 'case-drug-presentation' } %>
+  <% end %>
+  <%= simple_fields_for :indication do |o| %>
+    <%= o.input :indication_id,
+    collection: presentation.indications,
+      input_html: {
+        multiple: false,
+        id: 'case-drug-indication' } %>
+  <% end %>
+  <%= simple_fields_for :route do |o| %>
+    <%= o.input :route_id,
+      collection: Route.all,
+      input_html: { id: 'case-drug-route' } %>
   <% end %>
   <%= f.submit id: 'case-drug-submit-btn',
     class: 'd-none' %>

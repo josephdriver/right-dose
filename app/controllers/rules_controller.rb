@@ -7,8 +7,10 @@ class RulesController < ApplicationController
   end
 
   def search
+    raise
     @drug = Drug.find(params[:drug_id])
     @paramedic_type = ParamedicType.all[0]
+    @case = Case.find(params[:case_id])
     @age = 7
     @pediatric_cutoff = 12
     if params[:drug]
@@ -30,7 +32,6 @@ class RulesController < ApplicationController
         end
       end
     end
-
   end
 
   def show

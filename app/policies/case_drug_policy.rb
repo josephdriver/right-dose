@@ -6,7 +6,8 @@ class CaseDrugPolicy < ApplicationPolicy
   end
 
   def create?
-    user.class == Paramedic
+    # user.class == Paramedic
+    true
   end
 
   def destroy?

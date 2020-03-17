@@ -32,6 +32,6 @@ class ApplicationController < ActionController::Base
   end
 
   def skip_admin_authetication
-    params[:controller] == 'cases'
+    ['cases', 'case_drugs'].include? params[:controller]
   end
 end

@@ -20,8 +20,6 @@ initSweetalert();
 
 // ETC
 
-
-
 // PARAMEDIC JAVASCRIPT
 updateTime();
 

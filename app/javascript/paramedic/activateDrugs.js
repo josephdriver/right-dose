@@ -40,6 +40,7 @@ const activateDrugs = () => {
       animation: 150,
       onAdd: function(event){
         const item = event.item;
+        item.style.display = 'none';
         populateDrugs();
       }
   });
