@@ -4,6 +4,7 @@
     <div>
       <h3><%= rule.indication.presentation.drug.name %></h3>
       <p><%= rule.paramedic_type.title %></p>
+      <p><%= index + 1 %></p>
     </div>
     <div>
       <p><%= rule.indication.presentation.dose %><%= rule.indication.presentation.drug_unit %> in <%=rule.indication.presentation.volume %><%= rule.indication.presentation.volume_unit %></p>
@@ -28,12 +29,22 @@
         <p>Patient</p>
       </div>
       <div>
-        <% raise %>
-        <% if  %>
-          <% rule.patient_type == 'Adult' && rule.min_age.nil? && rule.max_age.nil? %>
-          <p><%= rule.patient_type %></p>
-        <% elsif rule.patient_type == 'Adult' && rule.min_age > rule.paramedic_type.organization.pediatric_cutoff && rule.max_age.nil? %>
-          <p><%= rule.patient_type %></p>
+        <% if rule.patient_type == 'Adult' %>
+          <% if rule.min_age.nil? && rule.max_age.nil? %>
+            <p><%= rule.patient_type %></p>
+          <% elsif !rule.min_age.nil? && rule.max_age.nil? %>
+            <p><%= rule.patient_type %>(above <%= rule.min_age %>yrs)</p>
+          <% elsif rule.min_age.nil? && !rule.max_age.nil? %>
+            <p><%= rule.patient_type %>(<%= rule.max_age %>yrs or less)</p>
+          <% elsif !rule.min_age.nil? && !rule.max_age.nil? %>
+            <p><%= rule.patient_type %>(<%= rule.max_age %>yrs - <%= rule.min_age %>yrs)</p>
+          <% end %>
+        <% elsif rule.patient_type == 'Pediatric' %>
+          <% if rule.min_age.nil? || rule.min_age = 0 && !rule.max_age.nil? %>
+            <p><%= rule.patient_type %> (<%= rule.max_age %>yrs or less)</p>
+          <% elsif !rule.min_age.nil? && !rule.max_age.nil? %>
+            <p><%= rule.patient_type %>(<%= rule.max_age %> - <%= rule.min_age %>yrs)</p>
+          <% end %>
         <% end %>
       </div>
     </div>

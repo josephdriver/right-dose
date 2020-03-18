@@ -148,21 +148,17 @@ const dynamicFieldUpdate = () => {
       repeat.previousElementSibling.innerText = "Repeat Dose";
       maxSingle.previousElementSibling.innerText = "Max Single Dose";
       maxTotal.previousElementSibling.innerText = "Max Total Dose*";
+      doseUnit.disabled = false;
     } else if (event.currentTarget.value === "Weight based") {
       minAge.disabled = false;
       maxAge.disabled = false;
       minWeight.disabled = false;
       maxWeight.disabled = false;
       minInit.previousElementSibling.innerText = "Min Initial Dose/kg";
-      maxInit.previousElementSibling.innerText = "Max Initial Dose/<keygen />";
+      maxInit.previousElementSibling.innerText = "Max Initial Dose/kg";
       repeat.previousElementSibling.innerText = "Repeat Dose/kg";
       maxSingle.previousElementSibling.innerText = "Max Single Dose/kg*";
       maxTotal.previousElementSibling.innerText = "Max Total Dose/kg";
-    }
-  })
-
-  maxAge.addEventListener("change", (event) => {
-    if (event.currentTarget.value != "") {
       doseUnit.disabled = false;
     }
   })
