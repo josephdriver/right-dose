@@ -4,6 +4,8 @@
   background: linear-gradient(270deg, #363740, #57717e);
   background-size: 400% 400%;
 
+  // border-bottom-right-radius: 100% 50%;
+
   -webkit-animation: AnimationName 10s ease infinite;
   -moz-animation: AnimationName 10s ease infinite;
   animation: AnimationName 10s ease infinite;
@@ -40,3 +42,10 @@ html {
   }
 }
 
+// #end {
+//   border-top-left-radius: 70% 40%;
+//   border-bottom-right-radius: 70% 40%;
+//   height: 100%;
+//   background: linear-gradient(270deg, #363740, #57717e);
+//   // opacity: 0.25;
+// }
