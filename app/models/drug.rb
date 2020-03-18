@@ -2,7 +2,6 @@ class Drug < ApplicationRecord
 
    attr_accessor :routes
 
-
   include AlgoliaSearch
   belongs_to :organization
   has_many :presentations, dependent: :destroy
