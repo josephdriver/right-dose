@@ -2,8 +2,9 @@ class DrugsController < ApplicationController
   def index
     @drugs = policy_scope(Drug)
     if params[:query].present?
-      sql_query = "name ILIKE :query"
-      @drugs = policy_scope(Drug).where(sql_query, query: "%#{params[:query]}%")
+      # sql_query = "name ILIKE :query"
+      # @drugs = policy_scope(Drug).where(sql_query, query: "%#{params[:query]}%")
+      @drugs = policy_scope(Drug).search(params[:query])
     else
       @drugs = policy_scope(Drug)
     end

@@ -2,8 +2,7 @@ class ParamedicsController < ApplicationController
   def index
     @paramedics = policy_scope(Paramedic)
     if params[:query].present?
-      sql_query = "first_name ILIKE :query OR last_name ILIKE :query"
-      @paramedics = policy_scope(Paramedic).where(sql_query, query: "%#{params[:query]}%")
+      @paramedics = policy_scope(Paramedic).search(params[:query])
     else
       @paramedics = policy_scope(Paramedic)
     end
