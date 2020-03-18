@@ -12,8 +12,15 @@
           </button>
         </div>
       </div>
-        <div class="search-form">
-          <input type="text" name="search" id="search" placeholder="Paramedic"/>
+        <div id="search-bar">
+          <%= form_tag paramedics_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a Paramedic"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>

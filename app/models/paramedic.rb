@@ -19,6 +19,13 @@ class Paramedic < ApplicationRecord
 
   accepts_nested_attributes_for :cases
 
+  # include PgSearch::Model
+  # pg_search_scope :search_by_first_name_and_last_name,
+  #   against: [ :first_name, :last_name ],
+  #   using: {
+  #     tsearch: { prefix: true } # <-- now `superman batm` will return something!
+  #   }
+
   include AlgoliaSearch
 
   algoliasearch do
