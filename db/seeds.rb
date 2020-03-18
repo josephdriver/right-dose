@@ -1175,7 +1175,7 @@ medic_ccp = {
   paramedic_type_id: ParamedicType.find_by(acronym: 'CCP').id
 }
 PARAMEDICS << medic_ccp
-medic_pts= {
+medic_pts = {
   first_name: 'PTS',
   last_name: 'Medic',
   email: 'PTS.Medic@LWAS.com',
