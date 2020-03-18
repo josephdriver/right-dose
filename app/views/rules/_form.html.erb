@@ -10,6 +10,7 @@
     <div class="d-flex justify-content-between mx-3">
       <div class="width-50 mx-3">
         <div>
+          <%= f.input :paramedic_type_id, input_html: {  value: @paramedic_type.id  }, as: :hidden %>
           <%= f.association :indication, collection: Indication.all.order(:name) %>
         </div>
         <div>

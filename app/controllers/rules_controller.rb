@@ -48,15 +48,16 @@ class RulesController < ApplicationController
     authorize @rule
     @organization = current_admin.organization
     @paramedic_type = ParamedicType.find(params[:paramedic_type])
+    authorize @paramedic_type
   end
 
   def create
     @rule = Rule.new(rule_params)
-    @paramedic_type = ParamedicType.find(params[:rule][:paramedic_type_id].to_i)
+    pt = @paramedic_type = ParamedicType.find(params[:rule][:paramedic_type_id])
+    @rule.paramedic_type = pt
     if params[:rule][:patient_type] == "Adult"
       @rule.calc_type = "Age based"
     end
-     authorize @rule
     if @rule.save
       redirect_to paramedic_types_path
     else
