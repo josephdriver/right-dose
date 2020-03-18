@@ -14,6 +14,7 @@ import { displayDrugs } from "../paramedic/druglist.js";
 import { activateRoute } from "../paramedic/activateRoute.js";
 import { activateDrugs } from "../paramedic/activateDrugs.js";
 
+
 import { bindDrugInput } from "../admin/updatePresentations.js";
 import { dynamicRule } from "../admin/dynamicRulesNew.js";
 import { dynamicFieldUpdate } from "../admin/dynamicFieldEnable.js";
@@ -42,7 +43,6 @@ activateRoute();
 } else {
 
   // ADMIN JS
-
   bindDrugInput();
   dynamicRule();
   dynamicFieldUpdate();

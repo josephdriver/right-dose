@@ -45,7 +45,10 @@
 
           <div class="case-drug-form-container" style="display:none;">
 
-<%= simple_form_for [@case, @case_drug],
+<span id="rules-json"><%= paramedic_rules_to_json(drug) %></span>
+<% @drug_rules = paramedic_rules_to_json(drug) %>
+
+<%= simple_form_for [@case, CaseDrug.new],
   remote: true,
   html: {id: 'case-drug-form'},
   method: :post do |f| %>
@@ -63,21 +66,24 @@
   <% end %>
   <%= simple_fields_for :presentation do |o| %>
     <%= o.input :presentation_id,
-      collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] },
+      as: :select,
       input_html: {
         multiple: false,
         id: 'case-drug-presentation' } %>
   <% end %>
   <%= simple_fields_for :indication do |o| %>
     <%= o.input :indication_id,
-    collection: @indications,
+      as: :select,
+      disabled: true,
       input_html: {
         multiple: false,
         id: 'case-drug-indication' } %>
   <% end %>
   <%= simple_fields_for :route do |o| %>
     <%= o.input :route_id,
-      collection: @routes,
+      as: :select,
+      collection: Route.all,
+      disabled: true,
       input_html: { id: 'case-drug-route' } %>
   <% end %>
   <%= f.submit id: 'case-drug-submit-btn',

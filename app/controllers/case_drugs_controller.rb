@@ -2,22 +2,28 @@ class CaseDrugsController < ApplicationController
   skip_after_action :verify_authorized
   before_action :authenticate_paramedic!, only: [:new, :create]
 
-  def new
-    @case_drug = CaseDrug.new
+  def index
+    @rules = Rule.all.where(paramedic_id: current_medic.paramedic_type)
+    respond_to do |format|
+      format.html { @users }
+      format.json { render json: json_format(@users) }
+    end
+  end
 
+  def create
+    byebug
+
+    @medic_type = current_paramedic.paramedic_type
     @drug = Drug.find(drug_params[:drug_id])
+
     @presentations = @drug.presentations
-    @rules = Rule.where(drug_id: @drug.id)
+    @rules = @drug.rules.where(paramedic_type: @medic_type)
     @routes = []
     @indictations = []
     @rules.each do |rule|
       @indications << rule.indication unless @indications.include?
       @routes << rule.route unless @routes.include?
     end
-  end
-
-  def create
-    byebug
 
     indication_param = params.require(:indication).permit(:indication_id)
     route_param = params.require(:route).permit(:route_id)

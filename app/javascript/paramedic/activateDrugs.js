@@ -1,7 +1,34 @@
 import Sortable from 'sortablejs';
 import Swal from 'sweetalert2';
 
+const createOptions = (optionsArray) => {
+  let str = `<option value=""></option>`
+  optionsArray.forEach((option) => {
+    str += `<option value="${option[0]}">${option[1]}</option>`;
+  })
+  return str
+}
 
+const populateForm = () => {
+  const rules = JSON.parse(document.getElementById("rules-json").innerText);
+  let presentationInput = document.getElementById("case-drug-presentation");
+  let indicationInput = document.getElementById("case-drug-indication");
+  let routeInput = document.getElementById("case-drug-route");
+
+  presentationInput.addEventListener("change", (event) => {
+    console.log(event.currentTarget.value);
+    if (event.currentTarget.value != null) {
+      console.log(event.currentTarget.value)
+      indicationInput.style.disabled = false;
+
+      const options = rules.forEach(element => {
+        if (event.currentTarget.value === element.indication.presentation)
+          console.log(element.indication.presentation)
+      });
+    }
+  })
+
+}
 
 async function populateDrugs() {
   const form = document.querySelector('#case-drug-form');
@@ -17,6 +44,10 @@ async function populateDrugs() {
     showCancelButton: true,
     confirmButtonText: 'CREATE',
     cancelButtonText: 'CANCEL',
+    onOpen: () => {
+      console.log('opened!');
+      populateForm();
+    },
     preConfirm: () => {
       Rails.fire(form, 'submit');
     }
@@ -46,10 +77,6 @@ const activateDrugs = () => {
         populateDrugs();
       }
   });
-
-// preventOnFilter
-// remove clone on hide
-// onAdd: function
 };
 
 export { activateDrugs };
