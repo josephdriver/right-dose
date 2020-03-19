@@ -1,9 +1,54 @@
 import Sortable from 'sortablejs';
+import Swal from 'sweetalert2';
+
+const createOptions = (optionsArray) => {
+  let str = `<option value=""></option>`
+  optionsArray.forEach((option) => {
+    str += `<option value="${option[0]}">${option[1]}</option>`;
+  })
+  return str
+}
+
+const populateForm = () => {
+  const rules = JSON.parse(document.getElementById("rules-json").innerText);
+  let presentationInput = document.getElementById("case-drug-presentation");
+  let indicationInput = document.getElementById("case-drug-indication");
+  let routeInput = document.getElementById("case-drug-route");
+
+  presentationInput.disabled = false;
+  // indicationInput.disabled = true;
+  // routeInput.disabled = true;
+
+
+}
+
+async function populateDrugs() {
+  const form = document.querySelector('#case-drug-form');
+
+  form.style.display = 'unset';
+  const {value: output} = await Swal.fire(
+  {
+    title: 'ENTER DRUG INFORMATION',
+    html: form,
+    heightAuto: false,
+    focusConfirm: false,
+    showConfirmButton: true,
+    showCancelButton: true,
+    confirmButtonText: 'CREATE',
+    cancelButtonText: 'CANCEL',
+    onOpen: () => {
+      populateForm();
+      console.log('opened!');
+    },
+    preConfirm: () => {
+      Rails.fire(form, 'submit');
+    }
+  }) // end of Swal
+}
 
 const activateDrugs = () => {
   const drugs = document.querySelector('#myUL');
-  const active = document.querySelector('.active-container');
-  // const active_drug = document.querySelectory
+  const activeContainer = document.querySelector('.active-container');
 
   Sortable.create(drugs, {
       group: {
@@ -15,20 +60,15 @@ const activateDrugs = () => {
       sort: false // To disable sorting: set sort to false
   });
 
-  Sortable.create(active, {
+  Sortable.create(activeContainer, {
       group: 'shared',
       animation: 150,
       onAdd: function(event){
-        const drug_name = event.item.textContent;
-
+        const item = event.item;
+        item.style.display = 'none';
+        populateDrugs();
       }
   });
-
-// preventOnFilter
-// remove clone on hide
-// onAdd: function
-
-
 };
 
 export { activateDrugs };

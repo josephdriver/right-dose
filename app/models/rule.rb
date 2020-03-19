@@ -9,6 +9,7 @@ class Rule < ApplicationRecord
   belongs_to :indication
   has_one :presentation, through: :indication
   has_one :drug, through: :presentation
+  belongs_to :rules
   has_one :organization, through: :paramedic_type
   validates :patient_type, inclusion: { in: PATIENT_TYPES }
   validates :calc_type, inclusion: { in: CALC_TYPES }

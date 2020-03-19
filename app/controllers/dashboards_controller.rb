@@ -6,6 +6,7 @@ class DashboardsController < ApplicationController
     @paramedic = current_paramedic
     # CREATE A NEW CASE WHEN THE DASHBOARD IS OPENED
     @case = Case.create!(paramedic_id: @paramedic.id)
+
     @drugs = Drug.all
     @routes = Route.all
 

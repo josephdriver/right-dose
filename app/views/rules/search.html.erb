@@ -1,20 +1,33 @@
 <h1> <%= @drug.name %></h1>
-
-
-<br>
 <br>
 <h2>  <%= @paramedic_type.title %></h2>
-<%= simple_form_for @drug, url: find_rules_path_url(@drug) , method: :get do |f| %>
 
-  <%= f.association :presentations, collection: @drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] }, input_html: {multiple: false} %>
-  <%= f.association :indications, input_html: {multiple: false} %>
+<%= simple_form_for @drug,
+  url: find_rules_path_url(@drug) ,
+  remote: true,
+  html: {id: 'case-drug-form'},
+  method: :get do |f| %>
+
+  <%= f.association :presentations,
+    collection: @drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] },
+    input_html: {
+      multiple: false,
+      id: 'case-drug-presentation' } %>
+
+  <%= f.association :indications,
+    input_html: {
+      multiple: false,
+      id: 'case-drug-indication' } %>
 
     <%= simple_fields_for :other do |o| %>
-      <%= o.input :routes, collection: Route.all %>
+      <%= o.input :route_id,
+      collection: Route.all,
+      input_html: { id: 'case-drug-route' } %>
   <% end %>
-  <%= f.submit %>
+
+  <%= f.submit id: 'case-drug-submit'  %>
 
 <% end %>
 
 
-<h1>   <%= @final_rules.count if @final_rules %> </h1>
+<!-- <h1>   <%#= @final_rules.count if @final_rules %> </h1> -->
