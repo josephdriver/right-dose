@@ -166,7 +166,9 @@
 
 
 <%= javascript_include_tag 'particles.min' %>
-<script>particlesJS.load('particles-js', 'assets/particles.json', function() {
+<script>
+  particlesJS.load('particles-js', "<%= asset_path 'particles.json' %>", function() {
   console.log('callback - particles.js config loaded');
- });</script>
+ });
+</script>
 
