@@ -1,11 +1,11 @@
 <div class="card w-80">
-      <div class="p-5">
-        <div class="d-flex">
-          <h3 class="card-title px-5">Organiation Details</h3>
-          <p><%= link_to 'edit', edit_organization_path(@organization), data: {toggle: "modal", target: "#editOrgModal"} %></p>
-        </div>
-        <p class="grey px-5">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
-      </div>
+  <div class="p-5">
+    <div class="d-flex">
+      <h3 class="card-title px-5">Organiation Details</h3>
+      <p><%= link_to 'edit', edit_organization_path(@organization), data: {toggle: "modal", target: "#editOrgModal"} %></p>
+    </div>
+    <p class="grey px-5">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
+  </div>
   <div class="d-flex py-3 px-5 justify-content-around">
     <div class="width-85">
       <ul class="list-group list-group-flush border-bottom-0">
@@ -22,40 +22,63 @@
       <% end %>
       </ul>
     </div>
+    <div class="width-85">
+      <ul class="list-group list-group-flush border-bottom-0">
+          <li class="list-group-item">
+            <h6 class="card-text font-weight-bold">Active Interventions</h6>
+          </li>
+        <% @organization.paramedic_types.each do |type| %>
+        <div class="width-85 mx-auto grey-btm-border">
+          <li class="list-group-item d-flex justify-content-between" style="height: 5rem;">
+            <h6 class="card-text"><%= type.title  %></h6>
+            <p class="card-text"><small class="text-muted"><%= type.rules.count %></small></p>
+          </li>
+        </div>
+      <% end %>
+      </ul>
+    </div>
   </div>
-</div>
-<div class="d-flex py-3 px-5 justify-content-around">
-  <div class="width-85">
-    <ul class="list-group list-group-flush border-bottom-0">
-        <li class="list-group-item">
-          <h6 class="card-text font-weight-bold">Active Paramedics By Skill Level</h6>
-        </li>
-      <% @organization.paramedic_types.each do |type| %>
-      <div class="width-85 mx-auto grey-btm-border">
-        <li class="list-group-item d-flex justify-content-between" style="height: 5rem;">
-          <h6 class="card-text"><%= type.title  %></h6>
-          <p class="card-text"><small class="text-muted"><%= type.acronym %></small></p>
-        </li>
-      </div>
-    <% end %>
-    </ul>
+  <div class="d-flex py-3 px-5 justify-content-around">
+    <div class="width-85">
+      <ul class="list-group list-group-flush border-bottom-0">
+          <li class="list-group-item">
+            <h6 class="card-text font-weight-bold">Users By Skill Level</h6>
+          </li>
+        <% @organization.paramedic_types.each do |type| %>
+        <div class="width-85 mx-auto grey-btm-border">
+          <li class="list-group-item d-flex justify-content-between" style="height: 5rem;">
+            <h6 class="card-text"><%= type.title  %></h6>
+            <p class="card-text"><small class="text-muted"><%= type.paramedics.count %></small></p>
+          </li>
+        </div>
+      <% end %>
+      </ul>
+    </div>
+    <div class="width-85">
+      <ul class="list-group list-group-flush border-bottom-0">
+          <li class="list-group-item">
+            <h6 class="card-text font-weight-bold">Drugs and Indications</h6>
+          </li>
+        <div class="width-85 mx-auto grey-btm-border">
+          <li class="list-group-item d-flex justify-content-between" style="height: 5rem;">
+            <h6 class="card-text">Medications</h6>
+            <p class="card-text"><small class="text-muted"><%= @organization.drugs.count %></small></p>
+          </li>
+          <li class="list-group-item d-flex justify-content-between" style="height: 5rem;">
+            <h6 class="card-text">Indications</h6>
+            <% @ind = [] %>
+            <% @organization.drugs.each do |drug| %>
+            <% @ind  << drug.uniq_indications %>
+            <% @ind = @ind.flatten %>
+            <% end %>
+            <p class="card-text"><small class="text-muted"><%= @ind.count %></small></p>
+          </li>
+        </div>
+      </ul>
+    </div>
   </div>
+
 </div>
-<div class="d-flex py-3 px-5 justify-content-around">
-  <div class="width-85">
-    <ul class="list-group list-group-flush border-bottom-0">
-        <li class="list-group-item">
-          <h6 class="card-text font-weight-bold">Active Medications</h6>
-        </li>
-      <% @organization.paramedic_types.each_with_index do |type, index| %>
-      <div class="width-85 mx-auto <%= 'grey-btm-border' if index != @organization.paramedic_types.size - 1 %>">
-        <li class="list-group-item d-flex justify-content-between" style="height: 5rem;">
-          <h6 class="card-text"><%= type.title  %></h6>
-          <p class="card-text"><small class="text-muted"><%= type.acronym %></small></p>
-        </li>
-      </div>
-    <% end %>
-    </ul>
-  </div>
-</div>
-<p class="card-text"><small class="text-muted"><%= @organization.paramedics.joins(:paramedic_type).where("paramedic_types.acronym = ''").size %></small></p>
+
+
+
