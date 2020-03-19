@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   end
 
   def devise_mapping
-    @devise_mapping ||= Devise.mappings[:admin]
+    @devise_mapping ||= Devise.mappings[:admin] # || Devise.mappings[:paramedic]
   end
 
   private

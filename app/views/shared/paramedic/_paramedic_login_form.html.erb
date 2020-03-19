@@ -1,6 +1,5 @@
 <div class="small-form">
-  <%= simple_form_for(Admin.new, as: :admin, url: admin_session_path) do |f| %>
-    <div class="errors"></div>
+  <%= simple_form_for(Paramedic.new, as: :paramedic, url: paramedic_session_path, method: :post)  do |f| %>
     <div class="form-inputs">
       <%= f.input :email,
                   required: false,
