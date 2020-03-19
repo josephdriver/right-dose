@@ -29,7 +29,7 @@
   <div class="active-container px-2 py-1 mr-3">
     <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
     <div>
-      <p><%= @final_rule %></p>
+      <p><%= @final_rule.count %></p>
     </div>
   </div>
 
@@ -48,7 +48,7 @@
             <%= f.association :indications, input_html: {multiple: false} %>
               <%= simple_fields_for :other do |o| %>
                 <%= o.input :routes, collection: Route.all %>
-            <% end %>
+              <% end %>
             <%= f.submit %>
           <% end %>
         <% end %>

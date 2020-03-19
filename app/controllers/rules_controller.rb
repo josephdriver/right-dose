@@ -14,6 +14,7 @@ class RulesController < ApplicationController
   end
 
   def search
+    raise
     @drug = Drug.find(params[:drug_id])
     @paramedic_type = ParamedicType.all[0]
     @age = 7
