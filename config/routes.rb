@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'pages#home'
-  devise_for :paramedics, :skip => [:registrations]
+  devise_for :paramedics, :skip => [:registrations], controllers: { sessions: 'paramedics/sessions' }
     as :paramedic do
       get 'paramedics/edit' => 'devise/registrations#edit', :as => 'edit_paramedic_registration'
       put 'paramedics' => 'devise/registrations#update', :as => 'paramedic_registration'
       end
-  devise_for :admins, :skip => [:registrations]
+  devise_for :admins, :skip => [:registrations], controllers: { sessions: 'admins/sessions' }
     as :admin do
     get 'admins/edit' => 'devise/registrations#edit', :as => 'edit_admin_registration'
     put 'admins' => 'devise/registrations#update', :as => 'admin_registration'
@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   resources :drugs, only: [:index, :new, :create, :destroy] do
   end
 
+  resources :indications, only: [:new, :create, :destroy]
+
   resources :presentations, only: [:new, :create, :destroy]
   resources :presentations, only: [] do
-    resources :indications, only: [:new, :create, :destroy]
   end
 
   resources :rules, only: [:index, :show, :new, :create, :destroy]

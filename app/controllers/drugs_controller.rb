@@ -1,7 +1,20 @@
 class DrugsController < ApplicationController
+  def index
+    @drugs = policy_scope(Drug)
+    if params[:query].present?
+      # sql_query = "name ILIKE :query"
+      # @drugs = policy_scope(Drug).where(sql_query, query: "%#{params[:query]}%")
+      @drugs = policy_scope(Drug).search(params[:query])
+    else
+      @drugs = policy_scope(Drug)
+    end
+  end
+
   def new
     @drug = Drug.new
     @presentation = Presentation.new
+    @indication = Indication.new
+    authorize @indication
     authorize @drug
     authorize @presentation
   end
@@ -13,11 +26,6 @@ class DrugsController < ApplicationController
     if @drug.save
       redirect_to drugs_path
     end
-  end
-
-  def index
-    @drugs = policy_scope(Drug)
-    @admin = current_admin
   end
 
   def edit

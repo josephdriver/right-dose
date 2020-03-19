@@ -1,0 +1,14 @@
+<%= simple_form_for Indication.new  do |f| %>
+  <div class="form-inputs p-4">
+    <%= f.input :drug, collection: Drug.all %>
+    <%= f.input :name %>
+    <div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <div class="create p-4">
+      <%= f.button :submit, "Create Presentation", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+

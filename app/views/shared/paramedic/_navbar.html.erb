@@ -1,4 +1,4 @@
-<nav class="navbar w-100 navbar-expand-lg">
+<nav class="navbar navbar-paramedic w-100 navbar-expand-lg">
   <!-- NAVBAR LEFT -->
   <div class="col-sm d-flex flex-row align-items-center justify-content-start">
     <div>
@@ -11,10 +11,12 @@
   </div>
 
   <!-- NAVBAR MIDDLE -->
+    <%= link_to destroy_paramedic_session_path, method: :delete, class: "no-deco" do %>
   <div class="col-sm d-flex flex-column align-items-center justify-content-center">
     <h5 class="m-0 text-center" id="rd-name"><span id="rd-logo">RD</span> Right Dose</h5>
-    <p class="m-0 body-font text-center"><%= medic.paramedic_type.organization.name.upcase %></p>
+    <p class="m-0 body-font text-center no-deco"><%= medic.paramedic_type.organization.name.upcase %></p>
   </div>
+    <% end %>
 
   <!-- NAVBAR RIGHT -->
   <div class="col-sm d-flex flex-row align-items-center justify-content-end">

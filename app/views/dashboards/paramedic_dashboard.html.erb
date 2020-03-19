@@ -27,10 +27,10 @@
   </div>
 
   <div class="active-container px-2 py-1 mr-3">
-    <%#= render 'shared/paramedic/active_drug', drug: @drugs.first %>
-  <!--   <div>
-      <p><%#= @final_rule %></p>
-    </div> -->
+    <%= render 'shared/paramedic/active_drug', drug: @drugs.first %>
+    <div>
+      <p><%= @final_rule.count %></p>
+    </div>
   </div>
 
   <div class="search-container px-2 pt-1 mr-2">
@@ -40,6 +40,7 @@
   <div class="queue-container px-2 pb-1 mr-2">
     <ul id="myUL">
       <% @available_drugs.each do |drug| %>
+
         <li class="header-font shadow mb-1  ">
           <a href="#"><%= drug.name %></a>
 
@@ -97,6 +98,7 @@
           </div>
         </li>
       <% end %>
+
     </ul>
   </div>
 

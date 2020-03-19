@@ -2,7 +2,6 @@ class Drug < ApplicationRecord
 
    attr_accessor :routes
 
-
   include AlgoliaSearch
   belongs_to :organization
   has_many :presentations, dependent: :destroy
@@ -16,5 +15,9 @@ class Drug < ApplicationRecord
   algoliasearch do
     attributes :name, :created_at, :updated_at
     searchableAttributes ['name', 'created_at', 'updated_at']
+  end
+
+  def uniq_indications
+    self.indications.pluck(:name).uniq
   end
 end

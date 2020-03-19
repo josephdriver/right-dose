@@ -1,63 +1,174 @@
-<!-- <div class="banner-wrapper d-flex" style="background-image: radial-gradient(circle, rgba(63,94,251,0) 0%, rgba(0,0,0,0.7808857808857809) 100%), url(<%= asset_path('banner.jpg') %>);"> -->
-<div class="background-color">
-<!--   <div id="ekg-background"> -->
-    <div class="banner-wrapper">
-
-        <div class="banner-content container my-auto mx-auto">
-          <div class="d-flex">
-            <div>
-              <div>
-                <h1 id="rd-name"><span id="rd-logo">RD</span> Right Dose <i class="small fas fa-heartbeat" style="color:red"></i></h1>
-                <h3>Improving patient outcomes</h3>
-              </div>
-              <div class="d-flex py-3">
-                <div>
-                  <%= link_to "Paramedic", new_paramedic_session_path, class: "btn blue-background width-150px mx-3 border-0" %>
-                  <%= link_to "Admin", new_admin_session_path, class: "btn blue-background width-150px border-0" %>
-                </div>
-              </div>
-            </div>
-            <%= image_tag('ekg.png', class: "pl-4 d-none d-md-block", style: "height: auto; width: 50%") %>
+<!-- NAVBAR -->
+<nav id="white-background top" class="height navbar bg-white p-1 d-flex justify-content-between">
+  <h2 class="ml-4 font-weight-bold" id="rd-namex"><span id="rd-logo">RD</span> Right Dose</h2>
+  <div class="d-flex py-3 text-center">
+    <div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-admin">Admin Login</button>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-paramedic">Paramedic Login</button>
+      <%= link_to "Paramedic", new_paramedic_session_path, class: "btn btn-ghost" %>
+      <%= link_to "Administrator", new_admin_session_path, class: "btn btn-ghost" %>
+    </div>
+  </div>
+</nav>
+<!-- ADMIN MODAL -->
+<div class="modal fade bd-example-modal-admin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render 'shared/admin_login_form' %>
+    </div>
+  </div>
+</div>
+<!-- PARAMEDIC MODAL -->
+<div class="modal fade bd-example-modal-paramedic" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render 'shared/paramedic/paramedic_login_form' %>
+    </div>
+  </div>
+</div>
+<!-- BANNER -->
+<div class="background-color text-center">
+  <div class="d-flex container text-white">
+    <div class="container text-white">
+      <div id="particles-js" class="d-flex justify-content-left">
+        <div class="btext text-left">
+          <div>
+            <h1 class="text-shadow" id="rd-namex"><span id="rd-logo">RD</span> Right Dose <i class="small fas fa-heartbeat" style="color:red"></i></h1>
+            <h3 class="text-shadow">A revolutionary app designed to save lives by preventing drug dosing errors in prehospital patients.</h3>
+          </div>
+          <div class="d-flex mt-4">
+            <a href="#middle" class="box bounce-7 text-decoration-none text-shadow" style="font-size: 40px; color:lightgray;"><i class="fas fa-chevron-down"></i></a>
           </div>
         </div>
-        </div>
-    </div>
-<!--   </div> -->
-</div>
-
-
-
-<div class="container">
-  <div class="card-deck">
-    <div class="card">
-      <%= image_tag('ambulance.jpg', style: "height: auto; width: 100%") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est voluptas earum quod aliquam repellat enim voluptatem, numquam, excepturi molestiae modi et ducimus quaerat, harum veritatis autem dolor at quidem maiores.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-    <div class="card">
-      <%= image_tag('ambulance.jpg', style: "height: auto; width: 100%") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti, omnis, quos. Consequuntur id soluta atque nam distinctio eveniet voluptate beatae voluptatum. Alias mollitia aliquid, nam magni dolor cupiditate consequuntur facilis!</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
-      </div>
-    </div>
-    <div class="card">
-      <%= image_tag('ambulance.jpg', style: "height: auto; width: 100%") %>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae itaque iusto voluptatibus nulla quam aliquam magni in, ea fugiat accusamus labore deserunt delectus. Porro assumenda, tenetur quo ex hic rem.</p>
-      </div>
-      <div class="card-footer">
-        <small class="text-muted">Last updated 3 mins ago</small>
       </div>
     </div>
   </div>
 </div>
+
+<!-- MIDDLE SECTION -->
+<div id="middle" class="container mx-auto" style="height: 100%; margin: 100px 0;">
+  <h1 class="text-center text-dark p-5 border-bottom m-5">How <strong><span id="rd-logo">RD</span> Right Dose </strong> works to prevent dosing errors</h1>
+  <div class="h-50 text-left d-flex justify-content-between align-items-center bg-white shadow rounded p-5">
+    <div>
+      <h3 style="color: #313131">Medication errors by emergency medical providers account for an estimated <strong><em>7,000</em></strong> deaths per year</h3>
+      <div class="d-flex mt-4">
+        <a href="#middle-2" class="box bounce-7 text-decoration-none text-shadow" style="font-size: 40px; color:lightgray;"><i class="fas fa-chevron-down"></i></a>
+      </div>
+    </div>
+    <%= image_tag "doctors.svg", class: "h-100 d-none d-md-block" %>
+  </div>
+</div>
+<!-- MIDDLE SECTION 2-->
+<div id="middle-2" class="container mx-auto d-flex align-items-center" style="height: 100%; margin: 100px 0;">
+  <div class="h-50 text-left d-flex justify-content-between align-items-center bg-white shadow rounded p-5">
+    <%= image_tag "report.svg", class: "h-100 d-none d-md-block" %>
+    <div class="mx-5">
+      <h3 style="color: #313131">Despite the severity of the issue, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus, </h3>
+      <div class="d-flex mt-4">
+        <a href="#end" class="box bounce-7 text-decoration-none text-shadow mt-3" style="font-size: 40px; color:lightgray;"><i class="fas fa-chevron-down"></i></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LAST SECTION -->
+<div id="end" class="container mx-auto d-flex align-items-center" style="height: 100%; margin: 100px 0;">
+  <div class="h-50 text-left d-flex justify-content-between align-items-center bg-white shadow rounded p-5">
+    <div class="mx-2">
+      <h3 style="color: #313131">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore aliquid dolorem aspernatur suscipit, dolorum, at id sunt! Laboriosam repellendus rerum cumque porro molestias, voluptates omnis harum possimus adipisci ex tempora?</h3>
+    </div>
+    <%= image_tag "heatmap.svg", class: "h-100 d-none d-md-block" %>
+  </div>
+</div>
+
+
+<!-- Footer -->
+<footer class="page-footer font-small cyan darken-3">
+
+  <!-- Footer Elements -->
+  <div class="container mt-5 p-5">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Pinterest-->
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#"> Right Dose</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= javascript_include_tag 'particles.min' %>
+<script>
+  particlesJS.load('particles-js', "<%= asset_path 'particles.json' %>", function() {
+  console.log('callback - particles.js config loaded');
+ });
+</script>
+

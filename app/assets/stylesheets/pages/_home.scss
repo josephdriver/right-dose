@@ -1,11 +1,14 @@
 // Specific CSS for your home-page
 .background-color {
+  height: 85%;
   background: linear-gradient(270deg, #363740, #57717e);
   background-size: 400% 400%;
 
-  -webkit-animation: AnimationName 5s ease infinite;
-  -moz-animation: AnimationName 5s ease infinite;
-  animation: AnimationName 5s ease infinite;
+  // border-bottom-right-radius: 100% 50%;
+
+  -webkit-animation: AnimationName 10s ease infinite;
+  -moz-animation: AnimationName 10s ease infinite;
+  animation: AnimationName 10s ease infinite;
 
   @-webkit-keyframes AnimationName {
       0%{background-position:0% 50%}
@@ -24,9 +27,25 @@
   }
 }
 
-#ekg-background {
-  background-image: url(/assets/ekg.png);
-  background-repeat: no-repeat;
-  // background-position: center top;
-  // object-fit: cover;
+.btext {
+  position: absolute;
+  top: 40%;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+// #end {
+//   border-top-left-radius: 70% 40%;
+//   border-bottom-right-radius: 70% 40%;
+//   height: 100%;
+//   background: linear-gradient(270deg, #363740, #57717e);
+//   // opacity: 0.25;
+// }

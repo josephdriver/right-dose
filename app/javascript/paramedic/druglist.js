@@ -20,7 +20,10 @@ const drugList = () => {
 }
 
 const displayDrugs = () => {
-  document.getElementById("search").addEventListener('keyup', drugList );
+  const search = document.getElementById("search")
+  if (search) {
+    search.addEventListener('keyup', drugList );
+  }
 }
 
 export { displayDrugs };

@@ -4,8 +4,9 @@ const updatePatientInfo = () => {
   const btn = document.querySelector('#patient-info-container');
   const form = document.querySelector('#edit-case-form');
 
-  btn.addEventListener('click', async (e) => {
-    form.style.display = 'unset';
+  if (btn) {
+    btn.addEventListener('click', async (e) => {
+      form.style.display = 'unset';
 
     const {value: output} = await Swal.fire(
     {
@@ -22,6 +23,7 @@ const updatePatientInfo = () => {
       }
     }) // end of Swal
   }); // end of event
+  }
 };
 
 export { updatePatientInfo };

@@ -1,0 +1,67 @@
+<div class="overview-card">
+  <div>
+    <div class="d-flex p-3 justify-content-between">
+      <div>
+        <h3 class="no-margin">Current Indications</h3>
+        <p class="grey">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
+      </div>
+      <div class="d-flex">
+        <div>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDrugForm">
+            Add Indication
+          </button>
+        </div>
+        <div id="search-bar">
+          <%= form_tag indications_path, method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Find a Drug ;)"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="d-flex px-5 justify-content-between grey-btm-border">
+      <div class="lg-inf">
+        <p class="grey">Indication Name</p>
+      </div>
+      <div class="lg-inf">
+      </div>
+      <div class="d-flex">
+        <div class="xs-inf">
+          <p class="grey">Date Created</p>
+        </div>
+        <div class="xs-inf">
+          <p class="grey">Last Updated</p>
+        </div>
+      </div>
+    </div>
+    <% @drugs.each_with_index do |drug, index| %>
+    <div class="d-flex px-5 justify-content-between <%= 'grey-btm-border' if index != @drugs.size - 1 %> margin-tp">
+      <div class="lg-inf" id="c-1">
+        <p class=""><%= indication.name %></p>
+      </div>
+      <div class="lg-inf md-margin-btm">
+      </div>
+      <div class="d-flex">
+        <div class="xs-inf" id="c-3">
+          <p class=""> <%= indication.created_at.strftime("%m/%d/%Y") %> </p>
+        </div>
+        <div class="xs-inf d-flex justify-content-around" id="c-4">
+          <p class=""> <%= indication.updated_at.strftime("%m/%d/%Y") %> </p>
+        </div>
+        <div>
+          <%= link_to indication_path(indication), method: :delete do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+<%= render 'new_indication_modal' %>
+

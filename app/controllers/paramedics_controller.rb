@@ -1,6 +1,11 @@
 class ParamedicsController < ApplicationController
   def index
     @paramedics = policy_scope(Paramedic)
+    if params[:query].present?
+      @paramedics = policy_scope(Paramedic).search(params[:query])
+    else
+      @paramedics = policy_scope(Paramedic)
+    end
   end
 
   def new

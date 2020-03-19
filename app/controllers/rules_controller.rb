@@ -3,11 +3,18 @@ class RulesController < ApplicationController
   skip_before_action :authenticate_admin!
 
   def index
-    @paramedic_type = ParamedicType.find(params[:paramedic_type])
-    @rule = policy_scope(Rule).where(paramedic_type: @paramedic_type)
+    if params[:paramedic_type].nil?
+      @rule = policy_scope(Rule)
+      redirect_to paramedic_types_path
+    else
+      @paramedic_type = ParamedicType.find(params[:paramedic_type])
+      @rule = policy_scope(Rule).where(paramedic_type: @paramedic_type)
+    end
+     @grouped_rules = @rule.group_by { |rule| [rule.drug, rule.indication, rule.presentation, rule.route]}
   end
 
   def search
+    raise
     @drug = Drug.find(params[:drug_id])
     @paramedic_type = ParamedicType.find(params[:drug][:paramedic_type_id])
     @case = Case.find(params[:drug][:case_id])
@@ -44,19 +51,21 @@ class RulesController < ApplicationController
     authorize @rule
     @organization = current_admin.organization
     @paramedic_type = ParamedicType.find(params[:paramedic_type])
+    authorize @paramedic_type
   end
 
   def create
     @rule = Rule.new(rule_params)
-    @paramedic_type = ParamedicType.find(params[:rule][:paramedic_type_id])
+    pt = @paramedic_type = ParamedicType.find(params[:rule][:paramedic_type_id])
+    @rule.paramedic_type = pt
     if params[:rule][:patient_type] == "Adult"
       @rule.calc_type = "Age based"
     end
-     authorize @rule
     if @rule.save
       redirect_to paramedic_types_path
     else
-      render :new
+
+      render :new, paramedic_type: params[:rule][:paramedic_type_id]
     end
   end
 
@@ -67,6 +76,10 @@ class RulesController < ApplicationController
   end
 
   def destroy
+    @rule = Rule.find(params[:id])
+    authorize @rule
+    @rule.destroy
+    redirect_to rules_path
   end
 
   private

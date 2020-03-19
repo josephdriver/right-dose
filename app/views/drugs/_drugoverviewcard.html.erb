@@ -5,17 +5,26 @@
         <h3 class="no-margin">Current Medication List</h3>
         <p class="grey">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
       </div>
-      <div class="d-flex">
-        <div>
+      <div>
+        <div class="py-3">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newDrugForm">
             Add Medication
           </button>
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newPresentationForm">
             Add Presentation
           </button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#newIndicationForm">
+            Add Indications
+          </button>
         </div>
-        <div class="search-form">
-          <input type="text" name="search" id="search" placeholder="Drug" />
+        <div id="search-bar py-5">
+          <%= form_tag drugs_path, class: "d-flex", method: :get do %>
+            <%= text_field_tag :query,
+              params[:query],
+              class: "form-control"
+            %>
+            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <% end %>
         </div>
       </div>
     </div>
@@ -27,8 +36,8 @@
         <p class="grey">Presentations</p>
       </div>
       <div class="d-flex">
-        <div class="xs-inf">
-          <p class="grey">Date Created</p>
+        <div class="lg-inf">
+          <p class="grey">Indications</p>
         </div>
         <div class="xs-inf">
           <p class="grey">Last Updated</p>
@@ -48,11 +57,13 @@
         <% end %>
       </div>
       <div class="d-flex">
-        <div class="xs-inf" id="c-3">
-          <p class=""> <%= drug.created_at.strftime("%m/%d/%Y") %> </p>
+        <div class="lg-inf" id="c-3">
+          <% drug.uniq_indications.each do |indic| %>
+          <p class="no-margin"><%= indic %></p>
+          <% end %>
         </div>
         <div class="xs-inf d-flex justify-content-around" id="c-4">
-          <p class=""> <%= drug.updated_at.strftime("%m/%d/%Y") %> </p>
+          <p class="no-margin"> <%= drug.updated_at.strftime("%m/%d/%Y") %> </p>
         </div>
         <div>
           <%= link_to drug_path(drug), method: :delete do %>
@@ -68,4 +79,6 @@
 <%= render 'new_drug_modal' %>
 
 <%= render 'presentations/new_presentation_modal' %>
+
+<%= render 'indications/new_indication_modal' %>
 
