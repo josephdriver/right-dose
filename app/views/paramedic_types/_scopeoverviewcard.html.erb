@@ -1,24 +1,23 @@
-<div class="overview-card">
-  <div>
-    <div class="d-flex p-3 justify-content-between">
-      <div class="p-5">
-        <h3 class="no-margin">Scopes of Practice by Skill Level</h3>
-        <p class="grey">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
-        <div>
-          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#newParamedicTypeForm">
-            Add Scope
-          </button>
-        </div>
+<div class="overview-card md-padding-bottom">
+  <div class="d-flex p-3 justify-content-between">
+    <div class="p-5 w-100 d-flex justify-content-between md-margin-btm">
+      <div>
+        <h3 class="no-margin px-4">Scopes of Practice by Skill Level</h3>
+        <p class="grey px-4">as at <%= Time.now.strftime("%m/%d/%Y") %></p>
+      </div>
+      <div>
+        <button type="button" class="mx-4 btn btn-primary float-right" data-toggle="modal" data-target="#newParamedicTypeForm">
+          New Skill Level
+        </button>
       </div>
     </div>
+  </div>
+  <div class="row md-margin-btm">
+  <% types_array.each do |type | %>
+    <div class="d-flex col-md-6 justify-content-around margin-tp">
+        <%= render "scopecard", type: type %>
     </div>
-      <div class="row">
-      <% types_array.each do |type | %>
-        <div class="d-flex col-md-6 justify-content-around margin-tp">
-            <%= render "scopecard", type: type %>
-        </div>
-      <% end %>
-      </div>
+  <% end %>
   </div>
 </div>
 

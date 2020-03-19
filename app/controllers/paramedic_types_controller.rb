@@ -3,6 +3,7 @@ class ParamedicTypesController < ApplicationController
 
   def index
     @paramedic_types = policy_scope(ParamedicType)
+    @rules = Rule.all
   end
 
   def new
