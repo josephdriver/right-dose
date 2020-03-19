@@ -10,6 +10,7 @@ class RulesController < ApplicationController
       @paramedic_type = ParamedicType.find(params[:paramedic_type])
       @rule = policy_scope(Rule).where(paramedic_type: @paramedic_type)
     end
+     @grouped_rules = @rule.group_by { |rule| [rule.drug, rule.indication, rule.presentation, rule.route]}
   end
 
   def search
@@ -36,7 +37,6 @@ class RulesController < ApplicationController
         end
       end
     end
-
   end
 
   def show
@@ -73,6 +73,10 @@ class RulesController < ApplicationController
   end
 
   def destroy
+    @rule = Rule.find(params[:id])
+    authorize @rule
+    @rule.destroy
+    redirect_to rules_path
   end
 
   private
