@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
 
+  helper_method :resource_name, :resource, :devise_mapping, :resource_class
+
   # Uncomment when you *really understand* Pundit!
   # rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   # def user_not_authorized
@@ -23,6 +25,21 @@ class ApplicationController < ActionController::Base
     else
       paramedic_dashboard_path
     end
+  end
+
+  def resource_name
+    :admin
+  end
+
+  def resource
+    @resource ||= Admin.new
+  end
+  def resource_class
+    Admin
+  end
+
+  def devise_mapping
+    @devise_mapping ||= Devise.mappings[:admin]
   end
 
   private

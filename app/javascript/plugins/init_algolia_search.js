@@ -2,14 +2,15 @@ import algoliasearch from "algoliasearch";
 
 const initAlgoliaSearch = () => {
   const inputField = document.querySelector("#search");
-  const indexType = document.getElementById("search").placeholder;
+  const indexType = document.getElementById("search");
 
   if (inputField) {
+    const indexPlaceholder = indexType.placeholder;
     const appId = document.querySelector("meta[name='algolia-app-id']").content;
     const searchOnlyApiKey = document.querySelector("meta[name='algolia-search-only-api-key']").content;
 
     const client = algoliasearch(appId, searchOnlyApiKey);
-    const index = client.initIndex(indexType);
+    const index = client.initIndex(indexPlaceholder);
 
     inputField.addEventListener("input", () => {
       index.search(inputField.value, { hitsPerPage: 10, page: 0 }).then((content) => {
@@ -22,7 +23,7 @@ const initAlgoliaSearch = () => {
         //   const col = document.getElementById(`c-${i}`);
         //   col.insertAdjacentHTML('beforeend', "");
         // };
-        if (indexType == 'Paramedic') {
+        if (indexPlaceholder == 'Paramedic') {
           const col5 = document.getElementById('c-5');
           content.hits.forEach(element => {
             col1.insertAdjacentHTML('beforeend', `<p>${element.first_name}, ${element.last_name}</p>`);

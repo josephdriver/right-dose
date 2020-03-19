@@ -7,8 +7,10 @@ const setTime = () => {
   let date = format(new Date, 'dd MMM yyyy').toUpperCase();
   let time = format(new Date, 'HH:mm:ss');
 
-  date_cntr.innerHTML = date;
-  time_cntr.innerHTML = time;
+  if (date_cntr) {
+    date_cntr.innerHTML = date;
+    time_cntr.innerHTML = time;
+  }
 };
 
 const updateTime = () => {

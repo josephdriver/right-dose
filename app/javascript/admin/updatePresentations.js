@@ -1,13 +1,14 @@
 const bindDrugInput = () => {
-  const info = JSON.parse(document.getElementById("info").dataset.presentations);
+  const info = document.getElementById("info");
     if (info) {
+      const presentations = JSON.parse(info.dataset.presentations)
     const drugInput = document.getElementById("rule_drug");
 
     const presentationsInput = document.getElementById("rule_presentation_id");
 
     drugInput.addEventListener("change", (event) => {
       const id = event.currentTarget.value;
-      const options = info[id]
+      const options = presentations[id]
       const stringfiedOptions = createOptions(options);
       presentationsInput.innerHTML = stringfiedOptions;
     })

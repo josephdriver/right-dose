@@ -3,11 +3,20 @@
   <h2 class="ml-4 font-weight-bold" id="rd-namex"><span id="rd-logo">RD</span> Right Dose</h2>
   <div class="d-flex py-3 text-center">
     <div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Admin Login</button>
+
       <%= link_to "Paramedic", new_paramedic_session_path, class: "btn btn-ghost" %>
       <%= link_to "Administrator", new_admin_session_path, class: "btn btn-ghost" %>
     </div>
   </div>
 </nav>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render 'shared/admin_login_form' %>
+    </div>
+  </div>
+</div>
 
 <!-- BANNER -->
 <div class="background-color text-center">
@@ -55,14 +64,10 @@
 </div>
 
 <!-- LAST SECTION -->
-<div id="end" class="container mx-auto" style="height: 100%; margin: 100px 0;">
-  <h1 class="text-center text-dark p-5 border-bottom m-5">How <strong><span id="rd-logo">RD</span> Right Dose </strong> works to prevent dosing errors</h1>
+<div id="end" class="container mx-auto d-flex align-items-center" style="height: 100%; margin: 100px 0;">
   <div class="h-50 text-left d-flex justify-content-between align-items-center bg-white shadow rounded p-5">
     <div class="mx-2">
       <h3 style="color: #313131">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempore aliquid dolorem aspernatur suscipit, dolorum, at id sunt! Laboriosam repellendus rerum cumque porro molestias, voluptates omnis harum possimus adipisci ex tempora?</h3>
-      <div class="d-flex mt-4">
-        <a href="#end" class="box bounce-7 text-decoration-none text-shadow" style="font-size: 40px; color:lightgray;"><i class="fas fa-chevron-down"></i></a>
-      </div>
     </div>
     <%= image_tag "heatmap.svg", class: "h-100 d-none d-md-block" %>
   </div>
@@ -127,7 +132,7 @@
 
 
 
-<%= javascript_include_tag 'particles.min', 'application'%>
+<%= javascript_include_tag 'particles.min' %>
 <script>particlesJS.load('particles-js', 'assets/particles.json', function() {
   console.log('callback - particles.js config loaded');
  });</script>
