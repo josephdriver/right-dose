@@ -48,10 +48,16 @@
 <span id="rules-json"><%= paramedic_rules_to_json(drug) %></span>
 <% @drug_rules = paramedic_rules_to_json(drug) %>
 
-<%= simple_form_for [@case, CaseDrug.new],
+<%= simple_form_for drug,
+  url: find_rules_path_url(drug) ,
   remote: true,
   html: {id: 'case-drug-form'},
-  method: :post do |f| %>
+  method: :get do |f| %>
+  <%= f.hidden_field :paramedic_type_id,
+  value: @paramedic.paramedic_type_id,
+  input_html: {
+    value: @paramedic.id,
+    id: 'case-drug-medic-type' } %>
   <%= f.hidden_field :case_id,
     value: @case.id,
     input_html: {
@@ -64,30 +70,28 @@
        value: drug.id,
         id: 'case-drug-drug' } %>
   <% end %>
-  <%= simple_fields_for :presentation do |o| %>
+  <%= simple_fields_for :other do |o| %>
     <%= o.input :presentation_id,
-      as: :select,
+      collection: drug.presentations.map { |pres| [[pres.dose, pres.drug_unit, pres.volume, pres.volume_unit], pres.id] },
       input_html: {
         multiple: false,
         id: 'case-drug-presentation' } %>
   <% end %>
-  <%= simple_fields_for :indication do |o| %>
+  <%= simple_fields_for :other do |o| %>
     <%= o.input :indication_id,
-      as: :select,
-      disabled: true,
+      collection: Indication.all,
       input_html: {
         multiple: false,
         id: 'case-drug-indication' } %>
   <% end %>
-  <%= simple_fields_for :route do |o| %>
+  <%= simple_fields_for :other do |o| %>
     <%= o.input :route_id,
-      as: :select,
       collection: Route.all,
-      disabled: true,
       input_html: { id: 'case-drug-route' } %>
   <% end %>
-  <%= f.submit id: 'case-drug-submit-btn',
-    class: 'd-none' %>
+  <%= f.submit id: 'case-drug-submit',
+    class: 'd-none'  %>
+
 <% end %>
 
           </div>

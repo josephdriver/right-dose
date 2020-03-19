@@ -15,18 +15,10 @@ const populateForm = () => {
   let indicationInput = document.getElementById("case-drug-indication");
   let routeInput = document.getElementById("case-drug-route");
 
-  presentationInput.addEventListener("change", (event) => {
-    console.log(event.currentTarget.value);
-    if (event.currentTarget.value != null) {
-      console.log(event.currentTarget.value)
-      indicationInput.style.disabled = false;
+  presentationInput.disabled = false;
+  // indicationInput.disabled = true;
+  // routeInput.disabled = true;
 
-      const options = rules.forEach(element => {
-        if (event.currentTarget.value === element.indication.presentation)
-          console.log(element.indication.presentation)
-      });
-    }
-  })
 
 }
 
@@ -45,8 +37,8 @@ async function populateDrugs() {
     confirmButtonText: 'CREATE',
     cancelButtonText: 'CANCEL',
     onOpen: () => {
-      console.log('opened!');
       populateForm();
+      console.log('opened!');
     },
     preConfirm: () => {
       Rails.fire(form, 'submit');

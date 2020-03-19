@@ -4,38 +4,28 @@ class CaseDrugsController < ApplicationController
 
   def index
     @rules = Rule.all.where(paramedic_id: current_medic.paramedic_type)
-    respond_to do |format|
-      format.html { @users }
-      format.json { render json: json_format(@users) }
-    end
+  end
+
+  def update_form
+
   end
 
   def create
-    byebug
 
     @medic_type = current_paramedic.paramedic_type
     @drug = Drug.find(drug_params[:drug_id])
 
-    @presentations = @drug.presentations
-    @rules = @drug.rules.where(paramedic_type: @medic_type)
-    @routes = []
-    @indictations = []
-    @rules.each do |rule|
-      @indications << rule.indication unless @indications.include?
-      @routes << rule.route unless @routes.include?
-    end
+    pres_params = params.require(:presentation).permit(:presentation_id)
+    indi_params = params.require(:indication).permit(:indication_id)
+    rout_params = params.require(:route).permit(:route_id)
 
-    indication_param = params.require(:indication).permit(:indication_id)
-    route_param = params.require(:route).permit(:route_id)
-    presentation_param = params.require(:presentation).permit(:presentation_id)
+    @presentation = Presentation.find(pres_params[:presentation_id])
+    byebug
 
-    @drug = Drug.find(drug_param[:drug_id])
-    @presentation = Presentation.find(presentation_param[:presentation_id])
-    @indication = Indication.find(indication_param[:indication_id])
-    @route = Route.find(route_param[:route_id])
-    @rule = Rule.find(indication_id: @indication.id, route_id: @route.id)
 
-    @case_drug = CaseDrug.new(case_drug_param, rule_id: @rule.id)
+    @drug.presentations.where(id: @presentation.id)
+byebug
+    @case_drug = CaseDrug.new(case_drug_params)
     authorize @case_drug
   end
 

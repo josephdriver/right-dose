@@ -9,29 +9,30 @@ class RulesController < ApplicationController
 
   def search
     @drug = Drug.find(params[:drug_id])
-    @paramedic_type = ParamedicType.all[0]
-    @case = Case.find(params[:case_id])
-    @age = 7
-    @pediatric_cutoff = 12
+    @paramedic_type = ParamedicType.find(params[:drug][:paramedic_type_id])
+    @case = Case.find(params[:drug][:case_id])
+    @presentation = Presentation.find(params[:other][:presentation_id])
+    @indication = Indication.find(params[:other][:indication_id])
+    @route = Route.find(params[:other][:route_id])
+    @age = @case.age
+    @pediatric_cutoff = @paramedic_type.organization.pediatric_cutoff
+
+    byebug
     if params[:drug]
       rules = @drug.rules.where(paramedic_type: @paramedic_type)
-      rules_presentation = rules.select { |rule| rule.indication.presentation == Presentation.find(params[:drug][:presentation_ids]) }
-      rules_indication = rules_presentation.select { |rule| rule.indication == Indication.find(params[:drug][:indication_ids]) }
-      rules_route = rules_indication.select { |rule| rule.route == Route.find(params[:other][:routes]) }
+      rules_presentation = rules.select { |rule| rule.indication.presentation == @presentation }
+      rules_indication = rules_presentation.select { |rule| rule.indication == @indication }
+      rules_route = rules_indication.select { |rule| rule.route == @route }
 
       if @age > @pediatric_cutoff
         @final_rules = rules_route.select { |rule| rule.patient_type == "Adult" }
-        if adult_rules.nil?
-        else
-          adult_rules
-        end
+
       elsif @age <= @pediatric_cutoff
-        pediatric_rules = rules_route.select { |rule| rule.patient_type == "Pediatric"}
-        if pediatric_rules.nil?
-        else pediatric_rules
-        end
+        @final_rules = rules_route.select { |rule| rule.patient_type == "Pediatric" }
+
       end
     end
+    @case_drug = CaseDrug.create(drug_id: @drug.id, rule_id: @final_rule.id)
   end
 
   def show
