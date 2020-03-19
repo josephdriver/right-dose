@@ -3,11 +3,20 @@
   <h2 class="ml-4 font-weight-bold" id="rd-namex"><span id="rd-logo">RD</span> Right Dose</h2>
   <div class="d-flex py-3 text-center">
     <div>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Admin Login</button>
+
       <%= link_to "Paramedic", new_paramedic_session_path, class: "btn btn-ghost" %>
       <%= link_to "Administrator", new_admin_session_path, class: "btn btn-ghost" %>
     </div>
   </div>
 </nav>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <%= render 'shared/admin_login_form' %>
+    </div>
+  </div>
+</div>
 
 <!-- BANNER -->
 <div class="background-color text-center">
@@ -123,7 +132,7 @@
 
 
 
-<%= javascript_include_tag 'particles.min', 'application'%>
+<%= javascript_include_tag 'particles.min' %>
 <script>particlesJS.load('particles-js', 'assets/particles.json', function() {
   console.log('callback - particles.js config loaded');
  });</script>

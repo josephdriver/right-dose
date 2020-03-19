@@ -1,11 +1,6 @@
-<div class="banner-wrapper d-flex blue-background" style="background-image: radial-gradient(circle, rgba(63,94,251,0) 0%, rgba(0,0,0,0.7808857808857809) 100%), url(<%= asset_path('banner.jpg') %>);">
-  <div class="banner-content container my-auto mx-auto">
-    <h1>Right Dose</h1>
-    <h3>Improving patient outcomes</h3>
-  </div>
-</div>
 <div class="small-form">
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+    <div class="errors"></div>
     <div class="form-inputs">
       <%= f.input :email,
                   required: false,
@@ -26,6 +21,3 @@
     <%= link_to "back", root_path %>
   </div>
 </div>
-
-
-

@@ -2,6 +2,9 @@ import 'bootstrap';
 import "core-js/stable";
 import "regenerator-runtime/runtime";
 
+import JQuery from 'jquery';
+window.$ = window.JQuery = JQuery;
+
 // PLUGINS
 import Sortable from 'sortablejs';
 
