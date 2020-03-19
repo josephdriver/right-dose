@@ -12,18 +12,20 @@
           </button>
         </div>
       </div>
-        <div id="search-bar">
-          <%= form_tag paramedics_path, method: :get do %>
+      <div class="d-flex">
+        <div id="search-bar ">
+          <%= form_tag paramedics_path, class: "d-flex", method: :get do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control",
               placeholder: "Find a Paramedic"
             %>
-            <%= submit_tag "Search", class: "btn btn-primary" %>
+          <%= submit_tag "Search", class: "btn btn-primary" %>
           <% end %>
         </div>
       </div>
     </div>
+  </div>
     <div class="d-flex px-5 justify-content-between grey-btm-border">
       <div class="lg-inf">
         <p class="grey">User Name</p>

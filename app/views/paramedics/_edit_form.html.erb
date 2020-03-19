@@ -1,22 +1,39 @@
 <%= simple_form_for paramedic, url: edit_paramedic_path(paramedic)  do |f| %>
-  <div class="form-inputs">
-    <div class="d-flex">
-      <%= f.input :first_name %>
-      <%= f.input :last_name %>
-      <%= f.association :paramedic_type %>
-      <%= f.input :employee_num %>
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
+  <div class="form-inputs p-4">
+    <div class>
+      <div class="d-flex justify-content-between">
+        <div class="width-45">
+          <%= f.input :first_name %>
+        </div>
+        <div class="width-45">
+          <%= f.input :last_name %>
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div class="width-45">
+          <%= f.association :paramedic_type %>
+        </div>
+        <div class="width-45">
+          <%= f.input :employee_num %>
+        </div>
+      </div>
+      <div>
+        <%= f.input :email,
+                    required: true,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" }%>
+      </div>
+      <div>
+        <%= f.input :password,
+                    required: true,
+                    hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                    input_html: { autocomplete: "new-password" } %>
+      </div>
     </div>
 
   </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Submit Changes", class: "btn btn-primary" %>
+
+  <div class="create p-4">
+    <%= f.button :submit, "Create User", class: "btn btn-primary" %>
   </div>
 <% end %>
