@@ -16,4 +16,8 @@ class Drug < ApplicationRecord
     attributes :name, :created_at, :updated_at
     searchableAttributes ['name', 'created_at', 'updated_at']
   end
+
+  def uniq_indications
+    self.indications.pluck(:name).uniq
+  end
 end

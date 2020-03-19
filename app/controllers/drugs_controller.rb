@@ -13,6 +13,8 @@ class DrugsController < ApplicationController
   def new
     @drug = Drug.new
     @presentation = Presentation.new
+    @indication = Indication.new
+    authorize @indication
     authorize @drug
     authorize @presentation
   end

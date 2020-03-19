@@ -22,9 +22,10 @@ Rails.application.routes.draw do
   resources :drugs, only: [:index, :new, :create, :destroy] do
   end
 
+  resources :indications, only: [:new, :create, :destroy]
+
   resources :presentations, only: [:new, :create, :destroy]
   resources :presentations, only: [] do
-    resources :indications, only: [:new, :create, :destroy]
   end
 
   resources :rules, only: [:index, :show, :new, :create, :destroy]

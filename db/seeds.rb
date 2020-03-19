@@ -233,7 +233,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 300,
     dose_unit: 'mcg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 300,
     max_total_dose: 300
   },
@@ -293,7 +293,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 5,
     dose_unit: 'mg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 5,
     max_total_dose: 5
   },
@@ -313,7 +313,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 5,
     dose_unit: 'mg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 5,
     max_total_dose: 5
   },
@@ -334,7 +334,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 300,
     dose_unit: 'mcg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 300,
     max_total_dose: 300
   },
@@ -354,7 +354,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 150,
     dose_unit: 'mcg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 150,
     max_total_dose: 150
   },
@@ -495,7 +495,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 5,
     dose_unit: 'mg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 5,
     max_total_dose: 5
   },
@@ -515,7 +515,7 @@ RULES = [
     min_initial_dose: nil,
     max_initial_dose: 5,
     dose_unit: 'mg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 5,
     max_total_dose: 5
   },
@@ -964,7 +964,7 @@ RULES = [
     min_initial_dose: 100,
     max_initial_dose: 200,
     dose_unit: 'mcg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 5000,
     max_total_dose: 200
   },
@@ -1045,7 +1045,7 @@ RULES = [
     min_initial_dose: 100,
     max_initial_dose: 200,
     dose_unit: 'mcg',
-    repeat_dose: 'Single dose only',
+    repeat_dose: 0,
     max_single_dose: 5000,
     max_total_dose: 200
   },
