@@ -3,16 +3,14 @@
   <h2 class="ml-4 font-weight-bold" id="rd-namex"><span id="rd-logo">RD</span> Right Dose</h2>
   <div class="d-flex py-3 text-center">
     <div>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-admin">Admin Login</button>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-paramedic">Paramedic Login</button>
-      <%= link_to "Paramedic", new_paramedic_session_path, class: "btn btn-ghost" %>
-      <%= link_to "Administrator", new_admin_session_path, class: "btn btn-ghost" %>
+      <button type="button" class="btn btn-ghost" data-toggle="modal" data-target=".bd-example-modal-admin">Admin Login</button>
+      <button type="button" class="btn btn-ghost" data-toggle="modal" data-target=".bd-example-modal-paramedic">Paramedic Login</button>
     </div>
   </div>
 </nav>
 <!-- ADMIN MODAL -->
 <div class="modal fade bd-example-modal-admin" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
       <%= render 'shared/admin_login_form' %>
     </div>
@@ -20,7 +18,7 @@
 </div>
 <!-- PARAMEDIC MODAL -->
 <div class="modal fade bd-example-modal-paramedic" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog">
     <div class="modal-content">
       <%= render 'shared/paramedic/paramedic_login_form' %>
     </div>
