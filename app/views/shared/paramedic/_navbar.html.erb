@@ -2,7 +2,16 @@
   <!-- NAVBAR LEFT -->
   <div class="col-sm d-flex flex-row align-items-center justify-content-start">
     <div>
-      <img class="avatar" alt="avatar" src="https://kitt.lewagon.com/placeholder/users/cveneziani" />
+      <% if medic.organization.photo.attached? %>
+        <%= cl_image_tag medic.organization.photo.key,
+          crop: thumb,
+          class: 'avatar',
+          alt: 'organization-avatar' %>
+      <% else %>
+        <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png",
+          class: 'avatar',
+          alt: 'avatar' %>
+      <% end %>
     </div>
     <div class="pl-3">
       <p class="m-0"><%= medic.first_name %> <%= medic.last_name %> (<%= medic.employee_num %>)</p>
