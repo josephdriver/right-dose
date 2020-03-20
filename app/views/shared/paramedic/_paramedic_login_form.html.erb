@@ -1,22 +1,25 @@
-<div class="small-form">
-  <%= simple_form_for(Paramedic.new, as: :paramedic, url: paramedic_session_path, method: :post)  do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: false,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" } %>
-      <%= f.input :password,
-                  required: false,
-                  input_html: { autocomplete: "current-password" } %>
-      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-    </div>
+  <div class="container">
+    <div class="small-form d-flex flex-column justify-content-center w-75 mx-auto">
+      <h4 class="text-center mb-4">Paramedic Login</h4>
+      <%= simple_form_for(Paramedic.new, as: :paramedic, url: paramedic_session_path, method: :post)  do |f| %>
+        <div class="form-inputs">
+          <%= f.input :email,
+                      required: false,
+                      autofocus: true,
+                      input_html: { autocomplete: "email", class: "md-form", placeholder: "email" } %>
+          <%= f.input :password,
+                      required: false,
+                      input_html: { autocomplete: "current-password", placeholder: "password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
 
-    <div class="form-actions d-flex justify-content-center md-margin-btm">
-      <%= f.button :submit, "Log in", class: "btn btn-primary inline" %>
+        <div class="form-actions d-flex justify-content-center md-margin-btm">
+          <%= f.button :submit, "Log in", class: "btn btn-primary inline" %>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= render "devise/shared/links" %>
+        <%= link_to "back", root_path %>
+      </div>
     </div>
-  <% end %>
-  <div class="text-center">
-    <%= render "devise/shared/links" %>
-    <%= link_to "back", root_path %>
   </div>
-</div>
