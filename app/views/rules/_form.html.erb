@@ -8,34 +8,26 @@
   <%= simple_form_for rule  do |f| %>
     <div class="form-inputs">
       <div class="width-70">
-        <%= f.input :paramedic_type_id,
-          input_html: { value: @paramedic_type.id },
-          as: :hidden %>
+        <h5 class="p-4 instruction">Step 1 - Select Indication and Drug</h5>
+        <%= f.input :paramedic_type_id, input_html: { value: @paramedic_type.id }, as: :hidden %>
       </div>
       <div class="width-70">
-        <%= f.association :indication,
-          collection: Indication.all.order(:name) %>
+        <%= f.association :indication, collection: Indication.all.order(:name) %>
       </div>
       <div class="d-flex">
         <div class="width-70">
-          <%= f.input :drug,
-            collection: Drug.all.order(:name),
-            disabled: true %>
+          <%= f.input :drug, collection: Drug.all.order(:name), disabled: true %>
         </div>
         <div class="width-20">
-          <%= f.input :presentation_id,
-            collection: [],
-            disabled: true %>
+          <%= f.input :presentation_id, collection: [], disabled: true %>
         </div>
       </div>
-        <div class="width-20">
-          <%= f.association :route,
-            disabled: true %>
-
-        </div>
-        <div class="width-45">
-          <%= f.input :patient_type, collection: Rule::PATIENT_TYPES, disabled: true %>
-        </div>
+      <h5 class="p-4 instruction">Step 2 - Select Route and Patient Parameters</h5>
+      <div class="width-20">
+        <%= f.association :route, disabled: true %>
+      </div>
+      <div class="width-45">
+        <%= f.input :patient_type, collection: Rule::PATIENT_TYPES, disabled: true %>
       </div>
       <div class="d-flex mx-3 width-50 justify-content-between">
         <div class="width-45">
@@ -45,65 +37,66 @@
           <%= f.input :dose_unit, collection: Rule::DOSE_UNITS, disabled: true %>
         </div>
       </div>
-    </div>
-    <h5 class="p-4 instruction">Step 3 - Enter relevant age and weight constraints</h5>
-    <div class="d-flex justify-content-between mx-3">
-      <div class="d-flex width-50 mx-3 justify-content-between">
-        <div class="width-45">
-          <%= f.input :min_weight,disabled: true %>
+      <h5 class="p-4 instruction">Step 3 - Enter relevant age and weight constraints</h5>
+      <div class="d-flex justify-content-between mx-3">
+        <div class="d-flex width-50 mx-3 justify-content-between">
+          <div class="width-45">
+            <%= f.input :min_weight,disabled: true %>
+          </div>
+          <div class="width-45">
+            <%= f.input :max_weight, disabled: true %>
+          </div>
         </div>
-        <div class="width-45">
-          <%= f.input :max_weight, disabled: true %>
-        </div>
-      </div>
-      <div class="d-flex mx-3 width-50 justify-content-between">
-        <div class="width-45">
-          <%= f.input :min_age, disabled: true %>
-        </div>
-        <div class="width-45">
-          <%= f.input :max_age, disabled: true %>
-        </div>
-      </div>
-    </div>
-    <h5 class="p-4 instruction">Step 4 - Enter relevant dosage rules</h5>
-    <div class="d-flex justify-content-between mx-3">
-      <div class="d-flex width-50 mx-3 justify-content-between">
-        <div class="width-45">
-          <%= f.input :max_initial_dose, disabled: true %>
-        </div>
-        <div class="width-45">
-          <%= f.input :max_interval, disabled: true %>
+        <div class="d-flex mx-3 width-50 justify-content-between">
+          <div class="width-45">
+            <%= f.input :min_age, disabled: true %>
+          </div>
+          <div class="width-45">
+            <%= f.input :max_age, disabled: true %>
+          </div>
         </div>
       </div>
-      <div class="d-flex mx-3 width-50 justify-content-between">
-        <div class="width-45">
-          <%= f.input :repeat_dose, disabled: true %>
+      <h5 class="p-4 instruction">Step 4 - Enter relevant dosage rules</h5>
+      <div class="d-flex justify-content-between mx-3">
+        <div class="d-flex width-50 mx-3 justify-content-between">
+          <div class="width-45">
+            <%= f.input :max_initial_dose, disabled: true %>
+          </div>
+          <div class="width-45">
+            <%= f.input :max_interval, disabled: true %>
+          </div>
+        </div>
+        <div class="d-flex mx-3 width-50 justify-content-between">
+          <div class="width-45">
+            <%= f.input :repeat_dose, disabled: true %>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="d-flex justify-content-between mx-3">
-      <div class="d-flex width-50 mx-3 justify-content-between">
-        <div class="width-45">
-          <%= f.input :min_initial_dose, disabled: true %>
+      <div class="d-flex justify-content-between mx-3">
+        <div class="d-flex width-50 mx-3 justify-content-between">
+          <div class="width-45">
+            <%= f.input :min_initial_dose, disabled: true %>
+          </div>
+          <div class="width-45">
+            <%= f.input :min_interval, disabled: true %>
+          </div>
         </div>
-        <div class="width-45">
-          <%= f.input :min_interval, disabled: true %>
+        <div class="d-flex mx-3 width-50 justify-content-between">
+          <div class="width-45">
+            <%= f.input :max_single_dose, disabled: true %>
+          </div>
+          <div class="width-45">
+            <%= f.input :max_total_dose, label: "Max Dose (No Max Dose if left blank)", disabled: true %>
+          </div>
         </div>
       </div>
-      <div class="d-flex mx-3 width-50 justify-content-between">
-        <div class="width-45">
-          <%= f.input :max_single_dose, disabled: true %>
+      <div class="form-actions">
+        <div class="create">
+          <%= f.button :submit, "Create Rule", id: "create_rule", class: "btn btn-primary m-4", disabled: true %>
         </div>
-        <div class="width-45">
-          <%= f.input :max_total_dose, label: "Max Dose (No Max Dose if left blank)", disabled: true %>
-        </div>
-      </div>
-    </div>
-    <div class="form-actions">
-      <div class="create">
-        <%= f.button :submit, "Create Rule", id: "create_rule", class: "btn btn-primary m-4", disabled: true %>
       </div>
     </div>
   </div>
+</div>
   <% end %>
 
