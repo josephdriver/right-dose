@@ -34,16 +34,16 @@ presentation
     </div>
   </div>
   <div class="ad-routes list-inline d-flex justify-content-center">
-    <ul class="ad-route-list">
-        <li class="list-inline-item px-2 btn-route">
-          <a href="#"><%= rule.route.acronym %></a>
-        </li>
-    </ul>
   </div>
   <div class="ad-calculation">
     <div class="small-font">
       <em>
-        <p><%= @case_weight %></p><% if rule.calc_type == 'Age based'%>
+        <div class="d-flex">
+          <div class="px-2">
+            <p><%= @case.weight %> <%= rule.paramedic_type.organization.weight_unit %> @</p>
+          </div>
+          <div>
+            <% if rule.calc_type == 'Age based'%>
               <% if rule.min_initial_dose.nil? %>
                 <p><%= rule.max_initial_dose %><%= rule.dose_unit %></p>
               <% elsif rule.max_initial_dose.nil? %>
@@ -60,6 +60,8 @@ presentation
                 <p><%= rule.min_initial_dose %><%= rule.dose_unit %> - <%= rule.max_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
               <% end %>
             <% end %>
+          </div>
+        </div>
       </em>
     </div>
   </div>
