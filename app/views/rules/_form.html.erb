@@ -11,23 +11,27 @@
         <h5 class="p-4 instruction">Step 1 - Select Indication and Drug</h5>
         <%= f.input :paramedic_type_id, input_html: { value: @paramedic_type.id }, as: :hidden %>
       </div>
-      <div class="width-70">
-        <%= f.association :indication, collection: Indication.all.order(:name) %>
-      </div>
-      <div class="d-flex">
+      <div class="mx-3 justify-content-between">
         <div class="width-70">
-          <%= f.input :drug, collection: Drug.all.order(:name), disabled: true %>
+          <%= f.association :indication, collection: Indication.all.order(:name) %>
         </div>
-        <div class="width-20">
-          <%= f.input :presentation_id, collection: [], disabled: true %>
+        <div class="d-flex">
+          <div class="width-70">
+            <%= f.input :drug, collection: Drug.all.order(:name), disabled: true %>
+          </div>
+          <div class="width-20 mx-5">
+            <%= f.input :presentation_id, collection: [], disabled: true %>
+          </div>
         </div>
       </div>
       <h5 class="p-4 instruction">Step 2 - Select Route and Patient Parameters</h5>
-      <div class="width-20">
-        <%= f.association :route, disabled: true %>
-      </div>
-      <div class="width-45">
-        <%= f.input :patient_type, collection: Rule::PATIENT_TYPES, disabled: true %>
+      <div class="d-flex mx-3 width-50 justify-content-between">
+        <div class="width-20">
+          <%= f.association :route, disabled: true %>
+        </div>
+        <div class="width-45">
+          <%= f.input :patient_type, collection: Rule::PATIENT_TYPES, disabled: true %>
+        </div>
       </div>
       <div class="d-flex mx-3 width-50 justify-content-between">
         <div class="width-45">
@@ -92,11 +96,11 @@
       </div>
       <div class="form-actions">
         <div class="create">
-          <%= f.button :submit, "Create Rule", id: "create_rule", class: "btn btn-primary m-4", disabled: true %>
+          <%= f.button :submit, "Create Rule", id: "create_rule", class: "btn btn-primary m-4", disabled: true %>S
         </div>
       </div>
     </div>
   </div>
 </div>
-  <% end %>
+<% end %>
 
