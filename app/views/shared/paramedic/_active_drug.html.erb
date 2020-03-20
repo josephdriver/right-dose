@@ -5,7 +5,7 @@ indication
 presentation
 -->
 
-<div class="active-drug shadow">
+<div class="active-drug mb-1 shadow">
 <!--   <div class="ad-icon">
     <%# if true %>
       <%#= icon('fa', 'lock-open') %>
@@ -16,13 +16,20 @@ presentation
   <div class="ad-name header-font d-flex">
     <div class="ad-name header-font">
       <h4><%= rule.drug.name %> - <%= rule.route.acronym %></h4>
-      <p><%= rule.indication.name %></p>
-      <p><%= rule.presentation.dose %><%= rule.presentation.drug_unit %> IN <%= rule.presentation.volume %><%= rule.presentation.volume_unit %></p>
+      <p></p>
+    </div>
+  </div>
+  <div class="ad-indication">
+    <div class="header-font">
+      <em>
+        <%= rule.indication.name %>
+      </em>
     </div>
   </div>
   <div class="ad-presentation">
-    <div class="small-font">
+    <div class="header-font">
       <em>
+        <%= rule.presentation.dose %><%= rule.presentation.drug_unit %> IN <%= rule.presentation.volume %><%= rule.presentation.volume_unit %>
       </em>
     </div>
   </div>
