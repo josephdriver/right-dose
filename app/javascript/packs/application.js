@@ -16,7 +16,7 @@ import { updatePatientInfo } from "../paramedic/updatePatientInfo.js";
 import { displayDrugs } from "../paramedic/druglist.js";
 import { activateRoute } from "../paramedic/activateRoute.js";
 import { activateDrugs } from "../paramedic/activateDrugs.js";
-
+import { noRefresh } from "../paramedic/removeRefresh.js";
 
 import { bindDrugInput } from "../admin/updatePresentations.js";
 import { dynamicRule } from "../admin/dynamicRulesNew.js";
@@ -32,6 +32,7 @@ if (window.location.pathname=='/paramedic_dashboard') {
 
 // PARAMEDIC JAVASCRIPT
 updateTime();
+noRefresh();
 
   // PATIENT INFO
 updatePatientInfo();
