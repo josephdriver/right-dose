@@ -35,9 +35,11 @@ presentation
   </div>
   <div class="ad-administration">
     <div class="">
-      LAST ADMINISTRATION: <span><em><%= DateTime.now %></em></span>
-      <br>
-      NEXT ADMINISTRATION: <span><em>*COUNTDOWN*</em></span>
+      LAST ADMINISTRATION: <span><em><%= DateTime.now.strftime("%H:%M:%S") %></em></span>
+      <% unless rule.max_interval.nil? %>
+        <br>
+        NEXT ADMINISTRATION: <span><em><%= (DateTime.now - rule.max_interval/1440.0).strftime("%H:%M:%S") %></em></span>
+      <% end %>
     </div>
   </div>
   <div class="ad-routes list-inline d-flex justify-content-center">
