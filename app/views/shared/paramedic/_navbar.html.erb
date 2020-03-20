@@ -4,7 +4,6 @@
     <div>
       <% if medic.organization.photo.attached? %>
         <%= cl_image_tag medic.organization.photo.key,
-          crop: thumb,
           class: 'avatar',
           alt: 'organization-avatar' %>
       <% else %>
