@@ -14,7 +14,6 @@ class RulesController < ApplicationController
   end
 
   def search
-    raise
     @drug = Drug.find(params[:drug_id])
     @paramedic_type = ParamedicType.find(params[:drug][:paramedic_type_id])
     @case = Case.find(params[:drug][:case_id])
@@ -24,7 +23,6 @@ class RulesController < ApplicationController
     @age = @case.age
     @pediatric_cutoff = @paramedic_type.organization.pediatric_cutoff
 
-    byebug
     if params[:drug]
       rules = @drug.rules.where(paramedic_type: @paramedic_type)
       rules_presentation = rules.select { |rule| rule.indication.presentation == @presentation }
@@ -39,8 +37,12 @@ class RulesController < ApplicationController
 
       end
     end
-    @case_drug = CaseDrug.create(drug_id: @drug.id, rule_id: @final_rule.id)
-  end
+    @case_drug = CaseDrug.create(case: @case, rule_id: @final_rules.first.id)
+    respond_to do |format|
+        # format.html { redirect_to paramedic_dashboard_path }
+        format.js
+      end
+   end
 
   def show
 

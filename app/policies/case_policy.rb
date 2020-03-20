@@ -7,6 +7,7 @@ class CasePolicy < ApplicationPolicy
   end
 
   def update?
-    user.class == Paramedic
+    true
+    # user.class == Paramedic
   end
 end

@@ -1,0 +1,6 @@
+function fillContainer(drugHTML) {
+  const drugContainer = document.querySelector(".active-container");
+  drugContainer.insertAdjacentHTML('beforeend', drugHTML);
+}
+
+fillContainer('<%= j render "shared/paramedic/active_drug", rule: @case_drug.rule %>')
