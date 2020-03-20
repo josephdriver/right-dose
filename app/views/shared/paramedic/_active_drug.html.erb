@@ -15,14 +15,14 @@ presentation
   </div> -->
   <div class="ad-name header-font d-flex">
     <div class="ad-name header-font">
-      <h4><%= rule.drug.name %></h4>
+      <h4><%= rule.drug.name %> - <%= rule.route.acronym %></h4>
       <p><%= rule.indication.name %></p>
+      <p><%= rule.presentation.dose %><%= rule.presentation.drug_unit %> IN <%= rule.presentation.volume %><%= rule.presentation.volume_unit %></p>
     </div>
   </div>
   <div class="ad-presentation">
     <div class="small-font">
       <em>
-        <%= rule.presentation.dose %><%= rule.presentation.drug_unit %> IN <%= rule.presentation.volume %><%= rule.presentation.volume_unit %>
       </em>
     </div>
   </div>
@@ -43,9 +43,23 @@ presentation
   <div class="ad-calculation">
     <div class="small-font">
       <em>
-        <p><%= @case_weight %></p> @ 200 mg/KG
-        <br>
-        TOTAL mg/TOTAL VOLUME
+        <p><%= @case_weight %></p><% if rule.calc_type == 'Age based'%>
+              <% if rule.min_initial_dose.nil? %>
+                <p><%= rule.max_initial_dose %><%= rule.dose_unit %></p>
+              <% elsif rule.max_initial_dose.nil? %>
+                <p><%= rule.min_initial_dose %><%= rule.dose_unit %></p>
+              <% else %>
+                <p><%= rule.min_initial_dose %><%= rule.dose_unit %> - <%= rule.max_initial_dose %><%= rule.dose_unit %></p>
+              <% end %>
+            <% elsif rule.calc_type == 'Weight based' %>
+              <% if rule.min_initial_dose.nil? %>
+              <p><%= rule.max_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+              <% elsif rule.max_initial_dose.nil? %>
+                <p><%= rule.min_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+              <% else %>
+                <p><%= rule.min_initial_dose %><%= rule.dose_unit %> - <%= rule.max_initial_dose %><%= rule.dose_unit %>/<%= rule.paramedic_type.organization.weight_unit %></p>
+              <% end %>
+            <% end %>
       </em>
     </div>
   </div>
