@@ -7,7 +7,7 @@
     "bootstrap": "^4.4.1",
     "date-fns": "^2.10.0",
     "jquery": "^3.5.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "popper.js": "^1.16.1",
     "sortablejs": "^1.10.2",
     "swal-forms": "^0.5.0",
